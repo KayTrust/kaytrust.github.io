@@ -52,12 +52,12 @@ stages:
       inputs:
         buildType: 'current'
         artifactName: 'site'
-        targetPath: '$(Pipeline.Workspace)/site'
+        targetPath: '$(Pipeline.Workspace)'
       displayName: Download site as artifact
     - task: AzureFileCopy@4
       displayName: Copy site files to container on Azure
       inputs:
-        SourcePath: '$(Pipeline.Workspace)/site'
+        SourcePath: '$(Pipeline.Workspace)'
         azureSubscription: 'Everis Peru SAC(f6205eb2-ffec-4f83-bad1-b1454cfd198d)'
         Destination: 'AzureBlob'
         storage: 'kaytrust'
