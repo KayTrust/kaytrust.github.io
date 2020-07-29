@@ -7,10 +7,10 @@ trigger:
 - master
 
 stages:
-- stage: Build static documentation
+- stage: Build
   pool:
     vmImage: 'ubuntu-latest'
-  displayName: Build
+  displayName: Build static documentation
   jobs:
   - job: BuildDoc
     displayName: Build documentation using MkDocs
