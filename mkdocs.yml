@@ -1,7 +1,7 @@
-site_name: KayTrust Documentation
+site_name: KayTrust Developer Documentation
 nav:
-    - Inicio: Home.md
-    - Productos: productos.md
-    - Unete: unete.md
-    - Donwload: descarga.md
+    - Home: index.md
+    - Products: products.md
+    - Join: join.md
+    - Donwload: download.md
     
