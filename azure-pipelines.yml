@@ -8,12 +8,12 @@ trigger:
 
 stages:
 - stage: Build
+  pool:
+    vmImage: 'ubuntu-latest'
   displayName: Build
   jobs:
   - job: BuildDoc
     displayName: Build documentation
-    pool:
-      vmImage: 'ubuntu-latest'
     steps:
     - task: UsePythonVersion@0
       inputs:
@@ -40,6 +40,8 @@ stages:
       displayName: 'Publish site as artifact'
 
 - stage: Publish
+  pool:
+    vmImage: 'windows-latest'
   displayName: Publish to KayTrust Developer
   jobs:
   - job: Upload
@@ -48,7 +50,7 @@ stages:
     - task: AzureFileCopy@4
       displayName: Copy files to container on Azure
       inputs:
-        SourcePath: 's'
+        SourcePath: '$(System.ArtifactsDirectory)/site'
         azureSubscription: 'Everis Peru SAC(f6205eb2-ffec-4f83-bad1-b1454cfd198d)'
         Destination: 'AzureBlob'
         storage: 'kaytrust'
