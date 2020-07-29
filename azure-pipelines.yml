@@ -7,15 +7,16 @@ trigger:
 - master
 
 stages:
-- stage: Build
+- stage: Build static documentation
   pool:
     vmImage: 'ubuntu-latest'
   displayName: Build
   jobs:
   - job: BuildDoc
-    displayName: Build documentation
+    displayName: Build documentation using MkDocs
     steps:
     - task: UsePythonVersion@0
+      displayName: Use Python 3
       inputs:
         versionSpec: '3.x'
         addToPath: true
@@ -30,7 +31,7 @@ stages:
     - script: |
         cd s
         python -m mkdocs build
-      displayName: 'Build documentation'
+      displayName: 'Build site'
 
     - task: PublishPipelineArtifact@1
       inputs:
@@ -51,9 +52,10 @@ stages:
       inputs:
         buildType: 'current'
         artifactName: 'site'
-        targetPath: '$(Pipeline.Workspace)'
+        targetPath: '$(Pipeline.Workspace)/site'
+      displayName: Download site as artifact
     - task: AzureFileCopy@4
-      displayName: Copy files to container on Azure
+      displayName: Copy site files to container on Azure
       inputs:
         SourcePath: '$(Pipeline.Workspace)/site'
         azureSubscription: 'Everis Peru SAC(f6205eb2-ffec-4f83-bad1-b1454cfd198d)'
