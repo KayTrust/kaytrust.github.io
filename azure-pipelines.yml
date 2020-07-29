@@ -21,3 +21,15 @@ steps:
 
 - script: pip install mkdocs
   displayName: 'Install mkdocs'
+
+- script: |
+    cd s
+    python -m mkdocs build
+  displayName: 'Build documentation'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)/s/site'
+    artifact: 'site'
+    publishLocation: 'pipeline'
+  displayName: 'Publish site as artifact'
