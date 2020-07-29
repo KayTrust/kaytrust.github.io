@@ -58,7 +58,7 @@ stages:
       displayName: Copy site files to container on Azure
       inputs:
         SourcePath: '$(Pipeline.Workspace)/site'
-        azureSubscription: 'Everis Peru SAC(f6205eb2-ffec-4f83-bad1-b1454cfd198d)'
+        azureSubscription: 'Everis Peru SAC(1)(f6205eb2-ffec-4f83-bad1-b1454cfd198d)'
         Destination: 'AzureBlob'
         storage: 'kaytrust'
         ContainerName: 'developer'
