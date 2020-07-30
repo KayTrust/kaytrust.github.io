@@ -1,4 +1,5 @@
 site_name: KayTrust Developer Documentation
+theme: flatly
 nav:
     - Home: index.md
     - Products: products.md

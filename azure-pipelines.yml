@@ -27,6 +27,8 @@ stages:
 
     - script: pip install mkdocs
       displayName: 'Install mkdocs'
+    - script: pip install mkdocs-bootswatch
+      displayName: 'Install mkdocs Bootswatch themes'
 
     - script: |
         cd s
