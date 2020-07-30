@@ -48,6 +48,9 @@ stages:
   - deployment: Upload
     displayName: Upload to Azure Blob Storage
     environment: 'Developer website prod'
+    variables:
+      AZURE_SUBSCRIPTION: 'Everis Peru SAC(f6205eb2-ffec-4f83-bad1-b1454cfd198d)'
+      AZURE_STORAGE_ACCOUNT: 'kaytrust'
     strategy:
       runOnce:
         deploy:
@@ -58,11 +61,18 @@ stages:
               artifactName: 'site'
               targetPath: '$(Pipeline.Workspace)/site'
             displayName: Download site as artifact
+          - task: AzureCLI@2
+            displayName: 'Clear Azure container'
+            inputs:
+              azureSubscription: '$(AZURE_SUBSCRIPTION)'
+              scriptType: 'pscore'
+              scriptLocation: 'inlineScript'
+              inlineScript: 'az storage blob delete-batch -s `$web --account-name $(AZURE_STORAGE_ACCOUNT) --auth-mode login'
           - task: AzureFileCopy@4
             displayName: Copy site files to container on Azure
             inputs:
               SourcePath: '$(Pipeline.Workspace)/site/*'
-              azureSubscription: 'Everis Peru SAC(f6205eb2-ffec-4f83-bad1-b1454cfd198d)'
+              azureSubscription: '$(AZURE_SUBSCRIPTION)'
               Destination: 'AzureBlob'
-              storage: 'kaytrust'
+              storage: '$(AZURE_STORAGE_ACCOUNT)'
               ContainerName: '$web'
