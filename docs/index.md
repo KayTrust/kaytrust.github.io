@@ -10,6 +10,14 @@ KayTrust is a complete digital identity solution comprised of:
     - [KayTrust Wallet](Wallet). A mobile Wallet for users (free of charge).
     - [KayTrust Provider](Provider). An enterprise server suite for organisations that wish to issue and manage credentials with minimal effort.
 
+The purpose of this space is to make life easy for developers. You will eventually find specifications, library references, tutorials and examples on how to use the core libraries, as well as manuals to install, configure, use and extend KayTrust Provider and KayTrust Wallet.
+
+Not all the documentation is available yet at this developer space is new, so please bear with us!
+
+## KayTrust Stack
+
+[![](./images/grafico.jpg)]()
+
 ## What does Digital Identity mean?
 Identity refers to 2 things:
 
@@ -24,16 +32,3 @@ KayTrust achieves that by using a **decentralised trust repository** (typically 
 
 For more information, please visit [kaytrust.id](https://www.kaytrust.id/).
 
-## What does the KayTrust Developer Space offer?
-
-The purpose of this space is to make life easy for developers. You will find:
-- Core [KayTrust specifications](Specs)
-- Method references for the [libraries](SDK) that implement the core specs.
-- Documentation on how to interact with KayTrust Wallet as a developer.
-- Documentation on how to install, configure, use and extend KayTrust Provider
-
-Not all the documentation is available yet at this developer space is new, so please bear with us!
-
-## KayTrust Stack
-
-[![](./images/grafico.jpg)]()
