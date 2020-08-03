@@ -16,7 +16,7 @@ Not all the documentation is available yet at this developer space is new, so pl
 
 ## KayTrust Stack
 
-[![](./images/grafico.jpg)]()
+[![](images/KayTrust%20Stack.png)]()
 
 ## What does Digital Identity mean?
 Identity refers to 2 things:
