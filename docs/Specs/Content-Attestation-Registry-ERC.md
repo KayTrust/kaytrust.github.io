@@ -43,6 +43,7 @@ The general idea of this EIP is that attesting a given content is equivalent to 
 An attestation is recorded as an `(iat, exp)` tuple, where `iat` ("issued at") is the time the attestation starts to be valid, and `exp` ("expires") is the time after which the attestation is no longer valid.
 
 Note the special meaning of the following values:
+
 - `iat == 0` means the attester is NOT currently attesting to that content. In this case, the value of `exp` is irrelevant. Per Solidity rules, this is the initial value for any attestation. Its intended usage inside the `attest()` function is to explicitly revoke an existing (i.e. non-zero `iat`) attestation.
 - `exp == 0` means the attester is not currently placing any expiration time on the attestation. Just like any other value, a value of `0` may be amended later if the attester decides so.
 
@@ -52,7 +53,7 @@ This EIP defines the following functions:
 
 Used in a transaction to record an `(iat, exp)` attestation of a given hash.
 
- ```js
+```js
  function attest(bytes32 hash, uint iat, uint exp) public;
 ```
 
@@ -77,15 +78,17 @@ event Verified(bytes32 indexed hash, address attester, uint iat, uint exp);
 ## Note about validity times
 
 The validity time range is a mere indication by the attester. This EIP does not define what policy should be applied by verifying software or people with respect to current time. Here are a few real-life policy examples:
-- Safe policy: Some verifiers might decide that an attestation is only acceptable if the expiration time is at least 6 months in the future.
-- Flexible policy: Some verifiers might leave a tolerance window during which they still accept an expired attestation.
-- Strict policy: Some verifiers might only accept an attestation during the attestation time range.
+
+- **Safe policy**. Some verifiers might decide that an attestation is only acceptable if the expiration time is at least 6 months in the future.
+- **Flexible policy**. Some verifiers might leave a tolerance window during which they still accept an expired attestation.
+- **Strict policy**. Some verifiers might only accept an attestation during the attestation time range.
 - Some verifiers might apply more complex policies, e.g. where the tolerance depends on the identity of the attester, on the content, on the actual transaction time of the attestation, on the existence of previous attestations, etc.
 
 ## Rationale
 
 ### Storing validity times on-chain vs. off-chain
 Information stored on a blockchain is both public and permanent, which makes it a crucial decision to decide what to store and what not to store. For this reason, a balance should always be seeked between privacy and usefulness. Specifically, the decision to include validity times on chain rather than in the original content is a result of that subjective balance:
+
 - Including validity times means leaking out information allowing to suspect or discard specific contents for a given hash. For example, time ranges of 3 weeks might give up certain types of documents, and exclude e.g. passports.
 - Leaving validity times off-chain (typically in the original document) might not work very well for some types of documents where the issuer and the attester are separate entities and the attester doesn't have the liberty to emit an "attestation document" containing validity times.
 
