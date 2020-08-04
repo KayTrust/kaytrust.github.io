@@ -5,10 +5,10 @@ KayTrust is a complete digital identity solution comprised of:
 
 - A set of [technical specifications](Specs) based on Internet standards
 - Reference implementations:
-  - [Libraries](SDK) (currently for Java and Javascript/NodeJS) to make implementation of core KayTrust specs easier for developers.
-  - Ready-to-use software built on top of the libraries:
-    - [KayTrust Wallet](Wallet). A mobile Wallet for users (free of charge).
-    - [KayTrust Provider](Provider). An enterprise server suite for organisations that wish to issue and manage credentials with minimal effort.
+    - [Libraries](SDK) (currently for Java and Javascript/NodeJS) to make implementation of core KayTrust specs easier for developers.
+    - Ready-to-use software built on top of the libraries:
+        - [KayTrust Wallet](Wallet). A mobile Wallet for users (free of charge).
+        - [KayTrust Provider](Provider). An enterprise server suite for organisations that wish to issue and manage credentials with minimal effort.
 
 The purpose of this space is to make life easy for developers. You will eventually find specifications, library references, tutorials and examples on how to use the core libraries, as well as manuals to install, configure, use and extend KayTrust Provider and KayTrust Wallet.
 
