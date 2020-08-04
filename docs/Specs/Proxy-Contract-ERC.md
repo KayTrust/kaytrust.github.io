@@ -1,4 +1,4 @@
----
+```
 eip: <to be assigned>
 title: ERC: Identity Proxy Contract
 author: David Ammouial (@davux) <dammouia@everis.com>
@@ -6,7 +6,7 @@ status: Draft
 type: Standards Track
 category: ERC
 created: 2019-06-04
----
+```
 
 ## Simple Summary
 Identity contract
