@@ -18,11 +18,11 @@ Fair enough.
 
 ### Core identity
 
-| Specification                             | Builds on top of        | What is it good for?
-| ----------------------------------------- | ----------------------- | --------------------
-| ["gid" DID method](/Specs/GID-DID-Method) | W3C's DID Specification | Ethereum-based DIDs
-| Proxy contract ERC                        | Ethereum                | Transaction forwarding, on-chain representation, single Ethereum addresses
-| Identity Manager ERC                      | Ethereum                | Flexible controlling logic for Proxy contracts
+| Specification                                  | Builds on top of        | What is it good for?
+| ---------------------------------------------- | ----------------------- | --------------------
+| ["gid" DID method](/Specs/GID-DID-Method)      | W3C's DID Specification | Ethereum-based DIDs
+| [Proxy contract ERC](/Specs/Proxy-Contract-ERC)| Ethereum                | Transaction forwarding, on-chain representation, single Ethereum addresses
+| Identity Manager ERC                           | Ethereum                | Flexible controlling logic for Proxy contracts
 
 ### Verifiable credentials
 
