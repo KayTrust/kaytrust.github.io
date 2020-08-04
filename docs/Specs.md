@@ -18,20 +18,30 @@ Fair enough.
 
 ### Core identity
 
+KayTrust uses the standard DID protocol for identifiers, and defines a ["gid" DID method](/Specs/GID-DID-Method) based on [smart contracts](/Specs/Proxy-Contract-ERC).
+
 | Specification                                  | Builds on top of        | What is it good for?
 | ---------------------------------------------- | ----------------------- | --------------------
 | ["gid" DID method](/Specs/GID-DID-Method)      | W3C's DID Specification | Ethereum-based DIDs
 | [Proxy contract ERC](/Specs/Proxy-Contract-ERC)| Ethereum                | Transaction forwarding, on-chain representation, single Ethereum addresses
 | Identity Manager ERC                           | Ethereum                | Flexible controlling logic for Proxy contracts
 
-### Verifiable credentials
+### Verifiable credentials and Presentations
+
+Besides identifiers, the point of an identity is to have credentials associated to it. A credential answers the question *"Who are you?"* and contains one or more key-value claims (e.g. birth date, name, qualifications, citizenships, etc.) about an entity called subject, issued by another entity called issuer. The Verifiable Credentials Working Group at the W3C is defining a standard that KayTrust follows.
+
+Both Verifiable Credentials (VC) and Verifiable Presentations (VP) contain proofs, which is what makes them verifiable. The VC specification doesn't enforce a specific proof algorithm but describes the articulation between a credential/presentation and a specific proof method. Implementers are free to come up with their own proof method or to follow someone else's.
+
+The [draft ERC](/Specs/Content-Attestation-Registry-ERC) (Ethereum Request for Comments) describes a way for any entity to attest arbitrary content on a smart contract. There is a corresponding [proof type](/Specs/Ethereum-Attestation-Registry-Proof-Type) that enables to use that attestation registry inside a Verifiable Credential or a Verifiable Presentation.
 
 | Specification                                                         | Builds on top of        | What is it good for?
 | --------------------------------------------------------------------- | ----------------------- | --------------------
 | [Content Attestation Registry ERC](/Specs/Content-Attestation-Registry-ERC)  | Ethereum                | Attesting any kind of content on-chain
-| [Attestation Registry VC proof type](/Specs/Ethereum-Attestation-Registry-Proof-Type) | W3C's Verifiable Credentials Specification | Using a Content Attestation Registry as proof of a Verifiable Credential
+| [Attestation Registry VC proof type](/Specs/Ethereum-Attestation-Registry-Proof-Type) | W3C's Verifiable Credentials Specification | Using a Content Attestation Registry as proof of a VC or a VP
 
-### Real-world, self-sovereign authentication
+### Real-world, self-sovereign authentication: "DID Connect"
+
+KayTrust introduces a way for identity owners (a.k.a. subjects) to authenticate on third-party apps. We propose using OpenID Connect, only in a self-sovereign fashion. The trick is to use as Authorization Server the identity owner's own device, as opposed to a predefined AS in traditional services.
 
 | Specification                         | Builds on top of | What is it good for?
 | ------------------------------------- | ---------------- | ------------------------------------
