@@ -74,10 +74,11 @@ The following steps MUST be applied by a credential's issuer in order to generat
 ## Proof Revocation Method
 
 This proof type allows for an already-emitted credential to be revoked by its original issuer. The following steps MUST be applied by the credential's issuer in order to revoke an Ethereum Attestation Registry proof:
+
 1. Compute the credential's hash:
-   1. Temporarily strip the whole `"proof"` attribute from the credential, even if it contains multiple proofs.
-   2. Serialize the resulting object as a string. TODO: Describe the serialization method (it must be deterministic).
-   3. Compute the SHA256 hash of the string.
+    1. Temporarily strip the whole `"proof"` attribute from the credential, even if it contains multiple proofs.
+    2. Serialize the resulting object as a string. TODO: Describe the serialization method (it must be deterministic).
+    3. Compute the SHA256 hash of the string.
 2. Determine the Ethereum address corresponding to the issuer's URI.
 3. Send a transaction to the Ethereum network and smart contract listed in the proof to be revoked, containing a call to the `attest(bytes32 hash, 0, 0)` function, where `hash` is the credential's hash.
 
@@ -86,15 +87,16 @@ Note that no further action is required, since the attestation registry will be 
 ## Proof Verification Method
 
 The following steps MUST be applied by a credential's verifier in order to verify an Ethereum Attestation Registry proof of the credential:
+
 1. Compute the credential's hash:
-   1. Temporarily strip the whole `"proof"` attribute from the credential, even if it contains multiple proofs.
-   2. Serialize the resulting object as a string. TODO: Describe the serialization method (it must be deterministic).
-   3. Compute the SHA256 hash of the string.
+    1. Temporarily strip the whole `"proof"` attribute from the credential, even if it contains multiple proofs.
+    2. Serialize the resulting object as a string. TODO: Describe the serialization method (it must be deterministic).
+    3. Compute the SHA256 hash of the string.
 2. Determine the Ethereum address corresponding to the issuer's URI.
 3. Call the `attestations(hash, issuer)` function of the smart contract listed in the proof, where `hash` is the credential's hash and `issuer` is issuer's Ethereum address and store the returned value couple as `(iat, exp)`. Those are the start date and end date, respectively, specified by the issuer when signing the credential.
 4. Verify that the time range is acceptable. The following two conditions below SHOULD both be verified for the credential to be considered valid. However, the verifier MAY apply a different policy if the use case justifies it.
-   - `iat` is not `0` and is lower than the time of the verification.
-   - `exp` is `0` or is higher than the time of the verification.
+    - `iat` is not `0` and is lower than the time of the verification.
+    - `exp` is `0` or is higher than the time of the verification.
 
 ## Performance Considerations
 
