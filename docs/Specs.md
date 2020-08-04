@@ -18,7 +18,7 @@ Fair enough. So KayTrust defines the following specifications:
 
 | Specification                                                            | Builds on top of
 | ------------------------------------------------------------------------ | ----------------
-| ["gid" DID method](GID-DID-Method)                                       | W3C's DID Specification
+| ["gid" DID method](/Specs/GID-DID-Method)                                | W3C's DID Specification
 | Proxy contract ERC                                                       | Ethereum
 | Identity Manager ERC                                                     | Ethereum
 | [Content Attestation Registry ERC](eip-content-attestation-registry)     | Ethereum
