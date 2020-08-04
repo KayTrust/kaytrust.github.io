@@ -14,13 +14,23 @@ Since digital identity is both a young a wide domain, KayTrust's objective is to
 
 ## To the point, please.
 
-Fair enough. So KayTrust defines the following specifications:
+Fair enough. For core identity, KayTrust defines the following specifications:
 
-| Specification                                                            | Builds on top of
-| ------------------------------------------------------------------------ | ----------------
-| ["gid" DID method](/Specs/GID-DID-Method)                                | W3C's DID Specification
-| Proxy contract ERC                                                       | Ethereum
-| Identity Manager ERC                                                     | Ethereum
-| [Content Attestation Registry ERC](eip-content-attestation-registry)     | Ethereum
-| [Attestation Registry VC proof type](attestation-registry-proof-type)    | W3C's Verifiable Credentials Specification
-| [DIDConnect OIDC Profile](DIDConnect)                                    | OpenID Connect
+| Specification                             | Builds on top of        | What is it good for?
+| ----------------------------------------- | ----------------------- | --------------------
+| ["gid" DID method](/Specs/GID-DID-Method) | W3C's DID Specification | Ethereum-based DIDs
+| Proxy contract ERC                        | Ethereum                | Transaction forwarding, on-chain representation, single Ethereum addresses
+| Identity Manager ERC                      | Ethereum                | Flexible controlling logic for Proxy contracts
+
+For verifiable credentials:
+
+| Specification                                                         | Builds on top of        | What is it good for?
+| --------------------------------------------------------------------- | ----------------------- | --------------------
+| [Content Attestation Registry ERC](eip-content-attestation-registry)  | Ethereum                | Attesting any kind of content on-chain
+| [Attestation Registry VC proof type](attestation-registry-proof-type) | W3C's Verifiable Credentials Specification | Using a Content Attestation Registry as proof of a Verifiable Credential
+
+For real-world, self-sovereign authentication:
+
+| Specification                         | Builds on top of | What is it good for?
+| ------------------------------------- | ---------------- | ------------------------------------
+| [DIDConnect OIDC Profile](/Specs/DIDConnect) | OpenID Connect   | Self-sovereign use of OpenID Connect
