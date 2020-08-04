@@ -59,12 +59,13 @@ The following example shows a Verifiable Credential with an Ethereum Attestation
 ## Proof Generation Method
 
 The following steps MUST be applied by a credential's issuer in order to generate an Ethereum Attestation Registry proof of the credential:
+
 1. Create the proof object as defined in previous sections and add it to the credential as a `proof` attribute. If `proof` already exists, ensure it becomes an array containing previous values + the new object.
 2. At this point, the issuer MAY distribute the credential. However, it won't be possible to verify the proof until the rest of the steps are applied, so it is RECOMMENDED to wait until the end of the proof generation to distribute the credential.
 3. Compute the credential's hash:
-   1. Temporarily strip the whole `"proof"` attribute from the credential, even if it contains multiple proofs.
-   2. Serialize the resulting object as a string. TODO: Describe the serialization method (it must be deterministic).
-   3. Compute the SHA256 hash of the string.
+    1. Temporarily strip the whole `"proof"` attribute from the credential, even if it contains multiple proofs.
+    2. Serialize the resulting object as a string. TODO: Describe the serialization method (it must be deterministic).
+    3. Compute the SHA256 hash of the string.
 4. Determine the Ethereum address corresponding to the issuer's URI.
 5. Decide on the validity timerange of the attestation in the form of a integer couple `(iat, exp)`, where `iat` is the start date and `exp` is the expiration date.
 6. Decide on the Ethereum network and smart contract to be used for storing the attestation.
