@@ -15,11 +15,13 @@ OAuth 2.0 defines the following actors:
 
 
 The following points are crucial for self-sovereign identity:
+
 - **The Authorization Server is the user's own device** instead of a third party identity service (Facebook, Twitter, Google, etc.) as is the case in a centralised identity model.
 - **Any entity is a valid client** as long as it is able to prove its identity. No third-party decides who is a valid client – instead, Verifiable Credentials are used to provide the equivalent functionality in a decentralized fashion.
 
 ## Flow
 When the Authorization Server is a mobile app (e.g. KayTrust Wallet running on a trusted device), OAuth 2.0 Implicit Flow is used:
+
 1. The client requests authentication from a user by presenting them an authentication request in the form of a URI.
 2. The user signs into their Authorization Server.
 3. The AS generates an identity token based on the scope defined in the request, then redirects the user agent to the client's `redirect_uri` contained in the request.
@@ -34,21 +36,25 @@ Before users can trust a client's redirect endpoint, the client needs to publish
 An authentication request is a URL of the following form: `didconnect://share?client_id={DID}&redirect_uri={URI}&state={STATE}`
 
 The following parameters are mandatory:
+
 - `client_id`: The DID of the client application.
 - `redirect_uri`: The callback URI the user should call after the AS generated the identity token. This URI will receive the token as a HTTP Bearer token (recommended) or as a query parameter.
 - `state`: An opaque string defined by the RP. That string will be provided as-is to the callback URI, as a query parameter also named `state`, allowing the RP to link the response to the original request.
 
 The following parameter is optional:
+
 - `description`: A free-form text that explains to the user why authentication is being requested.
 
 ### Verifying the user's identity
 
 The service running at `redirect_uri` receives a query with the following query parameters:
+
 - `id_token`: a JSON Web Token (JWT) containing proof of the user's DID
 - `state`: the original `state` presented in the authentication request
 - `access_token` (optional): a Bearer token authorizing access to information about the user
 
 The JWT contained in the `id_token` is comprised of the following fields:
+
 - `sub`: The user's DID.
 - `iss`: The public key of the user's device. The JWT is only valid if the device is authorised for that DID and if the JWT is correctly signed by that public key.
 - `aud`: The requester's DID. The JWT is only valid if that value matches the value of `client_id` in the request.
@@ -56,14 +62,16 @@ The JWT contained in the `id_token` is comprised of the following fields:
 - `iat`: The date the JWT was issued at. You should check the JWT is not too old, otherwise it might be insecure.
 - `exp`: The date until which the JWT is valid. You should check that the JWT is not expired, otherwise it might be insecure.
 - If `access_token` was provided:
-  - `at_hash`: The hash of the `access_token`.
-  - `userinfo`: The URL of the Resource Server where a user's Verifiable Presentation is available.
+    - `at_hash`: The hash of the `access_token`.
+    - `userinfo`: The URL of the Resource Server where a user's Verifiable Presentation is available.
 
 To properly verify the user's identity, the client must:
+
 - Verify the signature of id_token JWT against the public key present as `iss`.
 - Make sure the JWT's issuer is an authorized key of the JWT's subject.
 
 The latter step depends on the DID method. As an example, for KayTrust "GID" DID method:
+
 1. Compute the user's Proxy address from the DID
 2. Call `proxy.owner()` to get the Identity Manager address, or use a well-known IM value for legacy DIDs.
 4. Call `im.hasCap(proxy, device, "auth")` and make sure the result is `true`.
