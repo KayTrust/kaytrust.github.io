@@ -28,7 +28,7 @@ Fair enough.
 
 | Specification                                                         | Builds on top of        | What is it good for?
 | --------------------------------------------------------------------- | ----------------------- | --------------------
-| [Content Attestation Registry ERC](eip-content-attestation-registry)  | Ethereum                | Attesting any kind of content on-chain
+| [Content Attestation Registry ERC](/Specs/Content-Attestation-Registry-ERC)  | Ethereum                | Attesting any kind of content on-chain
 | [Attestation Registry VC proof type](/Specs/Ethereum-Attestation-Registry-Proof-Type) | W3C's Verifiable Credentials Specification | Using a Content Attestation Registry as proof of a Verifiable Credential
 
 ### Real-world, self-sovereign authentication
