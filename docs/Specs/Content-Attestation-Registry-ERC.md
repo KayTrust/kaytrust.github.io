@@ -101,7 +101,7 @@ To follow best practices, it was deemed equally secure, cheaper, and most respec
 This EIP doesn't introduce any known backwards compatibility issues.
 
 ## Implementation
-An implementation may be found [here](https://gitlab.com/MyTrust/developer/blob/master/contracts/AttestationRegistry.sol).
+An implementation may be found [here](https://gitlab.com/KayTrust/developer/blob/master/contracts/AttestationRegistry.sol).
 
 ## Copyright
 Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
