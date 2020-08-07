@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this section The Identity contracs are explained. First, lets recap the types of contracts and how they are related and finally explore what we can do with them.
+This section is intended to guide you through all the functionalities offered by the Identity contracts. First, lets recap the types of contracts and how they are related and finally explore what we can do with them.
 
 ## Considerations
 
@@ -14,7 +14,7 @@ In the current state contracts are available for ethereum networks.
 
 * Entity: Generally, in this document, refers to the Identity Manager administrator.
 
-* User: The end user who creates its identity either thorugh the IndetityManager or the proxy.
+* User: The end user who creates its identity either through the IndetityManager or direclty by deploying an instance of the proxy smart contract.
 
 ## Types of contracts
 
@@ -24,7 +24,7 @@ Two contracts are used in order to create and manage identities.
 
 The Proxy smart contract **represents the Identity for a specific person**. This contract Allows to:
 
-* Set one or more ethereum addresses as the owner/owners of that proxy.
+* Set one or more ethereum addresses as the owner/owners of a proxy instance.
 
 * Allows to forward any message to any other contract in the network where the proxy contract has been deployed.
 
