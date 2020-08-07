@@ -3,6 +3,7 @@ theme: flatly
 nav:
     - Home: index.md
     - Specs: Specs.md
+    - Manuals: Manuals.md
 #    - Products: products.md
 #    - Join: join.md
 #    - Download: download.md
