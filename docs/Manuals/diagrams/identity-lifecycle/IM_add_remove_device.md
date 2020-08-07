@@ -1,0 +1,13 @@
+# Adding another device
+
+Lets assume John wants to add another device from which he can control its identity operations. Adding such device is as simple as giving it the desired capability(forward, device manager, admin or proxy). The next diagram shows what is the flow to achieve that:
+
+[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG5cdGF1dG9udW1iZXJcblx0Sm9obkRldmljZUEtPj4rSWRlbnRpdHlNYW5hZ2VyL3NldENhcDogbXlQcm94eUFkZGRyZXNzLDxici8-Sm9obkRldmljZUJBZGRyZXNzLDxici8-Y2FwYWJpbGl0eSw8YnIvPnRpbWVcblx0YWx0IGhhcyBKaG9uRGV2aWNlQSBcImRldmljZU1hbmFnZXJcIiBjYXBhYmlsaXR5P1xuXHRJZGVudGl0eU1hbmFnZXIvc2V0Q2FwLT4-SWRlbnRpdHlNYW5hZ2VyL3NldENhcDogQWRkcyBkZXNpcmVkIGNhcGFiaWxpdHk8YnIvPmZvciBKb2huJ3MgZGV2aWNlIEIgYW5kIGZvciB0aGUgPGJyPnNwZWNpZmllZCB0aW1lXG5cdElkZW50aXR5TWFuYWdlci9zZXRDYXAtLT4-Sm9obkRldmljZUE6IEFkZGVkIENhcGFiaWxpdHkgKGV2ZW50KVxuXHRlbHNlIG5vdCBhdXRob3JpemVkXG5cdElkZW50aXR5TWFuYWdlci9zZXRDYXAtLT4-Sm9obkRldmljZUE6IFRocm93XG5cdGVuZCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG5cdGF1dG9udW1iZXJcblx0Sm9obkRldmljZUEtPj4rSWRlbnRpdHlNYW5hZ2VyL3NldENhcDogbXlQcm94eUFkZGRyZXNzLDxici8-Sm9obkRldmljZUJBZGRyZXNzLDxici8-Y2FwYWJpbGl0eSw8YnIvPnRpbWVcblx0YWx0IGhhcyBKaG9uRGV2aWNlQSBcImRldmljZU1hbmFnZXJcIiBjYXBhYmlsaXR5P1xuXHRJZGVudGl0eU1hbmFnZXIvc2V0Q2FwLT4-SWRlbnRpdHlNYW5hZ2VyL3NldENhcDogQWRkcyBkZXNpcmVkIGNhcGFiaWxpdHk8YnIvPmZvciBKb2huJ3MgZGV2aWNlIEIgYW5kIGZvciB0aGUgPGJyPnNwZWNpZmllZCB0aW1lXG5cdElkZW50aXR5TWFuYWdlci9zZXRDYXAtLT4-Sm9obkRldmljZUE6IEFkZGVkIENhcGFiaWxpdHkgKGV2ZW50KVxuXHRlbHNlIG5vdCBhdXRob3JpemVkXG5cdElkZW50aXR5TWFuYWdlci9zZXRDYXAtLT4-Sm9obkRldmljZUE6IFRocm93XG5cdGVuZCIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
+
+As shown in the prevous diagram, a new device has been added on behalf of John.
+
+* Only "deviceManager" granted roles can authorize other devices.
+
+* Because "device B" has "deviveManager" capability then **it can grant any authorization level** on behalf of John.
+
+* **Removing a device** is similar to the adding process. The difference lies in the argument time, that is set a time less than the current time. For more information please check the setCap method in the IdentityManager contract.
