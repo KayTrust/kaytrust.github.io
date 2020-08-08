@@ -1,7 +1,6 @@
 # Recover your identity
 
-Lets imagine the situation where you no longer can access your device(s) and thus not able to access your identity; in such scenario you can still recover it.
+Lets imagine the situation where you no longer can access your device(s). In such scenario you can still recover your identity.
+In order to perform this process you can set a trusted third party with an "devicemanager" capability. In case of "disaster" scenarios you can contact the third party which after an offline check process can set a new device("newdevice") through the "adding a new device process" explained above; after that you can access your already blockchain existing identity with your "newdevice".
 
-If you have deployed your identity through an Identity Manager, the recovery process is as simple as contacting the **entity** who owns the Identity Manager contract, which after an offchain checking process can help you set a new device om the Identity Manager contract to access your already blockchain existing identity.
-
-If your deploy your identity with our Identity Manager contract owned by [Kaytrust](https://www.kaytrust.id/), you can benefit of the user friendly interfaces to guide you in this process.
+As a product [Kaytrust](https://www.kaytrust.id/) (a trusted third party) has a set of tools that can help you benefit of the user friendly interfaces to guide you in this process.

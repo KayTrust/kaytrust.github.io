@@ -12,8 +12,6 @@ In the current state contracts are available for ethereum networks.
 
 * Device: This document supposes a user/entity accessing the contract through any **device** like a computer, mobile phone, tablet, IoT device, remote server. Later in this document the term *device* refers to any of the mentioned here.
 
-* Entity: Generally, in this document, refers to the Identity Manager administrator.
-
 * User: The end user who creates its identity either through the IndetityManager or direclty by deploying an instance of the proxy smart contract.
 
 ## Types of contracts
@@ -28,15 +26,17 @@ The Proxy smart contract **represents the Identity for a specific person**. This
 
 * Allows to forward any message to any other contract in the network where the proxy contract has been deployed.
 
-* You are totally free to deploy a proxy contract instance. When it is done you are the owner of that contract. It is possible thanks to the cryptographyc protocols involved when you interact in the proxy creation.
+* You are totally free to deploy a proxy contract instance without depending of any other contract. When it is done you can set an address as the owner of that contract.
 
 * Another way to deploy a proxy instance is by using an Identity Manager contract. The identity manager is explained in the next section.
+
+* Forward any message to any other contract. This is the main method in this contract.
 
 Interested to see all the details about the Proxy contract?. Please refer to the following [documentation](http://developer.kaytrust.id/Specs/Proxy-Contract-ERC)
 
 ### Identity Manager contract
 
-This contract is aimed to be used as a layer of abstraction when making actions related to your identity. Later in this document called IM.
+This contract is aimed to be used as a layer of abstraction when making actions related to your identity. Later in this document called IM. This contract is not owned or administered by anyone.
 
 #### Authorization levels in the Identity Manager Contract
 

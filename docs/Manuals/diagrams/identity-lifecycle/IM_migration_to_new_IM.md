@@ -6,6 +6,4 @@ Lets imagine the situation when users want to migrate to a new IdentityManager, 
 
 As shown in the prevous diagram, a new IdentityManager (CorpIM) has replaced an old one (AcmeIM)
 
-* It is worth to say that only "device A", which has the ADMINISTRATOR capability, can perform this action.
-
-Some steps have been omited, for more information please check the identity contracts in this repository.
+* It is worth to say that only devices with the ADMINISTRATOR capability, can perform this action.
