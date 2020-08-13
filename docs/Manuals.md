@@ -64,11 +64,10 @@ Those actions can be categorized in three groups:</br></br>
 
 **Administrative actions**
 
-* Add capabilities to a device
-* Remove capabilities to a device
-* Check capabilities a certain device
-Find reference for each of those capabilities [here](/Manuals/diagrams/administration/IM_identity_administration)
-  
+- Add/Remove capabilities to a device
+    - [reference](/Manuals/diagrams/identity-lifecycle/IM_add_remove_device)
+- Check capabilities a certain device is granted in the Identity Manager Contract.
+    - [reference](/Manuals/diagrams/administration/IM_identity_administration)  
 - Forward messages through the IdentityManager: The identity Manager serves as a proxy to deliver messages to any existing contract in the netwwork when the Identity Manager contract lives.
     - [reference](/Manuals/diagrams/forward/forward)
 
@@ -77,5 +76,5 @@ Find reference for each of those capabilities [here](/Manuals/diagrams/administr
 - The IdentityManager contract can have many flavours. In this version we use solidity in order to make it deployable on ethereum networks.
 
 - **As a developer who want to use the [Kaytrust solution](http://developer.kaytrust.id/) you don not need to deploy the IdentityManager contract**, instead simply consume its methods though our available Kaytrust SDKs:
-    - [Kaytrust Java SDK](https://dev.azure.com/everis-peru/KayTrust/_git/KT-SDK-Java)
+    - [Kaytrust Java SDK](/Tutorials/java-sdk)
   
