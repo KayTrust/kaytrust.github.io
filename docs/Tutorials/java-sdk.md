@@ -58,7 +58,7 @@ associate granted permissions over a proxy address for a certain or indefinitely
 
 - Setting an Identity Manager instance
 
-```shell script
+```js
 IdentityManager identityManagr;
 String hostNodeBesuLacchain = "http://eth-lacchain.kaytrust.id"; //The ethereum node to access the Lacchain Network
 String addressContractIdentityManager = "0xa6b4540a2bfbe8663caa78027c83d0dcb1b7c837"; //This is the existing IdentityManager contract address
@@ -75,11 +75,11 @@ try {
 
 ### Creating a new Identity with the provider key
 
-```shell script
+```js
 try{
-    String did = identityManagr.createIdentity(); ##Deploys a new  Proxy Contract and sets Identity Provider private key
-#with all capabilities (it allows recovery functionalities)
-    # Now verifying the did is not null
+    String did = identityManagr.createIdentity(); //Deploys a new  Proxy Contract and sets Identity Provider private key
+//with all capabilities (it allows recovery functionalities)
+    // Now verifying the did is not null
     assertNotNull(did);
 }catch(Exception e){
     e.printStackTrace();
@@ -87,12 +87,11 @@ try{
 }
 ```
 
-By creating an Identity a new did (decentralized identifier) is returned, this did has been associated with a provider 
-address. At this point only the provider can add devices on behalf of a user.
+By creating an Identity a new did (decentralized identifier) is returned, this did has been associated with a provider address. At this point only the provider can add devices on behalf of a user.
 
 * Associating a user's device address to the new proxy contract identity.
 
-```shell script
+```js
 try{
     String publicKeyDevice = "0x2ace640fc6c0565aaa919462e4fc08ab18883d1b4205521cebb8f40c819fcc40dd26c89066d60d1f410187dec582a2e5590f96ffdafae518dbbbc346f2a0d371"
     identityManagr.authorizeDevice(did, publicKeyAddressDevice, CapabilityEnum.FORWARD.description()); //Setting forward 
@@ -113,7 +112,7 @@ deployed proxy, that is why it is possible to associate a new device with the Pr
 Now that a new did has been created lets verify if the "deviceA" has the "forward" capability. Note the some variables 
 which has been previously defined are been reused.
 
-```shell script
+```js
 try {
     boolean flag = identityManagr.isDeviceAuthorized(did, publicKeyAddressDeviceA,
             CapabilityEnum.FORWARD.description());
@@ -129,7 +128,7 @@ try {
 
 * Setting a Subject example class definition:
 
-```shell script
+```js
 class SubjectCredential {
     String id;
     String alternateName;
@@ -146,11 +145,11 @@ class SubjectCredential {
 
 * Issuance process:
 
-```shell script
+```js
 CredentialIssuer credentialAccredit=new CredentialIssuerImpl();
 String addressContractVR = "0x9f8c1e196F5696e014F4d1E4961B92db866BE271"; //The address of the verification registry contract
 
-#Setting a issuer's device privateKey to sign the credential
+//Setting a issuer's device privateKey to sign the credential
 String issuerEthereumPrivateKey="0xe0663bdd24ff6f654995fe496eeca0aa1a98315e21ea2a586e7fb8ba60d63ece"
 credentialAccredit.instance(hostNodeBesuLacchain, issuerEthereumPrivateKey, addressContractVR);
 
@@ -165,10 +164,9 @@ assertNotNull(vc); //otherwise null is returned
 
 ### Checking for a Verifiable credential validity
 
-It is time to check if a verifiable credential is valid or not, by checking if an issuer has registered a credential hash 
-on the Verification Registry contract
+It is time to check if a verifiable credential is valid or not, by checking if an issuer has registered a credential hash on the Verification Registry contract
 
-```shell script
+```js
 CredentialValidation credentialValidation=new CredentialValidationImpl();
 credentialValidation.instance(hostNodeBesuLacchain, null, addressContractVR, new EthereumAttestation2019Builder());
 
