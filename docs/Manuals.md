@@ -54,13 +54,13 @@ Those levels can be applied to any device with a configured private key.
 Those actions can be categorized in three groups:</br></br>
 **Identity lifecycle thorugh the Identity manager**
 
-* Identity creation
-  * [reference](/Manuals/diagrams/identity-lifecycle/IM_identity_creation)
-* Register/remove devices to interact with their identities which live on the blockchain
-  * [reference](/Manuals/diagrams/identity-lifecycle/IM_add_remove_device)
-* Transfer identity management to a new IdentityManager
-  * [reference](/Manuals/diagrams/identity-lifecycle/IM_migration_to_new_IM)
-* [Identity recovery](/Manuals/IM/IM_recover_identity)<br><br>
+- Identity creation
+    - [reference](/Manuals/diagrams/identity-lifecycle/IM_identity_creation)
+- Register/remove devices to interact with their identities which live on the blockchain
+    - [reference](/Manuals/diagrams/identity-lifecycle/IM_add_remove_device)
+- Transfer identity management to a new IdentityManager
+    - [reference](/Manuals/diagrams/identity-lifecycle/IM_migration_to_new_IM)
+- [Identity recovery](/Manuals/IM/IM_recover_identity)<br><br>
 
 **Administrative actions**
 
@@ -69,13 +69,13 @@ Those actions can be categorized in three groups:</br></br>
 * Check capabilities a certain device
 Find reference for each of those capabilities [here](/Manuals/diagrams/administration/IM_identity_administration)
   
-* Forward messages through the IdentityManager: The identity Manager serves as a proxy to deliver messages to any existing contract in the netwwork when the Identity Manager contract lives.
-  * [reference](/Manuals/diagrams/forward/forward)
+- Forward messages through the IdentityManager: The identity Manager serves as a proxy to deliver messages to any existing contract in the netwwork when the Identity Manager contract lives.
+    - [reference](/Manuals/diagrams/forward/forward)
 
 #### Identity Manager contract deployment
 
-* The IdentityManager contract can have many flavours. In this version we use solidity in order to make it deployable on ethereum networks.
+- The IdentityManager contract can have many flavours. In this version we use solidity in order to make it deployable on ethereum networks.
 
-* **As a developer who want to use the [Kaytrust solution](http://developer.kaytrust.id/) you don not need to deploy the IdentityManager contract**, instead simply consume its methods though our available Kaytrust SDKs:
-  * [Kaytrust Java SDK](https://dev.azure.com/everis-peru/KayTrust/_git/KT-SDK-Java)
+- **As a developer who want to use the [Kaytrust solution](http://developer.kaytrust.id/) you don not need to deploy the IdentityManager contract**, instead simply consume its methods though our available Kaytrust SDKs:
+    - [Kaytrust Java SDK](https://dev.azure.com/everis-peru/KayTrust/_git/KT-SDK-Java)
   
