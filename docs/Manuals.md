@@ -36,7 +36,7 @@ Interested to see all the details about the Proxy contract?. Please refer to the
 
 ### Identity Manager contract
 
-This contract is aimed to be used as a layer of abstraction when making actions related to your identity. Later in this document called IM. This contract is not owned or administered by anyone.
+This contract is aimed to be used as a layer of abstraction when making actions related to your identity. Later in this document called IM. **This contract is not owned or administered by anyone**.
 
 #### Authorization levels in the Identity Manager Contract
 
@@ -51,20 +51,22 @@ Those levels can be applied to any device with a configured private key.
 
 #### Available actions in the Identity Manager
 
-Those actions can be categorized in three groups
+Those actions can be categorized in three groups:</br></br>
+**Identity lifecycle thorugh the Identity manager**
 
-* Identity lifecycle thorugh the Identity manager
-  * Identity creation
-    * [reference](/Manuals/diagrams/identity-lifecycle/IM_identity_creation)
-  * Register/remove devices to interact with their identities which live on the blockchain
-    * [reference](/Manuals/diagrams/identity-lifecycle/IM_add_remove_device)
-  * Transfer identity management to a new IdentityManager
-    * [reference](/Manuals/diagrams/identity-lifecycle/IM_migration_to_new_IM)
-  * [Identity recovery](/Manuals/IM/IM_recover_identity)
-* Administrative actions
-  * Add capabilities to a device
-  * Remove capabilities to a device
-  * Check capabilities a certain device
+* Identity creation
+  * [reference](/Manuals/diagrams/identity-lifecycle/IM_identity_creation)
+* Register/remove devices to interact with their identities which live on the blockchain
+  * [reference](/Manuals/diagrams/identity-lifecycle/IM_add_remove_device)
+* Transfer identity management to a new IdentityManager
+  * [reference](/Manuals/diagrams/identity-lifecycle/IM_migration_to_new_IM)
+* [Identity recovery](/Manuals/IM/IM_recover_identity)<br><br>
+
+**Administrative actions**
+
+* Add capabilities to a device
+* Remove capabilities to a device
+* Check capabilities a certain device
 Find reference for each of those capabilities [here](/Manuals/diagrams/administration/IM_identity_administration)
   
 * Forward messages through the IdentityManager: The identity Manager serves as a proxy to deliver messages to any existing contract in the netwwork when the Identity Manager contract lives.
