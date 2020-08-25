@@ -47,9 +47,13 @@ associate granted permissions over a proxy address for a certain or indefinitely
 [![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtICBcbiAgY2xpZW50LT4-K1NESy9Jc3N1ZUNyZWRlbnRpYWw6IGNyZWRlbnRpYWwgZGF0YVxuICBub3RlIG92ZXIgU0RLL0lzc3VlQ3JlZGVudGlhbDogdGhpcyBTREtcbiAgbm90ZSBvdmVyIFZlcmlmaWNhdGlvblJlZ2lzdHJ5L3ZlcmlmeTogRXRoZXJldW0gU21hcnQgY29udHJhY3RcbiAgU0RLL0lzc3VlQ3JlZGVudGlhbC0-PlNESy9Jc3N1ZUNyZWRlbnRpYWw6IFByZXBhcmUgYW5kIGhhc2ggdGhlIGNyZWRlbnRpYWxcbiAgU0RLL0lzc3VlQ3JlZGVudGlhbC0-PlZlcmlmaWNhdGlvblJlZ2lzdHJ5L3ZlcmlmeTogUmVnaXN0ZXIgdGhlIGNyZWRlbnRpYWw8YnI-c3RhbXBlZCB3aXRoIHRoZSA8YnI-aXNzdWVyUHJpdmF0ZUtleVxuICBWZXJpZmljYXRpb25SZWdpc3RyeS92ZXJpZnktLT4-U0RLL0lzc3VlQ3JlZGVudGlhbDogVHJhbnNhY3Rpb25SZWNlaXB0XG4gIFNESy9Jc3N1ZUNyZWRlbnRpYWwtPj5TREsvSXNzdWVDcmVkZW50aWFsOiBleHRyYWN0IHRyYW5zYWN0aW9uIGhhc2hcbiAgU0RLL0lzc3VlQ3JlZGVudGlhbC0tPj4tY2xpZW50OiBUcmFuc2FjdGlvbiBoYXNoXG4gICIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0IiwidGhlbWVWYXJpYWJsZXMiOnsiYmFja2dyb3VuZCI6IndoaXRlIiwicHJpbWFyeUNvbG9yIjoiI0VDRUNGRiIsInNlY29uZGFyeUNvbG9yIjoiI2ZmZmZkZSIsInRlcnRpYXJ5Q29sb3IiOiJoc2woODAsIDEwMCUsIDk2LjI3NDUwOTgwMzklKSIsInByaW1hcnlCb3JkZXJDb2xvciI6ImhzbCgyNDAsIDYwJSwgODYuMjc0NTA5ODAzOSUpIiwic2Vjb25kYXJ5Qm9yZGVyQ29sb3IiOiJoc2woNjAsIDYwJSwgODMuNTI5NDExNzY0NyUpIiwidGVydGlhcnlCb3JkZXJDb2xvciI6ImhzbCg4MCwgNjAlLCA4Ni4yNzQ1MDk4MDM5JSkiLCJwcmltYXJ5VGV4dENvbG9yIjoiIzEzMTMwMCIsInNlY29uZGFyeVRleHRDb2xvciI6IiMwMDAwMjEiLCJ0ZXJ0aWFyeVRleHRDb2xvciI6InJnYig5LjUwMDAwMDAwMDEsIDkuNTAwMDAwMDAwMSwgOS41MDAwMDAwMDAxKSIsImxpbmVDb2xvciI6IiMzMzMzMzMiLCJ0ZXh0Q29sb3IiOiIjMzMzIiwibWFpbkJrZyI6IiNFQ0VDRkYiLCJzZWNvbmRCa2ciOiIjZmZmZmRlIiwiYm9yZGVyMSI6IiM5MzcwREIiLCJib3JkZXIyIjoiI2FhYWEzMyIsImFycm93aGVhZENvbG9yIjoiIzMzMzMzMyIsImZvbnRGYW1pbHkiOiJcInRyZWJ1Y2hldCBtc1wiLCB2ZXJkYW5hLCBhcmlhbCIsImZvbnRTaXplIjoiMTZweCIsImxhYmVsQmFja2dyb3VuZCI6IiNlOGU4ZTgiLCJub2RlQmtnIjoiI0VDRUNGRiIsIm5vZGVCb3JkZXIiOiIjOTM3MERCIiwiY2x1c3RlckJrZyI6IiNmZmZmZGUiLCJjbHVzdGVyQm9yZGVyIjoiI2FhYWEzMyIsImRlZmF1bHRMaW5rQ29sb3IiOiIjMzMzMzMzIiwidGl0bGVDb2xvciI6IiMzMzMiLCJlZGdlTGFiZWxCYWNrZ3JvdW5kIjoiI2U4ZThlOCIsImFjdG9yQm9yZGVyIjoiaHNsKDI1OS42MjYxNjgyMjQzLCA1OS43NzY1MzYzMTI4JSwgODcuOTAxOTYwNzg0MyUpIiwiYWN0b3JCa2ciOiIjRUNFQ0ZGIiwiYWN0b3JUZXh0Q29sb3IiOiJibGFjayIsImFjdG9yTGluZUNvbG9yIjoiZ3JleSIsInNpZ25hbENvbG9yIjoiIzMzMyIsInNpZ25hbFRleHRDb2xvciI6IiMzMzMiLCJsYWJlbEJveEJrZ0NvbG9yIjoiI0VDRUNGRiIsImxhYmVsQm94Qm9yZGVyQ29sb3IiOiJoc2woMjU5LjYyNjE2ODIyNDMsIDU5Ljc3NjUzNjMxMjglLCA4Ny45MDE5NjA3ODQzJSkiLCJsYWJlbFRleHRDb2xvciI6ImJsYWNrIiwibG9vcFRleHRDb2xvciI6ImJsYWNrIiwibm90ZUJvcmRlckNvbG9yIjoiI2FhYWEzMyIsIm5vdGVCa2dDb2xvciI6IiNmZmY1YWQiLCJub3RlVGV4dENvbG9yIjoiYmxhY2siLCJhY3RpdmF0aW9uQm9yZGVyQ29sb3IiOiIjNjY2IiwiYWN0aXZhdGlvbkJrZ0NvbG9yIjoiI2Y0ZjRmNCIsInNlcXVlbmNlTnVtYmVyQ29sb3IiOiJ3aGl0ZSIsInNlY3Rpb25Ca2dDb2xvciI6InJnYmEoMTAyLCAxMDIsIDI1NSwgMC40OSkiLCJhbHRTZWN0aW9uQmtnQ29sb3IiOiJ3aGl0ZSIsInNlY3Rpb25Ca2dDb2xvcjIiOiIjZmZmNDAwIiwidGFza0JvcmRlckNvbG9yIjoiIzUzNGZiYyIsInRhc2tCa2dDb2xvciI6IiM4YTkwZGQiLCJ0YXNrVGV4dExpZ2h0Q29sb3IiOiJ3aGl0ZSIsInRhc2tUZXh0Q29sb3IiOiJ3aGl0ZSIsInRhc2tUZXh0RGFya0NvbG9yIjoiYmxhY2siLCJ0YXNrVGV4dE91dHNpZGVDb2xvciI6ImJsYWNrIiwidGFza1RleHRDbGlja2FibGVDb2xvciI6IiMwMDMxNjMiLCJhY3RpdmVUYXNrQm9yZGVyQ29sb3IiOiIjNTM0ZmJjIiwiYWN0aXZlVGFza0JrZ0NvbG9yIjoiI2JmYzdmZiIsImdyaWRDb2xvciI6ImxpZ2h0Z3JleSIsImRvbmVUYXNrQmtnQ29sb3IiOiJsaWdodGdyZXkiLCJkb25lVGFza0JvcmRlckNvbG9yIjoiZ3JleSIsImNyaXRCb3JkZXJDb2xvciI6IiNmZjg4ODgiLCJjcml0QmtnQ29sb3IiOiJyZWQiLCJ0b2RheUxpbmVDb2xvciI6InJlZCIsImxhYmVsQ29sb3IiOiJibGFjayIsImVycm9yQmtnQ29sb3IiOiIjNTUyMjIyIiwiZXJyb3JUZXh0Q29sb3IiOiIjNTUyMjIyIiwiY2xhc3NUZXh0IjoiIzEzMTMwMCIsImZpbGxUeXBlMCI6IiNFQ0VDRkYiLCJmaWxsVHlwZTEiOiIjZmZmZmRlIiwiZmlsbFR5cGUyIjoiaHNsKDMwNCwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwiZmlsbFR5cGUzIjoiaHNsKDEyNCwgMTAwJSwgOTMuNTI5NDExNzY0NyUpIiwiZmlsbFR5cGU0IjoiaHNsKDE3NiwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwiZmlsbFR5cGU1IjoiaHNsKC00LCAxMDAlLCA5My41Mjk0MTE3NjQ3JSkiLCJmaWxsVHlwZTYiOiJoc2woOCwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwiZmlsbFR5cGU3IjoiaHNsKDE4OCwgMTAwJSwgOTMuNTI5NDExNzY0NyUpIn19LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtICBcbiAgY2xpZW50LT4-K1NESy9Jc3N1ZUNyZWRlbnRpYWw6IGNyZWRlbnRpYWwgZGF0YVxuICBub3RlIG92ZXIgU0RLL0lzc3VlQ3JlZGVudGlhbDogdGhpcyBTREtcbiAgbm90ZSBvdmVyIFZlcmlmaWNhdGlvblJlZ2lzdHJ5L3ZlcmlmeTogRXRoZXJldW0gU21hcnQgY29udHJhY3RcbiAgU0RLL0lzc3VlQ3JlZGVudGlhbC0-PlNESy9Jc3N1ZUNyZWRlbnRpYWw6IFByZXBhcmUgYW5kIGhhc2ggdGhlIGNyZWRlbnRpYWxcbiAgU0RLL0lzc3VlQ3JlZGVudGlhbC0-PlZlcmlmaWNhdGlvblJlZ2lzdHJ5L3ZlcmlmeTogUmVnaXN0ZXIgdGhlIGNyZWRlbnRpYWw8YnI-c3RhbXBlZCB3aXRoIHRoZSA8YnI-aXNzdWVyUHJpdmF0ZUtleVxuICBWZXJpZmljYXRpb25SZWdpc3RyeS92ZXJpZnktLT4-U0RLL0lzc3VlQ3JlZGVudGlhbDogVHJhbnNhY3Rpb25SZWNlaXB0XG4gIFNESy9Jc3N1ZUNyZWRlbnRpYWwtPj5TREsvSXNzdWVDcmVkZW50aWFsOiBleHRyYWN0IHRyYW5zYWN0aW9uIGhhc2hcbiAgU0RLL0lzc3VlQ3JlZGVudGlhbC0tPj4tY2xpZW50OiBUcmFuc2FjdGlvbiBoYXNoXG4gICIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0IiwidGhlbWVWYXJpYWJsZXMiOnsiYmFja2dyb3VuZCI6IndoaXRlIiwicHJpbWFyeUNvbG9yIjoiI0VDRUNGRiIsInNlY29uZGFyeUNvbG9yIjoiI2ZmZmZkZSIsInRlcnRpYXJ5Q29sb3IiOiJoc2woODAsIDEwMCUsIDk2LjI3NDUwOTgwMzklKSIsInByaW1hcnlCb3JkZXJDb2xvciI6ImhzbCgyNDAsIDYwJSwgODYuMjc0NTA5ODAzOSUpIiwic2Vjb25kYXJ5Qm9yZGVyQ29sb3IiOiJoc2woNjAsIDYwJSwgODMuNTI5NDExNzY0NyUpIiwidGVydGlhcnlCb3JkZXJDb2xvciI6ImhzbCg4MCwgNjAlLCA4Ni4yNzQ1MDk4MDM5JSkiLCJwcmltYXJ5VGV4dENvbG9yIjoiIzEzMTMwMCIsInNlY29uZGFyeVRleHRDb2xvciI6IiMwMDAwMjEiLCJ0ZXJ0aWFyeVRleHRDb2xvciI6InJnYig5LjUwMDAwMDAwMDEsIDkuNTAwMDAwMDAwMSwgOS41MDAwMDAwMDAxKSIsImxpbmVDb2xvciI6IiMzMzMzMzMiLCJ0ZXh0Q29sb3IiOiIjMzMzIiwibWFpbkJrZyI6IiNFQ0VDRkYiLCJzZWNvbmRCa2ciOiIjZmZmZmRlIiwiYm9yZGVyMSI6IiM5MzcwREIiLCJib3JkZXIyIjoiI2FhYWEzMyIsImFycm93aGVhZENvbG9yIjoiIzMzMzMzMyIsImZvbnRGYW1pbHkiOiJcInRyZWJ1Y2hldCBtc1wiLCB2ZXJkYW5hLCBhcmlhbCIsImZvbnRTaXplIjoiMTZweCIsImxhYmVsQmFja2dyb3VuZCI6IiNlOGU4ZTgiLCJub2RlQmtnIjoiI0VDRUNGRiIsIm5vZGVCb3JkZXIiOiIjOTM3MERCIiwiY2x1c3RlckJrZyI6IiNmZmZmZGUiLCJjbHVzdGVyQm9yZGVyIjoiI2FhYWEzMyIsImRlZmF1bHRMaW5rQ29sb3IiOiIjMzMzMzMzIiwidGl0bGVDb2xvciI6IiMzMzMiLCJlZGdlTGFiZWxCYWNrZ3JvdW5kIjoiI2U4ZThlOCIsImFjdG9yQm9yZGVyIjoiaHNsKDI1OS42MjYxNjgyMjQzLCA1OS43NzY1MzYzMTI4JSwgODcuOTAxOTYwNzg0MyUpIiwiYWN0b3JCa2ciOiIjRUNFQ0ZGIiwiYWN0b3JUZXh0Q29sb3IiOiJibGFjayIsImFjdG9yTGluZUNvbG9yIjoiZ3JleSIsInNpZ25hbENvbG9yIjoiIzMzMyIsInNpZ25hbFRleHRDb2xvciI6IiMzMzMiLCJsYWJlbEJveEJrZ0NvbG9yIjoiI0VDRUNGRiIsImxhYmVsQm94Qm9yZGVyQ29sb3IiOiJoc2woMjU5LjYyNjE2ODIyNDMsIDU5Ljc3NjUzNjMxMjglLCA4Ny45MDE5NjA3ODQzJSkiLCJsYWJlbFRleHRDb2xvciI6ImJsYWNrIiwibG9vcFRleHRDb2xvciI6ImJsYWNrIiwibm90ZUJvcmRlckNvbG9yIjoiI2FhYWEzMyIsIm5vdGVCa2dDb2xvciI6IiNmZmY1YWQiLCJub3RlVGV4dENvbG9yIjoiYmxhY2siLCJhY3RpdmF0aW9uQm9yZGVyQ29sb3IiOiIjNjY2IiwiYWN0aXZhdGlvbkJrZ0NvbG9yIjoiI2Y0ZjRmNCIsInNlcXVlbmNlTnVtYmVyQ29sb3IiOiJ3aGl0ZSIsInNlY3Rpb25Ca2dDb2xvciI6InJnYmEoMTAyLCAxMDIsIDI1NSwgMC40OSkiLCJhbHRTZWN0aW9uQmtnQ29sb3IiOiJ3aGl0ZSIsInNlY3Rpb25Ca2dDb2xvcjIiOiIjZmZmNDAwIiwidGFza0JvcmRlckNvbG9yIjoiIzUzNGZiYyIsInRhc2tCa2dDb2xvciI6IiM4YTkwZGQiLCJ0YXNrVGV4dExpZ2h0Q29sb3IiOiJ3aGl0ZSIsInRhc2tUZXh0Q29sb3IiOiJ3aGl0ZSIsInRhc2tUZXh0RGFya0NvbG9yIjoiYmxhY2siLCJ0YXNrVGV4dE91dHNpZGVDb2xvciI6ImJsYWNrIiwidGFza1RleHRDbGlja2FibGVDb2xvciI6IiMwMDMxNjMiLCJhY3RpdmVUYXNrQm9yZGVyQ29sb3IiOiIjNTM0ZmJjIiwiYWN0aXZlVGFza0JrZ0NvbG9yIjoiI2JmYzdmZiIsImdyaWRDb2xvciI6ImxpZ2h0Z3JleSIsImRvbmVUYXNrQmtnQ29sb3IiOiJsaWdodGdyZXkiLCJkb25lVGFza0JvcmRlckNvbG9yIjoiZ3JleSIsImNyaXRCb3JkZXJDb2xvciI6IiNmZjg4ODgiLCJjcml0QmtnQ29sb3IiOiJyZWQiLCJ0b2RheUxpbmVDb2xvciI6InJlZCIsImxhYmVsQ29sb3IiOiJibGFjayIsImVycm9yQmtnQ29sb3IiOiIjNTUyMjIyIiwiZXJyb3JUZXh0Q29sb3IiOiIjNTUyMjIyIiwiY2xhc3NUZXh0IjoiIzEzMTMwMCIsImZpbGxUeXBlMCI6IiNFQ0VDRkYiLCJmaWxsVHlwZTEiOiIjZmZmZmRlIiwiZmlsbFR5cGUyIjoiaHNsKDMwNCwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwiZmlsbFR5cGUzIjoiaHNsKDEyNCwgMTAwJSwgOTMuNTI5NDExNzY0NyUpIiwiZmlsbFR5cGU0IjoiaHNsKDE3NiwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwiZmlsbFR5cGU1IjoiaHNsKC00LCAxMDAlLCA5My41Mjk0MTE3NjQ3JSkiLCJmaWxsVHlwZTYiOiJoc2woOCwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwiZmlsbFR5cGU3IjoiaHNsKDE4OCwgMTAwJSwgOTMuNTI5NDExNzY0NyUpIn19LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
 - Check for a verifiable credential validity
-[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtICBcbiAgY2xpZW50LT4-K1NESy92ZXJpZnlDcmVkZW50aWFsOiB2ZXJpZmlhYmxlIGNyZWRlbnRpYWwodmMpLDxicj4gSXNzdWVyIGFkZHJlc3M8YnI-XG4gIG5vdGUgb3ZlciBTREsvdmVyaWZ5Q3JlZGVudGlhbDogdGhpcyBTREtcbiAgU0RLL3ZlcmlmeUNyZWRlbnRpYWwtPj5TREsvdmVyaWZ5Q3JlZGVudGlhbDogSGFzaCB0aGUgdmMsPGJyPiBwcmVwYXJlIHJlcXVlc3RcbiAgbm90ZSBvdmVyIFZlcmlmaWNhdGlvblJlZ2lzdHJ5Q29udHJhY3RJbnN0YW5jZTogRXRoZXJldW0gU21hcnQgY29udHJhY3RcbiAgU0RLL3ZlcmlmeUNyZWRlbnRpYWwtPj4rVmVyaWZpY2F0aW9uUmVnaXN0cnlDb250cmFjdEluc3RhbmNlOiBpcyBIYXNoIHJlZ2lzdGVyZWQ_XG4gIFZlcmlmaWNhdGlvblJlZ2lzdHJ5Q29udHJhY3RJbnN0YW5jZS0tPj4tU0RLL3ZlcmlmeUNyZWRlbnRpYWw6IHRydWUvZmFsc2VcbiAgU0RLL3ZlcmlmeUNyZWRlbnRpYWwtLT4-LWNsaWVudDogdHJ1ZS9mYWxzZVxuICAiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCIsInRoZW1lVmFyaWFibGVzIjp7ImJhY2tncm91bmQiOiJ3aGl0ZSIsInByaW1hcnlDb2xvciI6IiNFQ0VDRkYiLCJzZWNvbmRhcnlDb2xvciI6IiNmZmZmZGUiLCJ0ZXJ0aWFyeUNvbG9yIjoiaHNsKDgwLCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJwcmltYXJ5Qm9yZGVyQ29sb3IiOiJoc2woMjQwLCA2MCUsIDg2LjI3NDUwOTgwMzklKSIsInNlY29uZGFyeUJvcmRlckNvbG9yIjoiaHNsKDYwLCA2MCUsIDgzLjUyOTQxMTc2NDclKSIsInRlcnRpYXJ5Qm9yZGVyQ29sb3IiOiJoc2woODAsIDYwJSwgODYuMjc0NTA5ODAzOSUpIiwicHJpbWFyeVRleHRDb2xvciI6IiMxMzEzMDAiLCJzZWNvbmRhcnlUZXh0Q29sb3IiOiIjMDAwMDIxIiwidGVydGlhcnlUZXh0Q29sb3IiOiJyZ2IoOS41MDAwMDAwMDAxLCA5LjUwMDAwMDAwMDEsIDkuNTAwMDAwMDAwMSkiLCJsaW5lQ29sb3IiOiIjMzMzMzMzIiwidGV4dENvbG9yIjoiIzMzMyIsIm1haW5Ca2ciOiIjRUNFQ0ZGIiwic2Vjb25kQmtnIjoiI2ZmZmZkZSIsImJvcmRlcjEiOiIjOTM3MERCIiwiYm9yZGVyMiI6IiNhYWFhMzMiLCJhcnJvd2hlYWRDb2xvciI6IiMzMzMzMzMiLCJmb250RmFtaWx5IjoiXCJ0cmVidWNoZXQgbXNcIiwgdmVyZGFuYSwgYXJpYWwiLCJmb250U2l6ZSI6IjE2cHgiLCJsYWJlbEJhY2tncm91bmQiOiIjZThlOGU4Iiwibm9kZUJrZyI6IiNFQ0VDRkYiLCJub2RlQm9yZGVyIjoiIzkzNzBEQiIsImNsdXN0ZXJCa2ciOiIjZmZmZmRlIiwiY2x1c3RlckJvcmRlciI6IiNhYWFhMzMiLCJkZWZhdWx0TGlua0NvbG9yIjoiIzMzMzMzMyIsInRpdGxlQ29sb3IiOiIjMzMzIiwiZWRnZUxhYmVsQmFja2dyb3VuZCI6IiNlOGU4ZTgiLCJhY3RvckJvcmRlciI6ImhzbCgyNTkuNjI2MTY4MjI0MywgNTkuNzc2NTM2MzEyOCUsIDg3LjkwMTk2MDc4NDMlKSIsImFjdG9yQmtnIjoiI0VDRUNGRiIsImFjdG9yVGV4dENvbG9yIjoiYmxhY2siLCJhY3RvckxpbmVDb2xvciI6ImdyZXkiLCJzaWduYWxDb2xvciI6IiMzMzMiLCJzaWduYWxUZXh0Q29sb3IiOiIjMzMzIiwibGFiZWxCb3hCa2dDb2xvciI6IiNFQ0VDRkYiLCJsYWJlbEJveEJvcmRlckNvbG9yIjoiaHNsKDI1OS42MjYxNjgyMjQzLCA1OS43NzY1MzYzMTI4JSwgODcuOTAxOTYwNzg0MyUpIiwibGFiZWxUZXh0Q29sb3IiOiJibGFjayIsImxvb3BUZXh0Q29sb3IiOiJibGFjayIsIm5vdGVCb3JkZXJDb2xvciI6IiNhYWFhMzMiLCJub3RlQmtnQ29sb3IiOiIjZmZmNWFkIiwibm90ZVRleHRDb2xvciI6ImJsYWNrIiwiYWN0aXZhdGlvbkJvcmRlckNvbG9yIjoiIzY2NiIsImFjdGl2YXRpb25Ca2dDb2xvciI6IiNmNGY0ZjQiLCJzZXF1ZW5jZU51bWJlckNvbG9yIjoid2hpdGUiLCJzZWN0aW9uQmtnQ29sb3IiOiJyZ2JhKDEwMiwgMTAyLCAyNTUsIDAuNDkpIiwiYWx0U2VjdGlvbkJrZ0NvbG9yIjoid2hpdGUiLCJzZWN0aW9uQmtnQ29sb3IyIjoiI2ZmZjQwMCIsInRhc2tCb3JkZXJDb2xvciI6IiM1MzRmYmMiLCJ0YXNrQmtnQ29sb3IiOiIjOGE5MGRkIiwidGFza1RleHRMaWdodENvbG9yIjoid2hpdGUiLCJ0YXNrVGV4dENvbG9yIjoid2hpdGUiLCJ0YXNrVGV4dERhcmtDb2xvciI6ImJsYWNrIiwidGFza1RleHRPdXRzaWRlQ29sb3IiOiJibGFjayIsInRhc2tUZXh0Q2xpY2thYmxlQ29sb3IiOiIjMDAzMTYzIiwiYWN0aXZlVGFza0JvcmRlckNvbG9yIjoiIzUzNGZiYyIsImFjdGl2ZVRhc2tCa2dDb2xvciI6IiNiZmM3ZmYiLCJncmlkQ29sb3IiOiJsaWdodGdyZXkiLCJkb25lVGFza0JrZ0NvbG9yIjoibGlnaHRncmV5IiwiZG9uZVRhc2tCb3JkZXJDb2xvciI6ImdyZXkiLCJjcml0Qm9yZGVyQ29sb3IiOiIjZmY4ODg4IiwiY3JpdEJrZ0NvbG9yIjoicmVkIiwidG9kYXlMaW5lQ29sb3IiOiJyZWQiLCJsYWJlbENvbG9yIjoiYmxhY2siLCJlcnJvckJrZ0NvbG9yIjoiIzU1MjIyMiIsImVycm9yVGV4dENvbG9yIjoiIzU1MjIyMiIsImNsYXNzVGV4dCI6IiMxMzEzMDAiLCJmaWxsVHlwZTAiOiIjRUNFQ0ZGIiwiZmlsbFR5cGUxIjoiI2ZmZmZkZSIsImZpbGxUeXBlMiI6ImhzbCgzMDQsIDEwMCUsIDk2LjI3NDUwOTgwMzklKSIsImZpbGxUeXBlMyI6ImhzbCgxMjQsIDEwMCUsIDkzLjUyOTQxMTc2NDclKSIsImZpbGxUeXBlNCI6ImhzbCgxNzYsIDEwMCUsIDk2LjI3NDUwOTgwMzklKSIsImZpbGxUeXBlNSI6ImhzbCgtNCwgMTAwJSwgOTMuNTI5NDExNzY0NyUpIiwiZmlsbFR5cGU2IjoiaHNsKDgsIDEwMCUsIDk2LjI3NDUwOTgwMzklKSIsImZpbGxUeXBlNyI6ImhzbCgxODgsIDEwMCUsIDkzLjUyOTQxMTc2NDclKSJ9fSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtICBcbiAgY2xpZW50LT4-K1NESy92ZXJpZnlDcmVkZW50aWFsOiB2ZXJpZmlhYmxlIGNyZWRlbnRpYWwodmMpLDxicj4gSXNzdWVyIGFkZHJlc3M8YnI-XG4gIG5vdGUgb3ZlciBTREsvdmVyaWZ5Q3JlZGVudGlhbDogdGhpcyBTREtcbiAgU0RLL3ZlcmlmeUNyZWRlbnRpYWwtPj5TREsvdmVyaWZ5Q3JlZGVudGlhbDogSGFzaCB0aGUgdmMsPGJyPiBwcmVwYXJlIHJlcXVlc3RcbiAgbm90ZSBvdmVyIFZlcmlmaWNhdGlvblJlZ2lzdHJ5Q29udHJhY3RJbnN0YW5jZTogRXRoZXJldW0gU21hcnQgY29udHJhY3RcbiAgU0RLL3ZlcmlmeUNyZWRlbnRpYWwtPj4rVmVyaWZpY2F0aW9uUmVnaXN0cnlDb250cmFjdEluc3RhbmNlOiBpcyBIYXNoIHJlZ2lzdGVyZWQ_XG4gIFZlcmlmaWNhdGlvblJlZ2lzdHJ5Q29udHJhY3RJbnN0YW5jZS0tPj4tU0RLL3ZlcmlmeUNyZWRlbnRpYWw6IHRydWUvZmFsc2VcbiAgU0RLL3ZlcmlmeUNyZWRlbnRpYWwtLT4-LWNsaWVudDogdHJ1ZS9mYWxzZVxuICAiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCIsInRoZW1lVmFyaWFibGVzIjp7ImJhY2tncm91bmQiOiJ3aGl0ZSIsInByaW1hcnlDb2xvciI6IiNFQ0VDRkYiLCJzZWNvbmRhcnlDb2xvciI6IiNmZmZmZGUiLCJ0ZXJ0aWFyeUNvbG9yIjoiaHNsKDgwLCAxMDAlLCA5Ni4yNzQ1MDk4MDM5JSkiLCJwcmltYXJ5Qm9yZGVyQ29sb3IiOiJoc2woMjQwLCA2MCUsIDg2LjI3NDUwOTgwMzklKSIsInNlY29uZGFyeUJvcmRlckNvbG9yIjoiaHNsKDYwLCA2MCUsIDgzLjUyOTQxMTc2NDclKSIsInRlcnRpYXJ5Qm9yZGVyQ29sb3IiOiJoc2woODAsIDYwJSwgODYuMjc0NTA5ODAzOSUpIiwicHJpbWFyeVRleHRDb2xvciI6IiMxMzEzMDAiLCJzZWNvbmRhcnlUZXh0Q29sb3IiOiIjMDAwMDIxIiwidGVydGlhcnlUZXh0Q29sb3IiOiJyZ2IoOS41MDAwMDAwMDAxLCA5LjUwMDAwMDAwMDEsIDkuNTAwMDAwMDAwMSkiLCJsaW5lQ29sb3IiOiIjMzMzMzMzIiwidGV4dENvbG9yIjoiIzMzMyIsIm1haW5Ca2ciOiIjRUNFQ0ZGIiwic2Vjb25kQmtnIjoiI2ZmZmZkZSIsImJvcmRlcjEiOiIjOTM3MERCIiwiYm9yZGVyMiI6IiNhYWFhMzMiLCJhcnJvd2hlYWRDb2xvciI6IiMzMzMzMzMiLCJmb250RmFtaWx5IjoiXCJ0cmVidWNoZXQgbXNcIiwgdmVyZGFuYSwgYXJpYWwiLCJmb250U2l6ZSI6IjE2cHgiLCJsYWJlbEJhY2tncm91bmQiOiIjZThlOGU4Iiwibm9kZUJrZyI6IiNFQ0VDRkYiLCJub2RlQm9yZGVyIjoiIzkzNzBEQiIsImNsdXN0ZXJCa2ciOiIjZmZmZmRlIiwiY2x1c3RlckJvcmRlciI6IiNhYWFhMzMiLCJkZWZhdWx0TGlua0NvbG9yIjoiIzMzMzMzMyIsInRpdGxlQ29sb3IiOiIjMzMzIiwiZWRnZUxhYmVsQmFja2dyb3VuZCI6IiNlOGU4ZTgiLCJhY3RvckJvcmRlciI6ImhzbCgyNTkuNjI2MTY4MjI0MywgNTkuNzc2NTM2MzEyOCUsIDg3LjkwMTk2MDc4NDMlKSIsImFjdG9yQmtnIjoiI0VDRUNGRiIsImFjdG9yVGV4dENvbG9yIjoiYmxhY2siLCJhY3RvckxpbmVDb2xvciI6ImdyZXkiLCJzaWduYWxDb2xvciI6IiMzMzMiLCJzaWduYWxUZXh0Q29sb3IiOiIjMzMzIiwibGFiZWxCb3hCa2dDb2xvciI6IiNFQ0VDRkYiLCJsYWJlbEJveEJvcmRlckNvbG9yIjoiaHNsKDI1OS42MjYxNjgyMjQzLCA1OS43NzY1MzYzMTI4JSwgODcuOTAxOTYwNzg0MyUpIiwibGFiZWxUZXh0Q29sb3IiOiJibGFjayIsImxvb3BUZXh0Q29sb3IiOiJibGFjayIsIm5vdGVCb3JkZXJDb2xvciI6IiNhYWFhMzMiLCJub3RlQmtnQ29sb3IiOiIjZmZmNWFkIiwibm90ZVRleHRDb2xvciI6ImJsYWNrIiwiYWN0aXZhdGlvbkJvcmRlckNvbG9yIjoiIzY2NiIsImFjdGl2YXRpb25Ca2dDb2xvciI6IiNmNGY0ZjQiLCJzZXF1ZW5jZU51bWJlckNvbG9yIjoid2hpdGUiLCJzZWN0aW9uQmtnQ29sb3IiOiJyZ2JhKDEwMiwgMTAyLCAyNTUsIDAuNDkpIiwiYWx0U2VjdGlvbkJrZ0NvbG9yIjoid2hpdGUiLCJzZWN0aW9uQmtnQ29sb3IyIjoiI2ZmZjQwMCIsInRhc2tCb3JkZXJDb2xvciI6IiM1MzRmYmMiLCJ0YXNrQmtnQ29sb3IiOiIjOGE5MGRkIiwidGFza1RleHRMaWdodENvbG9yIjoid2hpdGUiLCJ0YXNrVGV4dENvbG9yIjoid2hpdGUiLCJ0YXNrVGV4dERhcmtDb2xvciI6ImJsYWNrIiwidGFza1RleHRPdXRzaWRlQ29sb3IiOiJibGFjayIsInRhc2tUZXh0Q2xpY2thYmxlQ29sb3IiOiIjMDAzMTYzIiwiYWN0aXZlVGFza0JvcmRlckNvbG9yIjoiIzUzNGZiYyIsImFjdGl2ZVRhc2tCa2dDb2xvciI6IiNiZmM3ZmYiLCJncmlkQ29sb3IiOiJsaWdodGdyZXkiLCJkb25lVGFza0JrZ0NvbG9yIjoibGlnaHRncmV5IiwiZG9uZVRhc2tCb3JkZXJDb2xvciI6ImdyZXkiLCJjcml0Qm9yZGVyQ29sb3IiOiIjZmY4ODg4IiwiY3JpdEJrZ0NvbG9yIjoicmVkIiwidG9kYXlMaW5lQ29sb3IiOiJyZWQiLCJsYWJlbENvbG9yIjoiYmxhY2siLCJlcnJvckJrZ0NvbG9yIjoiIzU1MjIyMiIsImVycm9yVGV4dENvbG9yIjoiIzU1MjIyMiIsImNsYXNzVGV4dCI6IiMxMzEzMDAiLCJmaWxsVHlwZTAiOiIjRUNFQ0ZGIiwiZmlsbFR5cGUxIjoiI2ZmZmZkZSIsImZpbGxUeXBlMiI6ImhzbCgzMDQsIDEwMCUsIDk2LjI3NDUwOTgwMzklKSIsImZpbGxUeXBlMyI6ImhzbCgxMjQsIDEwMCUsIDkzLjUyOTQxMTc2NDclKSIsImZpbGxUeXBlNCI6ImhzbCgxNzYsIDEwMCUsIDk2LjI3NDUwOTgwMzklKSIsImZpbGxUeXBlNSI6ImhzbCgtNCwgMTAwJSwgOTMuNTI5NDExNzY0NyUpIiwiZmlsbFR5cGU2IjoiaHNsKDgsIDEwMCUsIDk2LjI3NDUwOTgwMzklKSIsImZpbGxUeXBlNyI6ImhzbCgxODgsIDEwMCUsIDkzLjUyOTQxMTc2NDclKSJ9fSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
+[![](https://mermaid.ink/img/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtICBcbiAgY2xpZW50LT4-K1NESy92ZXJpZnlDcmVkZW50aWFsOiB2ZXJpZmlhYmxlIGNyZWRlbnRpYWwodmMpLDxicj4gSXNzdWVyIGFkZHJlc3M8YnI-XG4gIG5vdGUgb3ZlciBTREsvdmVyaWZ5Q3JlZGVudGlhbDogdGhpcyBTREtcbiAgU0RLL3ZlcmlmeUNyZWRlbnRpYWwtPj5TREsvdmVyaWZ5Q3JlZGVudGlhbDogSGFzaCB0aGUgdmMsPGJyPiBwcmVwYXJlIHJlcXVlc3RcbiAgbm90ZSBvdmVyIFZlcmlmaWNhdGlvblJlZ2lzdHJ5Q29udHJhY3RJbnN0YW5jZTogRXRoZXJldW0gU21hcnQgY29udHJhY3RcbiAgU0RLL3ZlcmlmeUNyZWRlbnRpYWwtPj4rVmVyaWZpY2F0aW9uUmVnaXN0cnlDb250cmFjdEluc3RhbmNlOiAoaGFzaCxpc3N1ZXIpXG4gIFZlcmlmaWNhdGlvblJlZ2lzdHJ5Q29udHJhY3RJbnN0YW5jZS0tPj4tU0RLL3ZlcmlmeUNyZWRlbnRpYWw6IHJhbmdlVGltZVxuICBTREsvdmVyaWZ5Q3JlZGVudGlhbC0-PlNESy92ZXJpZnlDcmVkZW50aWFsOiBpc1ZhbGlkUmFuZ2VUaW1lP1xuICBTREsvdmVyaWZ5Q3JlZGVudGlhbC0tPj4tY2xpZW50OiB0cnVlL2ZhbHNlXG4gICIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0IiwidGhlbWVWYXJpYWJsZXMiOnsiYmFja2dyb3VuZCI6IndoaXRlIiwicHJpbWFyeUNvbG9yIjoiI0VDRUNGRiIsInNlY29uZGFyeUNvbG9yIjoiI2ZmZmZkZSIsInRlcnRpYXJ5Q29sb3IiOiJoc2woODAsIDEwMCUsIDk2LjI3NDUwOTgwMzklKSIsInByaW1hcnlCb3JkZXJDb2xvciI6ImhzbCgyNDAsIDYwJSwgODYuMjc0NTA5ODAzOSUpIiwic2Vjb25kYXJ5Qm9yZGVyQ29sb3IiOiJoc2woNjAsIDYwJSwgODMuNTI5NDExNzY0NyUpIiwidGVydGlhcnlCb3JkZXJDb2xvciI6ImhzbCg4MCwgNjAlLCA4Ni4yNzQ1MDk4MDM5JSkiLCJwcmltYXJ5VGV4dENvbG9yIjoiIzEzMTMwMCIsInNlY29uZGFyeVRleHRDb2xvciI6IiMwMDAwMjEiLCJ0ZXJ0aWFyeVRleHRDb2xvciI6InJnYig5LjUwMDAwMDAwMDEsIDkuNTAwMDAwMDAwMSwgOS41MDAwMDAwMDAxKSIsImxpbmVDb2xvciI6IiMzMzMzMzMiLCJ0ZXh0Q29sb3IiOiIjMzMzIiwibWFpbkJrZyI6IiNFQ0VDRkYiLCJzZWNvbmRCa2ciOiIjZmZmZmRlIiwiYm9yZGVyMSI6IiM5MzcwREIiLCJib3JkZXIyIjoiI2FhYWEzMyIsImFycm93aGVhZENvbG9yIjoiIzMzMzMzMyIsImZvbnRGYW1pbHkiOiJcInRyZWJ1Y2hldCBtc1wiLCB2ZXJkYW5hLCBhcmlhbCIsImZvbnRTaXplIjoiMTZweCIsImxhYmVsQmFja2dyb3VuZCI6IiNlOGU4ZTgiLCJub2RlQmtnIjoiI0VDRUNGRiIsIm5vZGVCb3JkZXIiOiIjOTM3MERCIiwiY2x1c3RlckJrZyI6IiNmZmZmZGUiLCJjbHVzdGVyQm9yZGVyIjoiI2FhYWEzMyIsImRlZmF1bHRMaW5rQ29sb3IiOiIjMzMzMzMzIiwidGl0bGVDb2xvciI6IiMzMzMiLCJlZGdlTGFiZWxCYWNrZ3JvdW5kIjoiI2U4ZThlOCIsImFjdG9yQm9yZGVyIjoiaHNsKDI1OS42MjYxNjgyMjQzLCA1OS43NzY1MzYzMTI4JSwgODcuOTAxOTYwNzg0MyUpIiwiYWN0b3JCa2ciOiIjRUNFQ0ZGIiwiYWN0b3JUZXh0Q29sb3IiOiJibGFjayIsImFjdG9yTGluZUNvbG9yIjoiZ3JleSIsInNpZ25hbENvbG9yIjoiIzMzMyIsInNpZ25hbFRleHRDb2xvciI6IiMzMzMiLCJsYWJlbEJveEJrZ0NvbG9yIjoiI0VDRUNGRiIsImxhYmVsQm94Qm9yZGVyQ29sb3IiOiJoc2woMjU5LjYyNjE2ODIyNDMsIDU5Ljc3NjUzNjMxMjglLCA4Ny45MDE5NjA3ODQzJSkiLCJsYWJlbFRleHRDb2xvciI6ImJsYWNrIiwibG9vcFRleHRDb2xvciI6ImJsYWNrIiwibm90ZUJvcmRlckNvbG9yIjoiI2FhYWEzMyIsIm5vdGVCa2dDb2xvciI6IiNmZmY1YWQiLCJub3RlVGV4dENvbG9yIjoiYmxhY2siLCJhY3RpdmF0aW9uQm9yZGVyQ29sb3IiOiIjNjY2IiwiYWN0aXZhdGlvbkJrZ0NvbG9yIjoiI2Y0ZjRmNCIsInNlcXVlbmNlTnVtYmVyQ29sb3IiOiJ3aGl0ZSIsInNlY3Rpb25Ca2dDb2xvciI6InJnYmEoMTAyLCAxMDIsIDI1NSwgMC40OSkiLCJhbHRTZWN0aW9uQmtnQ29sb3IiOiJ3aGl0ZSIsInNlY3Rpb25Ca2dDb2xvcjIiOiIjZmZmNDAwIiwidGFza0JvcmRlckNvbG9yIjoiIzUzNGZiYyIsInRhc2tCa2dDb2xvciI6IiM4YTkwZGQiLCJ0YXNrVGV4dExpZ2h0Q29sb3IiOiJ3aGl0ZSIsInRhc2tUZXh0Q29sb3IiOiJ3aGl0ZSIsInRhc2tUZXh0RGFya0NvbG9yIjoiYmxhY2siLCJ0YXNrVGV4dE91dHNpZGVDb2xvciI6ImJsYWNrIiwidGFza1RleHRDbGlja2FibGVDb2xvciI6IiMwMDMxNjMiLCJhY3RpdmVUYXNrQm9yZGVyQ29sb3IiOiIjNTM0ZmJjIiwiYWN0aXZlVGFza0JrZ0NvbG9yIjoiI2JmYzdmZiIsImdyaWRDb2xvciI6ImxpZ2h0Z3JleSIsImRvbmVUYXNrQmtnQ29sb3IiOiJsaWdodGdyZXkiLCJkb25lVGFza0JvcmRlckNvbG9yIjoiZ3JleSIsImNyaXRCb3JkZXJDb2xvciI6IiNmZjg4ODgiLCJjcml0QmtnQ29sb3IiOiJyZWQiLCJ0b2RheUxpbmVDb2xvciI6InJlZCIsImxhYmVsQ29sb3IiOiJibGFjayIsImVycm9yQmtnQ29sb3IiOiIjNTUyMjIyIiwiZXJyb3JUZXh0Q29sb3IiOiIjNTUyMjIyIiwiY2xhc3NUZXh0IjoiIzEzMTMwMCIsImZpbGxUeXBlMCI6IiNFQ0VDRkYiLCJmaWxsVHlwZTEiOiIjZmZmZmRlIiwiZmlsbFR5cGUyIjoiaHNsKDMwNCwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwiZmlsbFR5cGUzIjoiaHNsKDEyNCwgMTAwJSwgOTMuNTI5NDExNzY0NyUpIiwiZmlsbFR5cGU0IjoiaHNsKDE3NiwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwiZmlsbFR5cGU1IjoiaHNsKC00LCAxMDAlLCA5My41Mjk0MTE3NjQ3JSkiLCJmaWxsVHlwZTYiOiJoc2woOCwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwiZmlsbFR5cGU3IjoiaHNsKDE4OCwgMTAwJSwgOTMuNTI5NDExNzY0NyUpIn19LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtICBcbiAgY2xpZW50LT4-K1NESy92ZXJpZnlDcmVkZW50aWFsOiB2ZXJpZmlhYmxlIGNyZWRlbnRpYWwodmMpLDxicj4gSXNzdWVyIGFkZHJlc3M8YnI-XG4gIG5vdGUgb3ZlciBTREsvdmVyaWZ5Q3JlZGVudGlhbDogdGhpcyBTREtcbiAgU0RLL3ZlcmlmeUNyZWRlbnRpYWwtPj5TREsvdmVyaWZ5Q3JlZGVudGlhbDogSGFzaCB0aGUgdmMsPGJyPiBwcmVwYXJlIHJlcXVlc3RcbiAgbm90ZSBvdmVyIFZlcmlmaWNhdGlvblJlZ2lzdHJ5Q29udHJhY3RJbnN0YW5jZTogRXRoZXJldW0gU21hcnQgY29udHJhY3RcbiAgU0RLL3ZlcmlmeUNyZWRlbnRpYWwtPj4rVmVyaWZpY2F0aW9uUmVnaXN0cnlDb250cmFjdEluc3RhbmNlOiAoaGFzaCxpc3N1ZXIpXG4gIFZlcmlmaWNhdGlvblJlZ2lzdHJ5Q29udHJhY3RJbnN0YW5jZS0tPj4tU0RLL3ZlcmlmeUNyZWRlbnRpYWw6IHJhbmdlVGltZVxuICBTREsvdmVyaWZ5Q3JlZGVudGlhbC0-PlNESy92ZXJpZnlDcmVkZW50aWFsOiBpc1ZhbGlkUmFuZ2VUaW1lP1xuICBTREsvdmVyaWZ5Q3JlZGVudGlhbC0tPj4tY2xpZW50OiB0cnVlL2ZhbHNlXG4gICIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0IiwidGhlbWVWYXJpYWJsZXMiOnsiYmFja2dyb3VuZCI6IndoaXRlIiwicHJpbWFyeUNvbG9yIjoiI0VDRUNGRiIsInNlY29uZGFyeUNvbG9yIjoiI2ZmZmZkZSIsInRlcnRpYXJ5Q29sb3IiOiJoc2woODAsIDEwMCUsIDk2LjI3NDUwOTgwMzklKSIsInByaW1hcnlCb3JkZXJDb2xvciI6ImhzbCgyNDAsIDYwJSwgODYuMjc0NTA5ODAzOSUpIiwic2Vjb25kYXJ5Qm9yZGVyQ29sb3IiOiJoc2woNjAsIDYwJSwgODMuNTI5NDExNzY0NyUpIiwidGVydGlhcnlCb3JkZXJDb2xvciI6ImhzbCg4MCwgNjAlLCA4Ni4yNzQ1MDk4MDM5JSkiLCJwcmltYXJ5VGV4dENvbG9yIjoiIzEzMTMwMCIsInNlY29uZGFyeVRleHRDb2xvciI6IiMwMDAwMjEiLCJ0ZXJ0aWFyeVRleHRDb2xvciI6InJnYig5LjUwMDAwMDAwMDEsIDkuNTAwMDAwMDAwMSwgOS41MDAwMDAwMDAxKSIsImxpbmVDb2xvciI6IiMzMzMzMzMiLCJ0ZXh0Q29sb3IiOiIjMzMzIiwibWFpbkJrZyI6IiNFQ0VDRkYiLCJzZWNvbmRCa2ciOiIjZmZmZmRlIiwiYm9yZGVyMSI6IiM5MzcwREIiLCJib3JkZXIyIjoiI2FhYWEzMyIsImFycm93aGVhZENvbG9yIjoiIzMzMzMzMyIsImZvbnRGYW1pbHkiOiJcInRyZWJ1Y2hldCBtc1wiLCB2ZXJkYW5hLCBhcmlhbCIsImZvbnRTaXplIjoiMTZweCIsImxhYmVsQmFja2dyb3VuZCI6IiNlOGU4ZTgiLCJub2RlQmtnIjoiI0VDRUNGRiIsIm5vZGVCb3JkZXIiOiIjOTM3MERCIiwiY2x1c3RlckJrZyI6IiNmZmZmZGUiLCJjbHVzdGVyQm9yZGVyIjoiI2FhYWEzMyIsImRlZmF1bHRMaW5rQ29sb3IiOiIjMzMzMzMzIiwidGl0bGVDb2xvciI6IiMzMzMiLCJlZGdlTGFiZWxCYWNrZ3JvdW5kIjoiI2U4ZThlOCIsImFjdG9yQm9yZGVyIjoiaHNsKDI1OS42MjYxNjgyMjQzLCA1OS43NzY1MzYzMTI4JSwgODcuOTAxOTYwNzg0MyUpIiwiYWN0b3JCa2ciOiIjRUNFQ0ZGIiwiYWN0b3JUZXh0Q29sb3IiOiJibGFjayIsImFjdG9yTGluZUNvbG9yIjoiZ3JleSIsInNpZ25hbENvbG9yIjoiIzMzMyIsInNpZ25hbFRleHRDb2xvciI6IiMzMzMiLCJsYWJlbEJveEJrZ0NvbG9yIjoiI0VDRUNGRiIsImxhYmVsQm94Qm9yZGVyQ29sb3IiOiJoc2woMjU5LjYyNjE2ODIyNDMsIDU5Ljc3NjUzNjMxMjglLCA4Ny45MDE5NjA3ODQzJSkiLCJsYWJlbFRleHRDb2xvciI6ImJsYWNrIiwibG9vcFRleHRDb2xvciI6ImJsYWNrIiwibm90ZUJvcmRlckNvbG9yIjoiI2FhYWEzMyIsIm5vdGVCa2dDb2xvciI6IiNmZmY1YWQiLCJub3RlVGV4dENvbG9yIjoiYmxhY2siLCJhY3RpdmF0aW9uQm9yZGVyQ29sb3IiOiIjNjY2IiwiYWN0aXZhdGlvbkJrZ0NvbG9yIjoiI2Y0ZjRmNCIsInNlcXVlbmNlTnVtYmVyQ29sb3IiOiJ3aGl0ZSIsInNlY3Rpb25Ca2dDb2xvciI6InJnYmEoMTAyLCAxMDIsIDI1NSwgMC40OSkiLCJhbHRTZWN0aW9uQmtnQ29sb3IiOiJ3aGl0ZSIsInNlY3Rpb25Ca2dDb2xvcjIiOiIjZmZmNDAwIiwidGFza0JvcmRlckNvbG9yIjoiIzUzNGZiYyIsInRhc2tCa2dDb2xvciI6IiM4YTkwZGQiLCJ0YXNrVGV4dExpZ2h0Q29sb3IiOiJ3aGl0ZSIsInRhc2tUZXh0Q29sb3IiOiJ3aGl0ZSIsInRhc2tUZXh0RGFya0NvbG9yIjoiYmxhY2siLCJ0YXNrVGV4dE91dHNpZGVDb2xvciI6ImJsYWNrIiwidGFza1RleHRDbGlja2FibGVDb2xvciI6IiMwMDMxNjMiLCJhY3RpdmVUYXNrQm9yZGVyQ29sb3IiOiIjNTM0ZmJjIiwiYWN0aXZlVGFza0JrZ0NvbG9yIjoiI2JmYzdmZiIsImdyaWRDb2xvciI6ImxpZ2h0Z3JleSIsImRvbmVUYXNrQmtnQ29sb3IiOiJsaWdodGdyZXkiLCJkb25lVGFza0JvcmRlckNvbG9yIjoiZ3JleSIsImNyaXRCb3JkZXJDb2xvciI6IiNmZjg4ODgiLCJjcml0QmtnQ29sb3IiOiJyZWQiLCJ0b2RheUxpbmVDb2xvciI6InJlZCIsImxhYmVsQ29sb3IiOiJibGFjayIsImVycm9yQmtnQ29sb3IiOiIjNTUyMjIyIiwiZXJyb3JUZXh0Q29sb3IiOiIjNTUyMjIyIiwiY2xhc3NUZXh0IjoiIzEzMTMwMCIsImZpbGxUeXBlMCI6IiNFQ0VDRkYiLCJmaWxsVHlwZTEiOiIjZmZmZmRlIiwiZmlsbFR5cGUyIjoiaHNsKDMwNCwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwiZmlsbFR5cGUzIjoiaHNsKDEyNCwgMTAwJSwgOTMuNTI5NDExNzY0NyUpIiwiZmlsbFR5cGU0IjoiaHNsKDE3NiwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwiZmlsbFR5cGU1IjoiaHNsKC00LCAxMDAlLCA5My41Mjk0MTE3NjQ3JSkiLCJmaWxsVHlwZTYiOiJoc2woOCwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpIiwiZmlsbFR5cGU3IjoiaHNsKDE4OCwgMTAwJSwgOTMuNTI5NDExNzY0NyUpIn19LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
 
 ## Examples
+
+- You can also find all examples in src/test into the packages:
+    - id.kaytrust.core.identity.ethereum
+    - id.kaytrust.core.verifiableCredential.ethereum
 
 - Assumptions:
     - A new user wants to deploy a  new contract (Proxy contract) that represents its identity, the user will do this through the existing Identity Manager contract, it will create the Proxy and make the association between the user'ś device and the Proxy Contract.
@@ -59,17 +63,19 @@ associate granted permissions over a proxy address for a certain or indefinitely
 - Setting an Identity Manager instance
 
 ```js
-IdentityManager identityManagr;
-String hostNodeBesuLacchain = "http://eth-lacchain.kaytrust.id"; //The ethereum node to access the Lacchain Network
-String addressContractIdentityManager = "0xa6b4540a2bfbe8663caa78027c83d0dcb1b7c837"; //This is the existing IdentityManager contract address
-String privateKeyAdressEthereum = "0x9eb5a43839e8ff36fcdaed658136c51623be3af7de304d1c9181a6be9fac0863"; //Provider private key 
+EthereumIdentityManager identityManager;
+String rpcConnection = "http://eth-lacchain.kaytrust.id"; //The ethereum node to access the Lacchain Network
+String IdentityManagerContractAddress = "0xa6b4540a2bfbe8663caa78027c83d0dcb1b7c837"; //This is the existing IdentityManager contract address
+String providerPrivateKey = "0x9eb5a43839e8ff36fcdaed658136c51623be3af7de304d1c9181a6be9fac0863"; //Provider private key
 
-identityManagr = new IdentityManagerImpl(); #Sets a new instance of IdentityManager to interact with.
+{
+    identityManager = new EthereumIdentityManagerImpl(); //Sets a new instance of IdentityManager to interact with.
 
-try {
-    identityManagr.instance(hostNodeBesuLacchain, privateKeyAdressEthereum, addressContractIdentityManager);
-} catch (Exception e) {
-    e.printStackTrace();
+    try {
+        identityManager.instance(rpcConnection, providerPrivateKey, IdentityManagerContractAddress);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 }
 ```
 
@@ -77,9 +83,16 @@ try {
 
 ```js
 try{
-    String did = identityManagr.createIdentity(); //Deploys a new  Proxy Contract and sets Identity Provider private key
-//with all capabilities (it allows recovery functionalities)
+    System.out.println("*****************************************************************************");
+    System.out.println("************************* Create Identity ********************************");
+    String did = identityManager.createIdentity(); //Deploys a new  Proxy Contract and sets Identity Provider private key
+    // with all capabilities (it allows recovery functionalities)
     // Now verifying the did is not null
+    boolean isTrue = !did.isEmpty();
+    System.out.println("Created DID: " + did);//At this point only the identity provider has authorization over the proxy
+    if (isTrue){
+        System.out.println("SUCCESS");
+    }
     assertNotNull(did);
 }catch(Exception e){
     e.printStackTrace();
@@ -92,11 +105,16 @@ By creating an Identity a new did (decentralized identifier) is returned, this d
 * Associating a user's device address to the new proxy contract identity.
 
 ```js
-try{
-    String publicKeyDevice = "0x2ace640fc6c0565aaa919462e4fc08ab18883d1b4205521cebb8f40c819fcc40dd26c89066d60d1f410187dec582a2e5590f96ffdafae518dbbbc346f2a0d371"
-    identityManagr.authorizeDevice(did, publicKeyAddressDevice, CapabilityEnum.FORWARD.description()); //Setting forward 
+try {
+    System.out.println("*****************************************************************************");
+    System.out.println("************************* Authorize Device *******************************");
+    String devicePublicKey = "fadb30ab306603e1806e1fbd324cf21aaefb32c8a1f3f4cf701f3eafd17df68e97ec33dd77d7d6e7dc436905dc47f2f3da907e3a3be05cce348d10d51323dd5e";
+    identityManager.authorizeDevice(did, devicePublicKey, CapabilityEnum.FORWARD.description()); //Setting forward
     // capability, between the Proxy and the device, in the IdentityManager contract.
-}catch(Exception e){
+    System.out.println("SUCCESS");
+    assertNotNull(did);
+} catch (Exception e) {
+    System.out.println("FAILED");
     e.printStackTrace();
     fail();
 }
@@ -114,10 +132,13 @@ which has been previously defined are been reused.
 
 ```js
 try {
-    boolean flag = identityManagr.isDeviceAuthorized(did, publicKeyAddressDeviceA,
-            CapabilityEnum.FORWARD.description());
-    assertTrue(flag);
-
+    EthereumIdentityConsumer identityConsumer=new EthereumIdentityConsumerImpl();
+    identityConsumer.instance(rpcConnection, null, identityManagerContractAddress);
+    boolean isTrue = identityConsumer.isDeviceAuthorized(did, devicePublicKey,CapabilityEnum.FORWARD.description());//you can check other capabilities like FORWARD, AUTH or DEVICE_MANAGER
+    if (isTrue){
+        System.out.println("SUCCESS");
+    }
+    assertTrue(isTrue);
 } catch (Exception e) {
     e.printStackTrace();
     fail();
@@ -129,16 +150,27 @@ try {
 * Setting a Subject example class definition:
 
 ```js
-class SubjectCredential {
+//Setting a Subject example class definition:
+class CredentialSubject {
+    @SerializedName("@id")
     String id;
-    String alternateName;
-    String legalName;
-    String taxID;
-    List<Location> location;
+    String name;
+    String birthDate;
+}
 
-    class Location {
-        String streetAddress;
-        String postalCode;
+//Defining general variables before executing examples related to credential issuance
+String issuerPrivateKey;
+EthereumCredentialIssuer credentialIssuer;
+
+{    
+    String verificationRegistryContractAddress = "0x9f8c1e196F5696e014F4d1E4961B92db866BE271";
+    credentialIssuer = new EthereumCredentialIssuerImpl();
+
+    try {
+        issuerPrivateKey = "0x9eb5a43839e8ff36fcdaed658136c51623be3af7de304d1c9181a6be9fac0863";
+        credentialIssuer.instance(rpcConnection, issuerPrivateKey, verificationRegistryContractAddress);
+    } catch (Exception e) {
+        e.printStackTrace();
     }
 }
 ```
@@ -146,31 +178,71 @@ class SubjectCredential {
 * Issuance process:
 
 ```js
-CredentialIssuer credentialAccredit=new CredentialIssuerImpl();
-String addressContractVR = "0x9f8c1e196F5696e014F4d1E4961B92db866BE271"; //The address of the verification registry contract
+public void issueCredential() {
+    System.out.println("*****************************************************************************");
+    System.out.println("************************* Credential Issuance *******************************");
+    try {
+        String subject = "{" +
+                "\"@id\":" +
+                "\"did:ev:cwMLLiMQGm9EaTqzY2k58refSoXdTsYvJ9Znp\"," +
+                "\"name\":\"John Doe\"," +
+                "\"birthDate\":\"2018-01-01\"}";
 
-//Setting a issuer's device privateKey to sign the credential
-String issuerEthereumPrivateKey="0xe0663bdd24ff6f654995fe496eeca0aa1a98315e21ea2a586e7fb8ba60d63ece"
-credentialAccredit.instance(hostNodeBesuLacchain, issuerEthereumPrivateKey, addressContractVR);
+        CredentialSubject sc = new Gson().fromJson(subject, CredentialSubject.class);
+        String[] credentialType = { "VerifiableCredential", "MyCustomType" };
 
-String subject = "{\"id\":\"urn:tin:CO987450927345\",\"alternateName\":\"uuid\",\"legalName\":\"new oea uuid\",\"issuanceDate\":\"2020-02-08T00:00:00Z\",\"taxID\":\"CO987450927345\",\"additionalType\":\"Recinto Fiscalizado Estratégico/ Almacén de Depósito Estratégico/Operador de zona franca/ Depósito Temporal\",\"additionalTypeIndustry\":\"cambio\",\"referenceNumber\":\"987450927345\",\"location\":[{\"streetAddress\":\"cambio\",\"country\":\"CO\",\"postalCode\":\"87649264\",\"state\":\"San Andrés, Providencia y Santa Catalina\",\"city\":\"lima\"}],\"contactPoint\":[],\"visible\":true,\"locationCreated\":\"CO\"}";
-SubjectCredential sc = new Gson().fromJson(subject, SubjectCredential.class); //Using the pre defined subjectCredential class
-String[] credentialType = { "VerifiableCredential", "AuthorizedEconomicOperatorCredential" };
-String vc = credentialAccredit.issueCredential(sc, credentialType, null, null,new EthereumAttestation2019Builder(), null);
+        String vc = credentialIssuer.issueCredential(sc, credentialType, null, null,
+                new EthereumAttestation2019Builder(), null);
 
-log.info("Created Verifiable Credential :\n {} ",vc); //If the process is successful a verifiable credential is returned
-assertNotNull(vc); //otherwise null is returned
+        log.info("verificationCredential :\n {} ",vc);
+        if (!vc.isEmpty()){
+            log.info("SUCCESS");
+        }
+        assertNotNull(vc);
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        fail();
+    }
+}
 ```
 
 ### Checking for a Verifiable credential validity
 
+* Previous setting
+
+```js
+EthereumCredentialValidation credentialValidation;
+{
+    System.out.println("********************** Credential ValidationTest - Previous Setting ****************************");
+    credentialValidation = new EthereumCredentialValidationImpl();
+    try {
+        credentialValidation.instance(rpcConnection, issuerPrivateKey, verificationRegistryContractAddress, new EthereumAttestation2019Builder());
+        System.out.println("Verifiable credential is: " + vc + "\nIssued by " + (EthereumKeyUtils.getAddressFromPrivateKey(issuerPrivateKey)));
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+```
+
 It is time to check if a verifiable credential is valid or not, by checking if an issuer has registered a credential hash on the Verification Registry contract
 
 ```js
-CredentialValidation credentialValidation=new CredentialValidationImpl();
-credentialValidation.instance(hostNodeBesuLacchain, null, addressContractVR, new EthereumAttestation2019Builder());
-
-boolean valid = credentialValidation.verifyCredential(vc); // Returns "true" if the verifiable credential is valid; otherwise "false";
-//in this case we are simply using the verifiable credential that was returned in the previous step.
-//Note that the credentialValidation was previously set with an issuerPrivate key.
+public void credentialCheckingTest() {
+    System.out.println("*****************************************************************************");
+    System.out.println("********************** Credential ValidationTest ****************************");
+    try {
+        System.out.println("Verifying " + (EthereumKeyUtils.getAddressFromPrivateKey(issuerPrivateKey)) +" has emitted the verifiable credential and also the verifiable credential is not expired...");
+        //Note that it is not necessary to have the private key but only the issuer address. 
+        boolean isValidCredential = credentialValidation.verifyCredential(vc);//returns "true" if the verifiable credential is valid; otherwise "false";
+        //in this case we are simply using the verifiable credential that was returned in the previous step.
+        if (isValidCredential){
+            log.info("SUCCESS");
+        }
+        assertTrue(isValidCredential);
+    } catch (Exception e) {
+        e.printStackTrace();
+        fail();
+    }
+}
 ```
