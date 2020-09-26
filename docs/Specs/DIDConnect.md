@@ -2,27 +2,17 @@
 
 ## Introduction
 
-This document explains how to authenticate a user against their self-sovereign identity. This method is inspired by [OpenID Connect (OIDC)](https://openid.net/developers/specs/), which itself builds upon the [OAuth 2.0 framework](https://tools.ietf.org/html/rfc6749).
+This document explains how to authenticate a user against their self-sovereign identity. This method uses [OpenID Connect (OIDC)](https://openid.net/developers/specs/), which itself builds upon the [OAuth 2.0 framework](https://tools.ietf.org/html/rfc6749).
 
-OAuth 2.0 defines the following actors:
+DID Connect uses OIDC in a way that enables Self-Sovereign Identity (SSI). In that sense, it differs from traditional provider-centric flows in a few aspects, as detailed below.
 
-| OAuth 2.0                 | OpenID Connect       | DID Connect
-| ------------------------- | -------------------- | -----------------------
-| Resource Owner (RO)       | User                 | User's identity (DID)
-| Authorization Server (AS) | Authorization Server | User's controlling device
-| Client                    | Relying Party (RP)   | Relying Party (RP)
-| Resource Server (RS)      | Userinfo endpoint    | Online location where a user's presentation is available
-
-
-The following points differ between provider-centric and self-sovereign identity:
-
-| Concept                   | Provider-centric          | Self-sovereign
+| Aspect                   | Provider-Centric Identity          | Self-Sovereign Identity
 | ------------------------- | ------------------------- | -----------------------
-| Authorization Server      | Identity Provider (IdP)   | User's own identity wallet
-| Subject ID                | Determined by IdP         | User's DID
-| Client registration flow  | Client registers against IdP (must be authorized by IdP). Client ID is an opaque string.           | No authorization needed for acting as a client. Client exposes a Verifiable Presentation, containing Verifiable Credentials issued by relevant authorities. Client ID is the URL of the presentation.
-| Resource Server           | IdP's userinfo endpoint. Endpoint URL is either static or discovered through OIDC Discovery   | Determined by the user. Endpoint URL is present in id_token
-| Public key for id_token's signature by client | Either static or discovered through OIDC Discovery | Provided by DID Document (DDO) 
+| Authorization Server      | Identity Provider (IdP).   | User's own identity wallet.
+| Subject ID                | Determined by IdP.         | User's DID.
+| Client registration flow  | Client registers against IdP (must be authorized by IdP). Client ID is an opaque string.           | No authorization needed for acting as a client. Client exposes a Verifiable Presentation, containing Verifiable Credentials issued by relevant authorities. Client ID is the URL of that presentation.
+| Resource Server           | IdP's userinfo endpoint. Endpoint URL is either static or discovered through OIDC Discovery.   | Chosen by the user. Endpoint URL is present in id_token ("userinfo" claim).
+| Public key for id_token's signature by client | Either static or discovered through OIDC Discovery. | Provided by DID Document (DDO). 
 
 ## Flow
 When the Authorization Server is a mobile app (e.g. KayTrust Wallet running on a trusted device), OAuth 2.0 Implicit Flow is used:
