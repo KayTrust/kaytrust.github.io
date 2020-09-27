@@ -16,13 +16,18 @@ DID Connect uses OIDC in a way that enables Self-Sovereign Identity (SSI). That 
 | Client's whitelisted redirect_uri endpoints | Registered and checked by the IdP. | Announced as a claim in the Client ID's Verifiable Presentation.
 
 ## Flow
-When the Authorization Server is a mobile app (e.g. KayTrust Wallet running on a trusted device), OAuth 2.0 Implicit Flow is used:
+The following flow is used:
 
-1. The client requests authentication from a user by presenting them an authentication request in the form of a URI.
-2. The user signs into the mobile app.
-3. The mobile app generates an identity token and an optional access token, then redirects the user agent to the client's `redirect_uri` contained in the request.
-4. The client receives the identity token and validates it.
-5. Optionally, the client extracts the URL of the "userinfo" endpoint from the id_token, and uses the access_token to query the endpoint and obtain a verifiable presentation held by the user.
+1. The clients registers (only once).
+2. The client presents an authentication request in the form of a `didconnect://auth?...` URI.
+3. The Authorization Server verifies the user's identity (for example, if the AS is a mobile app, the user should unlock the app) and the user's consent.
+4. Following standard OIDC scope, the Authorization Server generates a combination of identity token, grant code, and/or access token, then provides them to the client's `redirect_uri` contained in the request, according to the `response_mode` parameter (form, post or fragment).
+5. The client receives the tokens and/or code.
+6. If a code was received, the client gets the URL of the token endpoint from the `token_uri` parameter contained in the response and uses it to get the id_token and/or access_token.
+7. If an id_token was provided, the client verifies the user's identity from it.
+8. If a `userinfo` claim was present in the id_token, the client extracts the userinfo endpoint URL from it and queries it, providing the access token for authentication. The response is a verifiable presentation held by the user.
+
+The steps are detailed below.
 
 ### [Client] Registration (only done once)
 
