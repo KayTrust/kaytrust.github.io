@@ -15,25 +15,25 @@ DID Connect uses OIDC in a way that enables Self-Sovereign Identity (SSI) and fa
 | Public key for id_token's signature by client | Either static or discovered through OIDC Discovery. | Provided by DID Document (DDO).
 | Client's whitelisted redirect_uri endpoints | Registered and checked by the IdP. | Announced as a claim in the Client ID's Verifiable Presentation.
 
-## Flow
+### Considerations about flows and Authorization Servers
+
+OpenID Connect defines several flows: Authorization Flow, Implicit Flow and Hybrid Flow. Depending on the capacities of the client implementation and of the Authorization Server, the client's developer decides what flow should be used, and writes the request based on those capacities. That is based on the assumption that the AS is known by the developer, so that the developer can either know the AS's supported flow, or write the client app to discover them dynamically.
+
+With the Self-Sovereign Identity model, on the other hand, the client doesn't know the AS before making the request, which makes it impossible to decide on a specific flow in the request. This is why this specification defines a way for the client to initiate a _negotiation_ about what flows it supports, so that the AS can make a decision. This is similar to Content-Type or Language negotiation in HTTP.
+
+## General flow
 The following general flow is used:
 
 1. The clients registers (only once).
 2. The client presents an authentication request in the form of a `didconnect://auth?...` URI.
 3. The Authorization Server authenticates the user (for example, if the AS is a mobile app, the user should unlock the app) and obtains their consent.
-4. Depending on the requested `response_type`, the Authorization Server generates a combination of identity token, grant code, and/or access token, then provides them to the client's `redirect_uri` contained in the request, according to the `response_mode` parameter (form, post or fragment).
+4. Depending on the response types supported by the client and the Authorization Server, the Authorization Server generates a combination of identity token, grant code, and/or access token, then provides them to the client's `redirect_uri` contained in the request, according to the `response_mode` parameter (form, post or fragment).
 5. The client receives the tokens and/or code.
 6. If a code was received, the client gets the URL of the token endpoint from the `token_uri` parameter contained in the response and uses it to get the id_token and/or access_token.
 7. If an id_token was provided, the client verifies the user's identity from it.
 8. If a `userinfo` claim was present in the id_token, the client extracts the userinfo endpoint URL from it and queries it, providing the access token for authentication. The response is a verifiable presentation held by the user.
 
 The steps are detailed in the next sections.
-
-## Considerations about flows and Authorization Servers
-
-OpenID Connect defines several flows: Authorization Flow, Implicit Flow and Hybrid Flow. Depending on the capacities of the client implementation and of the Authorization Server, the client's developer decides what flow should be used, and writes the request based on those capacities. That is based on the assumption that the AS is known by the developer, so that the developer can either know the AS's supported flow, or write the client app to discover them dynamically.
-
-With the Self-Sovereign Identity model, on the other hand, the client doesn't know the AS before making the request, which makes it impossible to decide on a specific flow in the request. This is why this specification defines a way for the client to initiate a _negotiation_ about what flows it supports, so that the AS can make a decision. This is similar to Content-Type or Language negotiation in HTTP.
 
 ### 1. Client registration
 
