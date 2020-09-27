@@ -16,7 +16,7 @@ DID Connect uses OIDC in a way that enables Self-Sovereign Identity (SSI) and fa
 | Client's whitelisted redirect_uri endpoints | Registered and checked by the IdP. | Announced as a claim in the Client ID's Verifiable Presentation.
 
 ## Flow
-The following flow is used:
+The following general flow is used:
 
 1. The clients registers (only once).
 2. The client presents an authentication request in the form of a `didconnect://auth?...` URI.
