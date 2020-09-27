@@ -27,7 +27,13 @@ The following flow is used:
 7. If an id_token was provided, the client verifies the user's identity from it.
 8. If a `userinfo` claim was present in the id_token, the client extracts the userinfo endpoint URL from it and queries it, providing the access token for authentication. The response is a verifiable presentation held by the user.
 
-The steps are detailed below.
+The steps are detailed in the next sections.
+
+## Considerations about flows and Authorization Servers
+
+OpenID Connect defines several flows: Authorization Flow, Implicit Flow and Hybrid Flow. Depending on the capacities of the client implementation and of the Authorization Server, the client's developer decides what flow should be used, and writes the request based on those capacities. That is based on the assumption that the AS is known by the developer, so that the developer can either know the AS's supported flow, or write the client app to discover them dynamically.
+
+With the Self-Sovereign Identity model, on the other hand, the client doesn't know the AS before making the request, which makes it impossible to decide on a specific flow in the request. This is why this specification defines a way for the client to initiate a _negotiation_ about what flows it supports, so that the AS can make a decision. This is similar to Content-Type or Language negotiation in HTTP.
 
 ### 1. Client registration
 
@@ -46,8 +52,10 @@ An authentication request is a URL of the following form: `didconnect://auth?...
 | `client_id` | Required | The URL of the client Verifiable Presentation.
 | `redirect_uri` | Required | The callback URI the user should call after the AS generated the identity token. This URI will receive the token as a HTTP Bearer token (recommended) or as a query parameter.
 | `state` | Optional | An opaque string defined by the client. That string will be provided as-is to the callback URI, as a query parameter also named `state`, allowing the client to link the response to the original request.
-| `response_type` | Optional | Where the AS must issue the tokens. Currently, must be `id_token`.
+| `response_type` | Optional | Semicolon-separated list of flows supported by the client. Each flow is described by a combination of `id_token`, `token`, `code`, as defined by OIDC.
 | `response_mode` | Optional | How the AS must issue the tokens. Must be one of `query`, `fragment`, `form_post`.
+
+TODO: Detail the possible combinations for `response_type`.
 
 ### 3. Obtaining user consent from AS
 
