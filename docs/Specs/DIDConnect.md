@@ -8,11 +8,11 @@ DID Connect uses OIDC in a way that enables Self-Sovereign Identity (SSI) and fa
 
 | Aspect                    | Provider-Centric Identity          | Self-Sovereign Identity
 | ------------------------- | ------------------------- | -----------------------
-| Authorization request URIs| Use the Identity Provider (IdP)'s hostname | Use `didconnect:` scheme
-| Authorization Server      | Identity Provider (IdP).   | User's own identity wallet.
-| Subject ID                | Determined by IdP.         | User's DID.
-| Client registration flow  | Client registers against IdP (must be authorized by IdP). Client ID is an opaque string.           | No authorization needed for acting as a client. Client exposes a Verifiable Presentation, containing Verifiable Credentials issued by relevant authorities. Client ID is the URL of that presentation.
-| Resource Server           | IdP's userinfo endpoint. Endpoint URL is either static or discovered through OIDC Discovery.   | Provided dynamically: endpoint URL is present in id_token ("userinfo" claim).
+| Authorization request URIs| Use the Identity Provider (IdP)'s hostname | Use `didconnect:` scheme.
+| Authorization Server      | Identity Provider (IdP), known before when creating the request.   | Selected dynamically by user. Examples: user's own identity wallet, or a web application.
+| Subject ID                | Assigned by IdP.         | User's DID.
+| Client registration flow  | Client registers against IdP (must be authorized by IdP). Client ID is an opaque string.           | No authorization needed by a central entity for acting as a client. Client exposes a Verifiable Presentation, containing Verifiable Credentials issued by relevant authorities. Client ID is the URL of that presentation.
+| Userinfo endpoint           | Managed by IdP. Endpoint URL is either static or discovered through OIDC Discovery.   | Provided dynamically: endpoint URL is present in id_token ("userinfo" claim).
 | Public key for id_token's signature by client | Either static or discovered through OIDC Discovery. | Provided by DID Document (DDO).
 | Client's whitelisted redirect_uri endpoints | Registered and checked by the IdP. | Announced as a claim in the Client ID's Verifiable Presentation.
 
