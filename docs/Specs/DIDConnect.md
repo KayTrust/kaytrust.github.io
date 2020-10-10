@@ -16,34 +16,20 @@ DID Connect uses OIDC in a way that enables Self-Sovereign Identity (SSI) and fa
 | Public key for id_token's signature by client | Either static or discovered through OIDC Discovery. | Provided by DID Document (DDO).
 | Client's whitelisted redirect_uri endpoints | Registered and checked by the IdP. | Announced as a claim in the Client ID's Verifiable Presentation.
 
-### Authorization Server diversity and flow negotiation
-
-DIDConnect uses the `didconnect:` URI scheme to express authorization requests. This makes it possible for Authorization Server applications to register themselves on the user agent and handle authorization requests. This approach is similar to that of the `mailto:` and `tel:` URI schemes. This means the client app does not know in advance what AS will respond to authorization requests.
-
-Examples of Authorization Servers implementations include:
-
-- **Mobile or desktop applications.** Registration to the `didconnect:` scheme is specific to the operating system.
-- **Web applications.** Registration to the `didconnect:` scheme is done using `registerProtocolHandler()` on the web browser.
-
-While this is useful for decentralization, this model introduces uncertainty to client developers when it comes to deciding what OpenID Connect flows to use (Authorization Flow, Implicit Flow or Hybrid Flow), they can't know which flows will be supported by the AS of a particular user.
-
-In provider-centric setups, depending on the capacities of the client implementation and of the Authorization Server, the client's developer decides what flow should be used, and writes the request based on those capacities. That's is built on the assumption that the AS is known beforehand by the developer, so the developer can either know the AS's supported flows, or program the client app to discover them dynamically.
-
-In the Self-Sovereign Identity model, on the other hand, since the client doesn't know the AS before making the request, it must be flexible about the flow, at the risk for the AS to not being able to fulfill the request. For that reason, this specification defines a way for the client to initiate a _negotiation_ by announcing the flows it supports, and let the AS make a decision based on its own capabilities. This is similar to content type or language negotiation in HTTP.
-
 ## General flow
-The following general flow is used:
+
+The OIDC specification defines the following general flow:
 
 1. The clients registers (only once).
 2. The client presents an authentication request in the form of a `didconnect://auth?...` URI.
 3. The Authorization Server authenticates the user (for example, if the AS is a mobile app, the user should unlock the app) and obtains their consent.
-4. Depending on flow negotiation, the Authorization Server generates a combination of identity token, grant code, and/or access token, then provides them to the client's `redirect_uri` contained in the request, according to the `response_mode` parameter (form, post or fragment).
+4. Depending on the grant flow, the Authorization Server generates a combination of identity token, grant code, and/or access token, then provides them to the client's `redirect_uri` contained in the request, according to the `response_mode` parameter (form, post or fragment).
 5. The client receives the tokens and/or code.
 6. If a code was received, the client gets the URL of the token endpoint from the `token_uri` parameter contained in the response and uses it to get the id_token and/or access_token.
 7. If an id_token was provided, the client verifies the user's identity from it.
 8. If a `userinfo` claim was present in the id_token, the client extracts the userinfo endpoint URL from it and queries it, providing the access token for authentication. The response is a verifiable presentation held by the user.
 
-The steps are detailed in the next sections.
+Steps for the DIDConnect profile are detailed in the next sections.
 
 ### 1. Client registration
 
@@ -62,10 +48,8 @@ An authentication request is a URL of the following form: `didconnect://auth?...
 | `client_id` | Required | The URL of the client Verifiable Presentation.
 | `redirect_uri` | Required | The callback URI the user should call after the AS generated the identity token. This URI will receive the token as a HTTP Bearer token (recommended) or as a query parameter.
 | `state` | Optional | An opaque string defined by the client. That string will be provided as-is to the callback URI, as a query parameter also named `state`, allowing the client to link the response to the original request.
-| `response_type` | Optional | Semicolon-separated list of flows supported by the client. Each flow is described by a combination of `id_token`, `token`, `code`, as defined by OIDC.
+| `response_type` | Optional | Depends on the grant flow. Each flow is described by a combination of `id_token`, `token`, `code`, as defined by OIDC.
 | `response_mode` | Optional | How the AS must issue the tokens. Must be one of `query`, `fragment`, `form_post`.
-
-TODO: Detail the possible combinations for `response_type`, and the negotiation steps.
 
 ### 3. Obtaining user consent from AS
 
@@ -78,15 +62,15 @@ Then, the AS should request user's consent after showing the user all relevant c
 
 ### 4. Token generation
 
-The AS issues `id_token` and optionally `access_token` based on the requested `response_type`. TODO: Detail.
+See OpenID Connect specification.
 
 ### 5. Getting the tokens and/or code
 
-See OpenID Connect specification. TODO: Detail.
+See OpenID Connect specification.
 
 ### 6. Accessing the token (depending on the flow)
 
-See OpenID Connect specification. TODO: Detail.
+See OpenID Connect specification. TODO: Describe how token endpoint is read from response.
 
 ### 7. Verification of user's identity
 
@@ -129,3 +113,35 @@ Currently, KayTrust's "GID" DID method does not support DID Documents. Until it 
 If an access token was provided, the client can access user's information by querying the URL referenced as `userinfo` in the id_token, and provide the access token as an `Authorization` header, as described in [OpenID Connect specification](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoRequest).
 
 The response is a Verifiable Presentation. The presentation's holder must be the user's authenticated DID. The presentation contains a `proof` attribute that allows the client to verify the holder's consent before using the included credentials.
+
+
+## Examples of AS
+
+Examples of Authorization Servers implementations include:
+
+- **Mobile or desktop applications.** Registration to the `didconnect:` scheme is specific to the operating system.
+- **Web applications.** Registration to the `didconnect:` scheme is done using `registerProtocolHandler()` on the web browser.
+
+## Limitations and possible improvements
+
+### Flow support uncertainty
+
+This specification describes the use of a custom URI scheme to express authorization requests. This makes it possible for any registered software on  the user agent to handle requests. This approach, similar to that of the `mailto:` and `tel:` URI schemes, implies the client app does not know what AS will actually respond to authorization requests, and what grant flows it will support.
+
+This uncertainty represents both a risk and added out-of-band work on the client side to try to guess what flow to request. One approach is to determine the type of AS based on heuristics. Another approach is to present multiple requests and let the user or the user agent make a decision.
+
+A possible improvement (see Appendix below) would be for a negotiation mechanism to be defined, where the client would announce the flows it supports, and let the AS make a decision based on its own capabilities. This would be similar to content type or language negotiation in HTTP.
+
+
+
+
+# Appendix: Ideas around Authorization Server diversity and flow negotiation
+
+This appendix describes a method for an OAuth client to dynamically negotiate with the AS the OAuth grant flow to be used, similar to content type or language negotiation in HTTP. This is useful in situations where the client can't know the flows that will be supported by the AS. One such example is a DIDConnect flow.
+
+The negotiation is in two steps:
+
+1. The client announces in the authorization request the grant flows it supports, as a semicolon-separated list of supported response types.
+2. The AS selects a grant flow according on its own capabilities.
+
+TODO: Details and examples.
