@@ -64,13 +64,13 @@ Then, the AS should request user's consent after showing the user all relevant c
 
 See OpenID Connect specification.
 
-### 5. Getting the tokens and/or code
+### 5. Getting the tokens and/or authorization code
 
 See OpenID Connect specification.
 
-### 6. Accessing the token (depending on the flow)
+### 6. Accessing the tokens (if applicable)
 
-See OpenID Connect specification. TODO: Describe how token endpoint is read from response.
+See OpenID Connect specification. TODO: Describe how token endpoint is read dynamically from response.
 
 ### 7. Verification of user's identity
 
