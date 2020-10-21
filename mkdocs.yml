@@ -1,5 +1,7 @@
 site_name: KayTrust Developer Documentation
 theme:
+  font:
+    text: Lato
   icon:
     logo: material/code-tags-check
   name: material
