@@ -1,4 +1,6 @@
-# Purpose
+# Trusted Credentials
+
+## Motivation
 
 Verifiable credentials make claims about a subject. While it is possible for a verifier to deterministically check that a credential actually came from its listed issuer without modifications, the decision of whether that issuer is _relevant_ for the claims is subjective.
 
@@ -6,22 +8,22 @@ For example, a police officer in Germany might verify that a driving license fro
 
 In some cases, verifiers' criteria are as simple as recognizing a set of authorities for certain types of claims or credentials. In other cases, the decision involves delegation and roots of authority. Such a setup is similar to the Public Key Infrastructure (PKI) for X.509 certificates, but with different chains of trust depending on the type of information – the authorities for academic credentials are not the same as for citizenship or banking information.
 
-# Definitions and concepts
+## Definitions and concepts
 
-## Authority
+### Authority
 
 An authority for a type of claim (e.g. identity document number, phone number, email address) is an entity that is trusted by a verifier to issue reliable claims of that type.
 
 Being or not an authority for a given type of claim depends on each verifier: a same entity is an authority to some verifiers but not to others.
 
-## Trusted claim
+### Trusted claim
 
 A claim is trusted by a verifier if either:
 
 - The verifier considers the issuer of the containing credential to be an authority for that claim (_implicit trust_).
 - Or the verifier decides to trust the claim directly, based on the verifier's own rules (_explicit trust_).
 
-## Delegation: depths of authority
+### Delegation: depths of authority
 
 Some entities, such as governments, have the authority to issue claims themselves but choose to delegate that authority to other entities.
 
@@ -33,13 +35,13 @@ Some entities, such as governments, have the authority to issue claims themselve
 - The Ministry of Education of a country may give authority to universities to issue diplomas (depth 1).
 - The government of a country may give authority to the Ministry of Education to give that authority to universities (depth 2).
 
-# Big picture
+## Big picture
 
 ![chainoftrust.png](../img/chainoftrust.png)
 
-# Technical specification
+## Technical specification
 
-## Schema
+### Schema
 
 The following schema is used by an issuer inside a Verifiable Credential's `credentialSubject` section to say that the subject is authoritative for a given claim type.
 
@@ -51,11 +53,11 @@ The following schema is used by an issuer inside a Verifiable Credential's `cred
   }
 ```
 
-## Trusting claims
+### Trusting claims
 
 A claim can be either implicitly or explicitly trusted. The sections below detail how trust is determined in either case. Implicit trust is defined recursively, with explicit trust being the exit case of the recursivity.
 
-### Implicit trust
+#### Implicit trust
 
 A claim is _implicitly trusted_ when the issuer of the credential is considered an authority for that claim, i.e. when the verifier trusts (implicitly or explicitly) an `authoritativeFor` claim about the issuer.
 
@@ -74,7 +76,7 @@ Example:
   - As a result, Recruiter X implicitly trusts John Doe's diploma.
 
 
-### Explicit trust
+#### Explicit trust
 
 A claim is _explicitly trusted_ when the verifier makes the decision based on its own (business, regulatory, etc.) rules. This is the simplest case.
 
@@ -86,23 +88,23 @@ Examples:
 4. _Recruiter X_ knows the DIDs of recognized universities and decides to trust any diplomas issued by those DIDs, for a specific range of issuance date.
 5. _Ask Y_ chooses to trust a specific public institution for `authoritativeFor` claims and a given depth, making that issuer a "Root authority" in a chain of trust.
 
-# Notes
+## Notes
 
-## Transitivity of trust delegation: friend of a friend of a friend of...
+### Transitivity of trust delegation: friend of a friend of a friend of...
 
 This specification defines implicit trust in a recursive way, with explicit trust being the exit condition. However, to prevent infinite loops and to avoid ridiculously long trust chains, verifiers may decide to put a practical limit to how many hops they support.
 
-## Distribution of authority credentials
+### Distribution of authority credentials
 
 This data model relies on the verifier's access to "trust credentials" in addition to the credential of first interest. This is similar to SSL's requirement for the server to distribute the complete chain of trust during handshake. Although this data model doesn't define a way for the holder to distribute the relevant trust credentials, a good practice might be to include all relevant credentials in a Verifiable Presentation. That being said, depending on the context the holder can assume that the verifier already trusts some of the involved authorities and thus avoid "stating the obvious".
 
-## Value constraints
+### Value constraints
 
 This model doesn't place any constraints on the value of the claims. For example, University of the North may not be an authority for Doctorates in Rocket Science but only for Masters in Literature.
 
 However, that limitation shouldn't be a problem thanks to the trust model. If an entity abuses their authority and starts signing certificates that they shouldn't, or otherwise fails to demonstrate that they're following a rigorous issuance process, they will take the risk of losing their status as an authority. Note the similarity with the inclusion of Root CAs by browsers in traditional PKI.
 
-## Relation with eIDAS
+### Relation with eIDAS
 
 Verifiable Credentials may contain a `levelOfAssurance` attribute as part of their metadata (i.e. at the same level as `credentialSubject`). The value of that property indicates how reliable the claims contained in the credential are.
 
@@ -125,7 +127,7 @@ The credential below claims the name of subject `did:xxx:abc` to be John Doe, wi
 }
 ```
 
-### Example 2: level of assurance for an authority
+#### Example 2: level of assurance for an authority
 
 The credential below claims that subject `did:xxx:def` (issuer of the credential above) is an authority for claims of type `name`, with a level of assurance "High" set by higher-level authority `did:xxx:ghi`.
 
