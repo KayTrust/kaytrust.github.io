@@ -17,6 +17,7 @@ Being or not an authority for a given type of claim depends on each verifier: a 
 ## Trusted claim
 
 A claim is trusted by a verifier if either:
+
 - The verifier considers the issuer of the containing credential to be an authority for that claim (_implicit trust_).
 - Or the verifier decides to trust the claim directly, based on the verifier's own rules (_explicit trust_).
 
@@ -25,6 +26,7 @@ A claim is trusted by a verifier if either:
 Some entities, such as governments, have the authority to issue claims but choose to delegate that authority to other entities.
 
 **Examples:**
+
 - A car reseller may attest to a car's functioning state but may not delegate that authority to another entity (authority with depth 0).
 - A car brand may give authority to car resellers to attest to a car's functioning state (depth 1).
 - A university may issue diplomas but may not delegate that authority (depth 0).
@@ -60,15 +62,16 @@ A claim is _implicitly trusted_ when the issuer of the credential is considered 
 When the original claim has type `authoritativeFor` itself, the issuer's `authoritativeFor` claims must also have a `depth` property strictly higher than that of the original claim.
 
 Example:
-- Recruiter X receives a credential claiming that John Doe has a Doctorate in Rocket Science (modelled as "diploma").
-  - That credential is issued by University of the North.
-- University of the North, in a separate credential, claims to be an authority for claims of type "diploma" with default depth 0.
-  - That second credential was issued by Ministry of Education.
-- Ministry of Education, in a separate credential, claims to be an authority for "diploma" claims, with depth 1.
-  - That third credential is signed by Government of Country X.
-- Government of Country X, in a separate credential, claims to be authoritative for claim "diploma" with depth 3.
-  - That third credential is explicitly trusted by the verifier (see below).
-- As a result, Recruiter X implicitly trusts John Doe's diploma.
+
+  - Recruiter X receives a credential claiming that John Doe has a Doctorate in Rocket Science (modelled as "diploma").
+    - That credential is issued by University of the North.
+  - University of the North, in a separate credential, claims to be an authority for claims of type "diploma" with default depth 0.
+    - That second credential was issued by Ministry of Education.
+  - Ministry of Education, in a separate credential, claims to be an authority for "diploma" claims, with depth 1.
+    - That third credential is signed by Government of Country X.
+  - Government of Country X, in a separate credential, claims to be authoritative for claim "diploma" with depth 3.
+    - That third credential is explicitly trusted by the verifier (see below).
+  - As a result, Recruiter X implicitly trusts John Doe's diploma.
 
 
 ### Explicit trust
@@ -76,6 +79,7 @@ Example:
 A claim is explicitly trusted when the verifier decides to trust it based on its own (business, regulatory, etc.) rules. This is the simplest case.
 
 Examples:
+
 1. _Big Buck Bank_ chooses to explicitly trust a specific financial institution as an authority for credit score claims.
 2. _Recruiter X_ knows the DIDs of recognized universities and decides to trust any diplomas issued by those DIDs. 
 3. _Ask Y_ chooses to trust a specific public institution for `authoritativeFor` claims and a given depth, making that issuer a "Root authority" in a chain of trust.
@@ -101,7 +105,7 @@ The `authoritativeFor` claims discussed in this specification play nicely with a
 ### Example 1: level of assurance for a normal credential
 
 The credential below claims the name of subject `did:xxx:abc` is John Doe, with a level of assurance "High" set by issuer `did:xxx:def`.
-
+
 ```json
 {
   "@type": "VerifiableCredential",
