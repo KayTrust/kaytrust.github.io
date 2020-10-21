@@ -94,23 +94,23 @@ This specification defines implicit trust in a recursive way, with explicit trus
 
 ## Distribution of authority credentials
 
-The data model discussed in this document relies on the verifier's access to "trust credentials" in addition to the credential of first interest. This is similar to SSL's requirement for the server to distribute the complete chain of trust during handshake. Although this data model doesn't define a way for the holder to distribute the relevant trust credentials, a good practice might be to include all relevant credentials in a Verifiable Presentation. That being said, depending on the context the holder can assume that the verifier already trusts some of the involved authorities and thus avoid "stating the obvious".
+This data model relies on the verifier's access to "trust credentials" in addition to the credential of first interest. This is similar to SSL's requirement for the server to distribute the complete chain of trust during handshake. Although this data model doesn't define a way for the holder to distribute the relevant trust credentials, a good practice might be to include all relevant credentials in a Verifiable Presentation. That being said, depending on the context the holder can assume that the verifier already trusts some of the involved authorities and thus avoid "stating the obvious".
 
 ## Value constraints
 
-This model doesn't place any constraints on the value of the claims. For example, University of the North may not be an authority for Doctorates in Rocket Science but only Masters in Literature. Future versions of the specification may define value constraints in "certificateAuthority" objects, or change the model in some other way.
+This model doesn't place any constraints on the value of the claims. For example, University of the North may not be an authority for Doctorates in Rocket Science but only for Masters in Literature.
 
-However, that limitation shouldn't be a problem thanks to the trust model. If an entity abuses their authority and starts signing certificates that they shouldn't, or otherwise fails to demonstrate that they're following a rigourous issuance process, they will take the risk of losing their status as an authority. Note the similarity with the inclusion of Root CAs by browsers in traditional PKI.
+However, that limitation shouldn't be a problem thanks to the trust model. If an entity abuses their authority and starts signing certificates that they shouldn't, or otherwise fails to demonstrate that they're following a rigorous issuance process, they will take the risk of losing their status as an authority. Note the similarity with the inclusion of Root CAs by browsers in traditional PKI.
 
 ## Relation with eIDAS
 
-Verifiable Credentials may contain a `levelOfAssurance` attribute as part of its metadata (i.e. at the same level as `credentialSubject`). The value of that property indicates how reliable the claims contained in the credential are.
+Verifiable Credentials may contain a `levelOfAssurance` attribute as part of their metadata (i.e. at the same level as `credentialSubject`). The value of that property indicates how reliable the claims contained in the credential are.
 
-The `authoritativeFor` claims discussed in this specification play nicely with a credential's level of assurance, because the level of assurance of such a credential indicates the level of assurance given to that entity by a higher-level authority.
+The `authoritativeFor` claims discussed in this specification play nicely with a credential's level of assurance, because the level of assurance of such credentials indicates the level of assurance given to that issuer by a higher-level authority.
 
 ### Example 1: level of assurance for a normal credential
 
-The credential below claims the name of subject `did:xxx:abc` is John Doe, with a level of assurance "High" set by issuer `did:xxx:def`.
+The credential below claims the name of subject `did:xxx:abc` to be John Doe, with a level of assurance "High" set by issuer `did:xxx:def`.
 
 ```json
 {
@@ -144,4 +144,4 @@ The credential below claims that subject `did:xxx:def` (issuer of the credential
 }
 ```
 
-If the verifier trusts `did:xxx:ghi` with that level of assurance, it will allow them to also trust John Doe's credential with the same level of assurance.
+If the verifier trusts `did:xxx:ghi` with that level of assurance, then they will also trust John Doe's credential with the same level of assurance, per eiDAS rules.
