@@ -33,7 +33,7 @@ Some entities, such as governments, have the authority to issue claims but choos
 
 # Big picture
 
-![chainoftrust.png](../chainoftrust.png)
+![chainoftrust.png](../img/chainoftrust.png)
 
 # Technical specification
 
