@@ -6,7 +6,7 @@ theme:
     logo: material/code-tags-check
   name: material
   palette:
-    primary: deep purple
+    primary: indigo
   features:
     - navigation.instant
 nav:
