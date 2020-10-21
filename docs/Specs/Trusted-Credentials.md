@@ -110,7 +110,7 @@ Verifiable Credentials may contain a `levelOfAssurance` attribute as part of the
 
 The `authoritativeFor` claims discussed in this specification play nicely with a credential's level of assurance, because the level of assurance of such credentials indicates the level of assurance given to that issuer by a higher-level authority.
 
-### Example 1: level of assurance for a normal credential
+#### Example 1: level of assurance for a normal credential
 
 The credential below claims the name of subject `did:xxx:abc` to be John Doe, with a level of assurance "High" set by issuer `did:xxx:def`.
 
