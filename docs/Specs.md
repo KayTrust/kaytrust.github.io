@@ -46,3 +46,11 @@ KayTrust introduces a way for identity owners (a.k.a. subjects) to authenticate 
 | Specification                         | Builds on top of | What is it good for?
 | ------------------------------------- | ---------------- | ------------------------------------
 | [DIDConnect OIDC Profile](/Specs/DIDConnect) | OpenID Connect   | Self-sovereign use of OpenID Connect
+
+### Schemas
+
+KayTrust mostly relies on well-known schemas, such as the great work done by the schema.org community. However, when the need arises, additional schemas are defined.
+
+| Schema                                            | Purpose
+| ------------------------------------------------- | --------------------------------------------------
+| [Trusted Credentials](/Specs/Trusted-Credentials) | Chain of Trust for Verifiable Credentials
