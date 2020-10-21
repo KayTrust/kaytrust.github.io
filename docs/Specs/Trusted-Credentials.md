@@ -51,13 +51,13 @@ The following schema is used by an issuer inside a Verifiable Credential's `cred
 
 ## Trusting claims
 
-A claim can be either implicitly or explicitly trusted. While explicit trust applies to any type of claim, implicit trust is defined differently for claims of type `authoritativeFor` and for other types of claims, to allow for delegation.
+A claim can be either implicitly or explicitly trusted. While explicit trust applies to any type of claim, implicit trust is defined slightly differently for claims of type `authoritativeFor` and for other types of claims, to allow for delegation.
 
-### Implicit trust for claims of type `authoritativeFor`
+### Implicit trust
 
 A claim is _implicitly trusted_ when the issuer of the credential is considered an authority for that claim, i.e. when the verifier trusts (implicitly or explicitly) an `authoritativeFor` claim about the issuer.
 
-When the original claim has type `authoritativeFor` itself, the issuer's `authoritativeFor` claims must have a `depth` property strictly higher than that of the original claim.
+When the original claim has type `authoritativeFor` itself, the issuer's `authoritativeFor` claims must also have a `depth` property strictly higher than that of the original claim.
 
 Example:
 - Recruiter X receives a credential claiming that John Doe has a Doctorate in Rocket Science (modelled as "diploma").
