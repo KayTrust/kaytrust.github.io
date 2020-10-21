@@ -1,10 +1,10 @@
 # Purpose
 
-Verifiable credentials make claims about a subject. While it is possible for a verifier to deterministically check that the credential actually came from its listed issuer without modification, the decision of whether that issuer is _relevant_ for the claims is subjective.
+Verifiable credentials make claims about a subject. While it is possible for a verifier to deterministically check that a credential actually came from its listed issuer without modifications, the decision of whether that issuer is _relevant_ for the claims is subjective.
 
 For example, a police officer in Germany might verify that a driving license from Canada is genuine, but that doesn't mean they will accept the Canadian government as a relevant authority and let you drive. That decision is up to the police and based e.g. on international agreements between countries.
 
-In some cases, the criteria are as simple as recognizing a set of authorities for certain types of claims or credentials. In some other cases, the decision involves delegated trust and roots of authority, similar to the Public Key Infrastructure (PKI) for X.509 certificates but with different chains of trust depending on the type of information – the authorities for academic credentials are not the same as for citizenship or banking information.
+In some cases, verifiers' criteria are as simple as recognizing a set of authorities for certain types of claims or credentials. In other cases, the decision involves delegation and roots of authority. Such a setup is similar to the Public Key Infrastructure (PKI) for X.509 certificates, but with different chains of trust depending on the type of information – the authorities for academic credentials are not the same as for citizenship or banking information.
 
 # Definitions and concepts
 
@@ -23,7 +23,7 @@ A claim is trusted by a verifier if either:
 
 ## Delegation: depths of authority
 
-Some entities, such as governments, have the authority to issue claims but choose to delegate that authority to other entities.
+Some entities, such as governments, have the authority to issue claims themselves but choose to delegate that authority to other entities.
 
 **Examples:**
 
@@ -53,13 +53,13 @@ The following schema is used by an issuer inside a Verifiable Credential's `cred
 
 ## Trusting claims
 
-A claim can be either implicitly or explicitly trusted. While explicit trust applies to any type of claim, implicit trust is defined slightly differently for claims of type `authoritativeFor` and for other types of claims, to allow for delegation.
+A claim can be either implicitly or explicitly trusted. The sections below detail how trust is determined in either case. Implicit trust is defined recursively, with explicit trust being the exit case of the recursivity.
 
 ### Implicit trust
 
 A claim is _implicitly trusted_ when the issuer of the credential is considered an authority for that claim, i.e. when the verifier trusts (implicitly or explicitly) an `authoritativeFor` claim about the issuer.
 
-When the original claim has type `authoritativeFor` itself, the issuer's `authoritativeFor` claims must also have a `depth` property strictly higher than that of the original claim.
+Additionally, when the claim to be trusted has type `authoritativeFor` itself, the issuer's `authoritativeFor` claim must have a `depth` property strictly higher than that of the original claim.
 
 Example:
 
@@ -76,15 +76,21 @@ Example:
 
 ### Explicit trust
 
-A claim is explicitly trusted when the verifier decides to trust it based on its own (business, regulatory, etc.) rules. This is the simplest case.
+A claim is explicitly trusted when the verifier makes the decision based on its own (business, regulatory, etc.) rules. This is the simplest case.
 
 Examples:
 
-1. _Big Buck Bank_ chooses to explicitly trust a specific financial institution as an authority for credit score claims.
-2. _Recruiter X_ knows the DIDs of recognized universities and decides to trust any diplomas issued by those DIDs. 
-3. _Ask Y_ chooses to trust a specific public institution for `authoritativeFor` claims and a given depth, making that issuer a "Root authority" in a chain of trust.
+1. An identity wallet may allow the user to manually trust a specific credential.
+2. A verifier may choose to always accept self-issued credentials (i.e. the subject is the issuer) for some claims.
+3. _Big Buck Bank_ chooses to explicitly trust a specific financial institution as an authority for credit score claims.
+4. _Recruiter X_ knows the DIDs of recognized universities and decides to trust any diplomas issued by those DIDs, for a specific range of issuance date.
+5. _Ask Y_ chooses to trust a specific public institution for `authoritativeFor` claims and a given depth, making that issuer a "Root authority" in a chain of trust.
 
 # Notes
+
+## Transitivity of trust delegation: friend of a friend of a friend of...
+
+This specification defines implicit trust in a recursive way, with explicit trust being the exit condition. However, to prevent infinite loops and to avoid ridiculously long trust chains, verifiers may decide to put a practical limit to how many hops they support.
 
 ## Distribution of authority credentials
 
