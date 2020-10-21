@@ -76,12 +76,12 @@ Example:
 
 ### Explicit trust
 
-A claim is explicitly trusted when the verifier makes the decision based on its own (business, regulatory, etc.) rules. This is the simplest case.
+A claim is _explicitly trusted_ when the verifier makes the decision based on its own (business, regulatory, etc.) rules. This is the simplest case.
 
 Examples:
 
 1. An identity wallet may allow the user to manually trust a specific credential.
-2. A verifier may choose to always accept self-issued credentials (i.e. the subject is the issuer) for some claims.
+2. A verifier may choose to accept self-issued credentials (i.e. the subject is the issuer) for some claims.
 3. _Big Buck Bank_ chooses to explicitly trust a specific financial institution as an authority for credit score claims.
 4. _Recruiter X_ knows the DIDs of recognized universities and decides to trust any diplomas issued by those DIDs, for a specific range of issuance date.
 5. _Ask Y_ chooses to trust a specific public institution for `authoritativeFor` claims and a given depth, making that issuer a "Root authority" in a chain of trust.
