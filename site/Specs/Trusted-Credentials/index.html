@@ -1,0 +1,561 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>Trusted Credentials - KayTrust Developer Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"Lato",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#trusted-credentials" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="KayTrust Developer Documentation" class="md-header-nav__button md-logo" aria-label="KayTrust Developer Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41L2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18l-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            KayTrust Developer Documentation
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Trusted Credentials
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KayTrust Developer Documentation" class="md-nav__button md-logo" aria-label="KayTrust Developer Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41L2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18l-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
+
+    </a>
+    KayTrust Developer Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../index.md" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../" class="md-nav__link">
+      Specs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Manuals/" class="md-nav__link">
+      Manuals
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Tutorials/" class="md-nav__link">
+      Tutorials
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    Motivation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definitions-and-concepts" class="md-nav__link">
+    Definitions and concepts
+  </a>
+  
+    <nav class="md-nav" aria-label="Definitions and concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authority" class="md-nav__link">
+    Authority
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trusted-claim" class="md-nav__link">
+    Trusted claim
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delegation-depths-of-authority" class="md-nav__link">
+    Delegation: depths of authority
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#big-picture" class="md-nav__link">
+    Big picture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-specification" class="md-nav__link">
+    Technical specification
+  </a>
+  
+    <nav class="md-nav" aria-label="Technical specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema" class="md-nav__link">
+    Schema
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trusting-claims" class="md-nav__link">
+    Trusting claims
+  </a>
+  
+    <nav class="md-nav" aria-label="Trusting claims">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implicit-trust" class="md-nav__link">
+    Implicit trust
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicit-trust" class="md-nav__link">
+    Explicit trust
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transitivity-of-trust-delegation-friend-of-a-friend-of-a-friend-of" class="md-nav__link">
+    Transitivity of trust delegation: friend of a friend of a friend of...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution-of-authority-credentials" class="md-nav__link">
+    Distribution of authority credentials
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value-constraints" class="md-nav__link">
+    Value constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relation-with-eidas" class="md-nav__link">
+    Relation with eIDAS
+  </a>
+  
+    <nav class="md-nav" aria-label="Relation with eIDAS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-level-of-assurance-for-a-normal-credential" class="md-nav__link">
+    Example 1: level of assurance for a normal credential
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-level-of-assurance-for-an-authority" class="md-nav__link">
+    Example 2: level of assurance for an authority
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="trusted-credentials">Trusted Credentials</h1>
+<h2 id="motivation">Motivation</h2>
+<p>Verifiable credentials make claims about a subject. While it is possible for a verifier to deterministically check that a credential actually came from its listed issuer without modifications, the decision of whether that issuer is <em>relevant</em> for the claims is subjective.</p>
+<p>For example, a police officer in Germany might verify that a driving license from Canada is genuine, but that doesn't mean they will accept the Canadian government as a relevant authority and let you drive. That decision is up to the police and based e.g. on international agreements between countries.</p>
+<p>In some cases, verifiers' criteria are as simple as recognizing a set of authorities for certain types of claims or credentials. In other cases, the decision involves delegation and roots of authority. Such a setup is similar to the Public Key Infrastructure (PKI) for X.509 certificates, but with different chains of trust depending on the type of information – the authorities for academic credentials are not the same as for citizenship or banking information.</p>
+<h2 id="definitions-and-concepts">Definitions and concepts</h2>
+<h3 id="authority">Authority</h3>
+<p>An authority for a type of claim (e.g. identity document number, phone number, email address) is an entity that is trusted by a verifier to issue reliable claims of that type.</p>
+<p>Being or not an authority for a given type of claim depends on each verifier: a same entity is an authority to some verifiers but not to others.</p>
+<h3 id="trusted-claim">Trusted claim</h3>
+<p>A claim is trusted by a verifier if either:</p>
+<ul>
+<li>The verifier considers the issuer of the containing credential to be an authority for that claim (<em>implicit trust</em>).</li>
+<li>Or the verifier decides to trust the claim directly, based on the verifier's own rules (<em>explicit trust</em>).</li>
+</ul>
+<h3 id="delegation-depths-of-authority">Delegation: depths of authority</h3>
+<p>Some entities, such as governments, have the authority to issue claims themselves but choose to delegate that authority to other entities.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>A car reseller may attest to a car's functioning state but may not delegate that authority to another entity (authority with depth 0).</li>
+<li>A car brand may give authority to car resellers to attest to a car's functioning state (depth 1).</li>
+<li>A university may issue diplomas but may not delegate that authority (depth 0).</li>
+<li>The Ministry of Education of a country may give authority to universities to issue diplomas (depth 1).</li>
+<li>The government of a country may give authority to the Ministry of Education to give that authority to universities (depth 2).</li>
+</ul>
+<h2 id="big-picture">Big picture</h2>
+<p><img alt="chainoftrust.png" src="../../img/chainoftrust.png" /></p>
+<h2 id="technical-specification">Technical specification</h2>
+<h3 id="schema">Schema</h3>
+<p>The following schema is used by an issuer inside a Verifiable Credential's <code>credentialSubject</code> section to say that the subject is authoritative for a given claim type.</p>
+<pre><code class="json">
+  &quot;credentialAuthority&quot;: {
+    &quot;authoritativeFor&quot;: &quot;http://schema.org/driverLicense&quot;, # The type of claim the entity is authoritative for
+    &quot;depth&quot;: 1 # Number of delegation hops, defaults to 0
+  }
+</code></pre>
+
+<h3 id="trusting-claims">Trusting claims</h3>
+<p>A claim can be either implicitly or explicitly trusted. The sections below detail how trust is determined in either case. Implicit trust is defined recursively, with explicit trust being the exit case of the recursivity.</p>
+<h4 id="implicit-trust">Implicit trust</h4>
+<p>A claim is <em>implicitly trusted</em> when the issuer of the credential is considered an authority for that claim, i.e. when the verifier trusts (implicitly or explicitly) an <code>authoritativeFor</code> claim about the issuer.</p>
+<p>Additionally, when the claim to be trusted has type <code>authoritativeFor</code> itself, the issuer's <code>authoritativeFor</code> claim must have a <code>depth</code> property strictly higher than that of the original claim.</p>
+<p>Example:</p>
+<ul>
+<li>Recruiter X receives a credential claiming that John Doe has a Doctorate in Rocket Science (modelled as "diploma").<ul>
+<li>That credential is issued by University of the North.</li>
+</ul>
+</li>
+<li>University of the North, in a separate credential, claims to be an authority for claims of type "diploma" with default depth 0.<ul>
+<li>That second credential was issued by Ministry of Education.</li>
+</ul>
+</li>
+<li>Ministry of Education, in a separate credential, claims to be an authority for "diploma" claims, with depth 1.<ul>
+<li>That third credential is signed by Government of Country X.</li>
+</ul>
+</li>
+<li>Government of Country X, in a separate credential, claims to be authoritative for claim "diploma" with depth 3.<ul>
+<li>That third credential is explicitly trusted by the verifier (see below).</li>
+</ul>
+</li>
+<li>As a result, Recruiter X implicitly trusts John Doe's diploma.</li>
+</ul>
+<h4 id="explicit-trust">Explicit trust</h4>
+<p>A claim is <em>explicitly trusted</em> when the verifier makes the decision based on its own (business, regulatory, etc.) rules. This is the simplest case.</p>
+<p>Examples:</p>
+<ol>
+<li>An identity wallet may allow the user to manually trust a specific credential.</li>
+<li>A verifier may choose to accept self-issued credentials (i.e. the subject is the issuer) for some claims.</li>
+<li><em>Big Buck Bank</em> chooses to explicitly trust a specific financial institution as an authority for credit score claims.</li>
+<li><em>Recruiter X</em> knows the DIDs of recognized universities and decides to trust any diplomas issued by those DIDs, for a specific range of issuance date.</li>
+<li><em>Ask Y</em> chooses to trust a specific public institution for <code>authoritativeFor</code> claims and a given depth, making that issuer a "Root authority" in a chain of trust.</li>
+</ol>
+<h2 id="notes">Notes</h2>
+<h3 id="transitivity-of-trust-delegation-friend-of-a-friend-of-a-friend-of">Transitivity of trust delegation: friend of a friend of a friend of...</h3>
+<p>This specification defines implicit trust in a recursive way, with explicit trust being the exit condition. However, to prevent infinite loops and to avoid ridiculously long trust chains, verifiers may decide to put a practical limit to how many hops they support.</p>
+<h3 id="distribution-of-authority-credentials">Distribution of authority credentials</h3>
+<p>This data model relies on the verifier's access to "trust credentials" in addition to the credential of first interest. This is similar to SSL's requirement for the server to distribute the complete chain of trust during handshake. Although this data model doesn't define a way for the holder to distribute the relevant trust credentials, a good practice might be to include all relevant credentials in a Verifiable Presentation. That being said, depending on the context the holder can assume that the verifier already trusts some of the involved authorities and thus avoid "stating the obvious".</p>
+<h3 id="value-constraints">Value constraints</h3>
+<p>This model doesn't place any constraints on the value of the claims. For example, University of the North may not be an authority for Doctorates in Rocket Science but only for Masters in Literature.</p>
+<p>However, that limitation shouldn't be a problem thanks to the trust model. If an entity abuses their authority and starts signing certificates that they shouldn't, or otherwise fails to demonstrate that they're following a rigorous issuance process, they will take the risk of losing their status as an authority. Note the similarity with the inclusion of Root CAs by browsers in traditional PKI.</p>
+<h3 id="relation-with-eidas">Relation with eIDAS</h3>
+<p>Verifiable Credentials may contain a <code>levelOfAssurance</code> attribute as part of their metadata (i.e. at the same level as <code>credentialSubject</code>). The value of that property indicates how reliable the claims contained in the credential are.</p>
+<p>The <code>authoritativeFor</code> claims discussed in this specification play nicely with a credential's level of assurance, because the level of assurance of such credentials indicates the level of assurance given to that issuer by a higher-level authority.</p>
+<h4 id="example-1-level-of-assurance-for-a-normal-credential">Example 1: level of assurance for a normal credential</h4>
+<p>The credential below claims the name of subject <code>did:xxx:abc</code> to be John Doe, with a level of assurance "High" set by issuer <code>did:xxx:def</code>.</p>
+<pre><code class="json">{
+  &quot;@type&quot;: &quot;VerifiableCredential&quot;,
+  &quot;credentialSubject&quot;: {
+    &quot;@context&quot;: &quot;http://schema.org/&quot;,
+    &quot;@id&quot;: &quot;did:xxx:abc&quot;,
+    &quot;name&quot;: &quot;John Doe&quot;
+  },
+  &quot;levelOfAssurance&quot;: &quot;High&quot;,
+  &quot;issuer&quot;: &quot;did:xxx:def&quot;
+}
+</code></pre>
+
+<h4 id="example-2-level-of-assurance-for-an-authority">Example 2: level of assurance for an authority</h4>
+<p>The credential below claims that subject <code>did:xxx:def</code> (issuer of the credential above) is an authority for claims of type <code>name</code>, with a level of assurance "High" set by higher-level authority <code>did:xxx:ghi</code>.</p>
+<pre><code class="json">{
+  &quot;@type&quot;: &quot;VerifiableCredential&quot;,
+  &quot;credentialSubject&quot;: {
+    &quot;@context&quot;: &quot;http://schema.kaytrust.id/&quot;,
+    &quot;@id&quot;: &quot;did:xxx:def&quot;,
+    &quot;credentialAuthority&quot;: {
+      &quot;authoritativeFor&quot;: &quot;http://schema.org/name&quot;
+    }
+  },
+  &quot;levelOfAssurance&quot;: &quot;High&quot;,
+  &quot;issuer&quot;: &quot;did:xxx:ghi&quot;
+}
+</code></pre>
+
+<p>If the verifier trusts <code>did:xxx:ghi</code> with that level of assurance, then they will also trust John Doe's credential with the same level of assurance, per eiDAS rules.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.instant'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

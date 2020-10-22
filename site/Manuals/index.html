@@ -1,0 +1,599 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>Manuals - KayTrust Developer Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"Lato",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#identity-contracts" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="KayTrust Developer Documentation" class="md-header-nav__button md-logo" aria-label="KayTrust Developer Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41L2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18l-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            KayTrust Developer Documentation
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Manuals
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="KayTrust Developer Documentation" class="md-nav__button md-logo" aria-label="KayTrust Developer Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41L2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18l-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
+
+    </a>
+    KayTrust Developer Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.md" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Specs/" class="md-nav__link">
+      Specs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Manuals
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      Manuals
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#considerations" class="md-nav__link">
+    Considerations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-assumptions" class="md-nav__link">
+    General assumptions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-contracts" class="md-nav__link">
+    Types of contracts
+  </a>
+  
+    <nav class="md-nav" aria-label="Types of contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy-contract" class="md-nav__link">
+    Proxy contract
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-manager-contract" class="md-nav__link">
+    Identity Manager contract
+  </a>
+  
+    <nav class="md-nav" aria-label="Identity Manager contract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authorization-levels-in-the-identity-manager-contract" class="md-nav__link">
+    Authorization levels in the Identity Manager Contract
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-actions-in-the-identity-manager" class="md-nav__link">
+    Available actions in the Identity Manager
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-manager-contract-deployment" class="md-nav__link">
+    Identity Manager contract deployment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Tutorials/" class="md-nav__link">
+      Tutorials
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#considerations" class="md-nav__link">
+    Considerations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-assumptions" class="md-nav__link">
+    General assumptions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-contracts" class="md-nav__link">
+    Types of contracts
+  </a>
+  
+    <nav class="md-nav" aria-label="Types of contracts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy-contract" class="md-nav__link">
+    Proxy contract
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-manager-contract" class="md-nav__link">
+    Identity Manager contract
+  </a>
+  
+    <nav class="md-nav" aria-label="Identity Manager contract">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authorization-levels-in-the-identity-manager-contract" class="md-nav__link">
+    Authorization levels in the Identity Manager Contract
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-actions-in-the-identity-manager" class="md-nav__link">
+    Available actions in the Identity Manager
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-manager-contract-deployment" class="md-nav__link">
+    Identity Manager contract deployment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="identity-contracts">Identity Contracts</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This section is intended to guide you through all the functionalities offered by the Identity contracts. First, lets recap the types of contracts and how they are related and finally explore what we can do with them.</p>
+<h2 id="considerations">Considerations</h2>
+<p>In the current state contracts are available for ethereum networks.</p>
+<h2 id="general-assumptions">General assumptions</h2>
+<ul>
+<li>
+<p>Device: This document supposes a user/entity accessing the contract through any <strong>device</strong> like a computer, mobile phone, tablet, IoT device, remote server. Later in this document the term <em>device</em> refers to any of the mentioned here.</p>
+</li>
+<li>
+<p>User: The end user who creates its identity either through the IndetityManager or direclty by deploying an instance of the proxy smart contract.</p>
+</li>
+</ul>
+<h2 id="types-of-contracts">Types of contracts</h2>
+<p>Two contracts are used in order to create and manage identities.</p>
+<h3 id="proxy-contract">Proxy contract</h3>
+<p>The Proxy smart contract <strong>represents the Identity for a specific person</strong>. This contract Allows to:</p>
+<ul>
+<li>
+<p>Set one or more ethereum addresses as the owner/owners of a proxy instance.</p>
+</li>
+<li>
+<p>Allows to forward any message to any other contract in the network where the proxy contract has been deployed.</p>
+</li>
+<li>
+<p>You are totally free to deploy a proxy contract instance without depending of any other contract. When it is done you can set an address as the owner of that contract.</p>
+</li>
+<li>
+<p>Another way to deploy a proxy instance is by using an Identity Manager contract. The identity manager is explained in the next section.</p>
+</li>
+<li>
+<p>Forward any message to any other contract. This is the main method in this contract.</p>
+</li>
+</ul>
+<p>Interested to see all the details about the Proxy contract?. Please refer to the following <a href="http://developer.kaytrust.id/Specs/Proxy-Contract-ERC">documentation</a></p>
+<h3 id="identity-manager-contract">Identity Manager contract</h3>
+<p>This contract is aimed to be used as a layer of abstraction when making actions related to your identity. Later in this document called IM. <strong>This contract is not owned or administered by anyone</strong>.</p>
+<h4 id="authorization-levels-in-the-identity-manager-contract">Authorization levels in the Identity Manager Contract</h4>
+<p>The following authorization levels are currently supported in the Identity Manager contract:</p>
+<p>Those levels can be applied to any device with a configured private key.</p>
+<ul>
+<li>fw: Allows the device to forward messages through the IdentityManager contract.</li>
+<li>auth: If assigned to a certain device you can create an offline logic that includes querying to the IM contract if the device has authentication capabilities; it allows developers perform authentication processes.</li>
+<li>devicemanager: Allows to add a new device from which the user can access to its identity.</li>
+<li>admin: A user with this capability is able to transfer its proxy identity to a new IdentityManager.</li>
+</ul>
+<h4 id="available-actions-in-the-identity-manager">Available actions in the Identity Manager</h4>
+<p>Those actions can be categorized in three groups:</br></br>
+<strong>Identity lifecycle thorugh the Identity manager</strong></p>
+<ul>
+<li>Identity creation<ul>
+<li><a href="/Manuals/diagrams/identity-lifecycle/IM_identity_creation">reference</a></li>
+</ul>
+</li>
+<li>Register/remove devices to interact with their identities which live on the blockchain<ul>
+<li><a href="/Manuals/diagrams/identity-lifecycle/IM_add_remove_device">reference</a></li>
+</ul>
+</li>
+<li>Transfer identity management to a new IdentityManager<ul>
+<li><a href="/Manuals/diagrams/identity-lifecycle/IM_migration_to_new_IM">reference</a></li>
+</ul>
+</li>
+<li><a href="/Manuals/IM/IM_recover_identity">Identity recovery</a><br><br></li>
+</ul>
+<p><strong>Administrative actions</strong></p>
+<ul>
+<li>Add/Remove capabilities to a device<ul>
+<li><a href="/Manuals/diagrams/identity-lifecycle/IM_add_remove_device">reference</a></li>
+</ul>
+</li>
+<li>Check capabilities a certain device is granted in the Identity Manager Contract.<ul>
+<li><a href="/Manuals/diagrams/administration/IM_identity_administration">reference</a>  </li>
+</ul>
+</li>
+<li>Forward messages through the IdentityManager: The identity Manager serves as a proxy to deliver messages to any existing contract in the netwwork when the Identity Manager contract lives.<ul>
+<li><a href="/Manuals/diagrams/forward/forward">reference</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="identity-manager-contract-deployment">Identity Manager contract deployment</h4>
+<ul>
+<li>
+<p>The IdentityManager contract can have many flavours. In this version we use solidity in order to make it deployable on ethereum networks.</p>
+</li>
+<li>
+<p><strong>As a developer who want to use the <a href="http://developer.kaytrust.id/">Kaytrust solution</a> you don not need to deploy the IdentityManager contract</strong>, instead simply consume its methods though our available Kaytrust SDKs:</p>
+<ul>
+<li><a href="/Tutorials/java-sdk">Kaytrust Java SDK</a></li>
+</ul>
+</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../Specs/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Specs
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../Tutorials/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Tutorials
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['navigation.instant'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

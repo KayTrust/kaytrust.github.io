@@ -1,0 +1,455 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>Content Attestation Registry ERC - KayTrust Developer Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"Lato",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#simple-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="KayTrust Developer Documentation" class="md-header-nav__button md-logo" aria-label="KayTrust Developer Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41L2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18l-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            KayTrust Developer Documentation
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Content Attestation Registry ERC
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KayTrust Developer Documentation" class="md-nav__button md-logo" aria-label="KayTrust Developer Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41L2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18l-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
+
+    </a>
+    KayTrust Developer Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../index.md" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../" class="md-nav__link">
+      Specs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Manuals/" class="md-nav__link">
+      Manuals
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Tutorials/" class="md-nav__link">
+      Tutorials
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#simple-summary" class="md-nav__link">
+    Simple Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    Abstract
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    Motivation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    Specification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#note-about-validity-times" class="md-nav__link">
+    Note about validity times
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rationale" class="md-nav__link">
+    Rationale
+  </a>
+  
+    <nav class="md-nav" aria-label="Rationale">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storing-validity-times-on-chain-vs-off-chain" class="md-nav__link">
+    Storing validity times on-chain vs. off-chain
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attesting-hashes-vs-plain-data" class="md-nav__link">
+    Attesting hashes vs. plain data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backwards-compatibility" class="md-nav__link">
+    Backwards Compatibility
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    Implementation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copyright" class="md-nav__link">
+    Copyright
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Content Attestation Registry ERC</h1>
+                
+                <pre><code>eip: &lt;to be assigned&gt;
+title: ERC: Content Attestation Registry
+author: David Ammouial (@davux) &lt;dammouia@everis.com&gt;
+discussions-to: &lt;URL&gt;
+status: Draft
+type: Standards Track
+category: ERC
+created: 2019-03-29
+</code></pre>
+
+<h2 id="simple-summary">Simple Summary</h2>
+<p>A generic and privacy-aware registry of attested information.</p>
+<h2 id="abstract">Abstract</h2>
+<p>This ERC describes a way for any entity to express and record its agreement with a given content, independently from the type of content, by storing a hash on chain along with a validity time range. Even though the existence of the agreement itself is provable and non-ambiguous, this specification doesn't place any semantics on the type of original content, how it's hashed, or what it means to agree with it. Likewise, it doesn't define any recommendation on the semantic validity of an attestation in relation to its recorded time range. As with any kind of recorded agreement, it is generally a good idea for the involved parties to ensure a mutual understanding on what is agreed upon and to what extent.</p>
+<p>This ERC also allows the agreeing party to amend a previously recorded attestation by redefining the validity time range (including retracting the attestation altogether).</p>
+<h2 id="motivation">Motivation</h2>
+<p>Traditionally, attesting to some kind of content is done through static signatures, e.g. a base64-encoded embedded RSA signature or a PGP signature. As for the smart contract world, hashes are often used in functions to certify content approval but no stable interface has been defined. This EIP is an attempt to homogenize a common interface for agreement that interoperable contract-based and web-based applications may start benefitting from.</p>
+<p>Also, traditional signatures, in order to be retracted or amended, need to be put in context of Certificate Revocation Lists (CRLs) or similar mechanisms. This EIP attempts to leverage blockchain technology to remove the need for such centralized databases.</p>
+<h2 id="definitions">Definitions</h2>
+<p><strong>Attester</strong></p>
+<p>The attester of a given content is any entity, represented by an Ethereum address, that records its agreement with that content.</p>
+<p><strong>Attestation</strong></p>
+<p>In this specification, an attestation is defined as a (start time, end time) tuple that represents the time range during which a content is agreed upon by a specific attester.</p>
+<p><strong>Verifier</strong></p>
+<p>The verifier of an attestation is an entity going through the process of reading an attestation for a given content and making conclusions on whether to trust that content.</p>
+<h2 id="specification">Specification</h2>
+<p>The general idea of this EIP is that attesting a given content is equivalent to attesting a hash of that content, as long as the hashing function is known by the attester and the verifier.</p>
+<p>An attestation is recorded as an <code>(iat, exp)</code> tuple, where <code>iat</code> ("issued at") is the time the attestation starts to be valid, and <code>exp</code> ("expires") is the time after which the attestation is no longer valid.</p>
+<p>Note the special meaning of the following values:</p>
+<ul>
+<li><code>iat == 0</code> means the attester is NOT currently attesting to that content. In this case, the value of <code>exp</code> is irrelevant. Per Solidity rules, this is the initial value for any attestation. Its intended usage inside the <code>attest()</code> function is to explicitly revoke an existing (i.e. non-zero <code>iat</code>) attestation.</li>
+<li><code>exp == 0</code> means the attester is not currently placing any expiration time on the attestation. Just like any other value, a value of <code>0</code> may be amended later if the attester decides so.</li>
+</ul>
+<p>This EIP defines the following functions:</p>
+<p><strong>attest</strong></p>
+<p>Used in a transaction to record an <code>(iat, exp)</code> attestation of a given hash.</p>
+<pre><code class="js"> function attest(bytes32 hash, uint iat, uint exp) public;
+</code></pre>
+
+<p><strong>attestations</strong></p>
+<p>Used to read the most recent attestation, if any, of a given <code>hash</code>, recorded by a given <code>attester</code>. Its return value is an <code>(iat, exp)</code> tuple.</p>
+<pre><code class="js">function attestations(bytes32 hash, address attester) public;
+</code></pre>
+
+<p>This EIP defines the following event:</p>
+<p><strong>Verified</strong></p>
+<p>This event is emitted everytime a <code>hash</code> is attested or revoked by an <code>attester</code> and contains the <code>iat</code> and <code>exp</code> times of the attestation. A value of <code>0</code> for <code>iat</code> means any previous attestation is being revoked. The event may be emitted with any values for <code>iat</code> and <code>exp</code>, including values equal to the previous ones (for example an already revoked attestation may be revoked again, or an attestation may be attested again with the same values).</p>
+<pre><code class="js">event Verified(bytes32 indexed hash, address attester, uint iat, uint exp);
+</code></pre>
+
+<h2 id="note-about-validity-times">Note about validity times</h2>
+<p>The validity time range is a mere indication by the attester. This EIP does not define what policy should be applied by verifying software or people with respect to current time. Here are a few real-life policy examples:</p>
+<ul>
+<li><strong>Safe policy</strong>. Some verifiers might decide that an attestation is only acceptable if the expiration time is at least 6 months in the future.</li>
+<li><strong>Flexible policy</strong>. Some verifiers might leave a tolerance window during which they still accept an expired attestation.</li>
+<li><strong>Strict policy</strong>. Some verifiers might only accept an attestation during the attestation time range.</li>
+<li>Some verifiers might apply more complex policies, e.g. where the tolerance depends on the identity of the attester, on the content, on the actual transaction time of the attestation, on the existence of previous attestations, etc.</li>
+</ul>
+<h2 id="rationale">Rationale</h2>
+<h3 id="storing-validity-times-on-chain-vs-off-chain">Storing validity times on-chain vs. off-chain</h3>
+<p>Information stored on a blockchain is both public and permanent, which makes it a crucial decision to decide what to store and what not to store. For this reason, a balance should always be seeked between privacy and usefulness. Specifically, the decision to include validity times on chain rather than in the original content is a result of that subjective balance:</p>
+<ul>
+<li>Including validity times means leaking out information allowing to suspect or discard specific contents for a given hash. For example, time ranges of 3 weeks might give up certain types of documents, and exclude e.g. passports.</li>
+<li>Leaving validity times off-chain (typically in the original document) might not work very well for some types of documents where the issuer and the attester are separate entities and the attester doesn't have the liberty to emit an "attestation document" containing validity times.</li>
+</ul>
+<p>This specification allows verifiers to store date information on-chain. However, the attester and the verifier are always free to use any non-zero value in the <code>(iat, exp)</code> tuple and maintain date information off-chain instead.</p>
+<h3 id="attesting-hashes-vs-plain-data">Attesting hashes vs. plain data</h3>
+<p>To follow best practices, it was deemed equally secure, cheaper, and most respectful to privacy to record fixed-length <code>bytes32</code> data rather than actual content.</p>
+<h2 id="backwards-compatibility">Backwards Compatibility</h2>
+<p>This EIP doesn't introduce any known backwards compatibility issues.</p>
+<h2 id="implementation">Implementation</h2>
+<p>An implementation may be found <a href="https://gitlab.com/KayTrust/developer/blob/master/contracts/AttestationRegistry.sol">here</a>.</p>
+<h2 id="copyright">Copyright</h2>
+<p>Copyright and related rights waived via <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.instant'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

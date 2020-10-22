@@ -1,0 +1,446 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+    
+    
+      
+        <title>Ethereum Attestation Registry Proof Type - KayTrust Developer Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"Lato",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ethereum-attestation-registry-proof-type" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="KayTrust Developer Documentation" class="md-header-nav__button md-logo" aria-label="KayTrust Developer Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41L2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18l-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            KayTrust Developer Documentation
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Ethereum Attestation Registry Proof Type
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KayTrust Developer Documentation" class="md-nav__button md-logo" aria-label="KayTrust Developer Documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41L2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18l-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
+
+    </a>
+    KayTrust Developer Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../index.md" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../" class="md-nav__link">
+      Specs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Manuals/" class="md-nav__link">
+      Manuals
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Tutorials/" class="md-nav__link">
+      Tutorials
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    Abstract
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-of-this-document" class="md-nav__link">
+    Status of this Document
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    Specification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof-generation-method" class="md-nav__link">
+    Proof Generation Method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof-revocation-method" class="md-nav__link">
+    Proof Revocation Method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof-verification-method" class="md-nav__link">
+    Proof Verification Method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    Performance Considerations
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="ethereum-attestation-registry-proof-type">Ethereum Attestation Registry Proof Type</h1>
+<h2 id="abstract">Abstract</h2>
+<p>This document introduces a new embedded proof type for Verifiable Credentials and Verifiable Presentations, as described in <a href="https://w3c.github.io/vc-data-model/">Verifiable Credentials Data Model</a>'s <a href="https://w3c.github.io/vc-data-model/#proofs-signatures">"Proofs" section</a>, currently published by the W3C Credentials Community Group.</p>
+<h2 id="status-of-this-document">Status of this Document</h2>
+<p>This specification is an unofficial draft. It is provided as a reference for people and organisations who wish to implement Ethereum-based proofs.</p>
+<h2 id="introduction">Introduction</h2>
+<p>The Verifiable Credentials specification <a href="https://w3c.github.io/vc-data-model/#proofs-signatures">describes</a> a modular mechanism for declaring how a given credential must be verified.</p>
+<p>This specification introduces a new type of proof called "EthereumAttestationRegistry2019". This type of proof is based on a trusted smart contract deployed on an Ethereum blockchain accessible by the verifier. Verification of a credential containing this type of proof is done by calls a specific function to the smart contract.</p>
+<p>This document extends the <a href="https://w3c.github.io/vc-data-model/">Verifiable Credentials specification</a> and assumes that the terminology and concepts of that specification are known.</p>
+<h2 id="specification">Specification</h2>
+<p>An "Ethereum attestation registry (2019)" proof is represented by an object contained in the <code>"proof"</code> section of a Verifiable Credential. As such, it is considered an "embedded proof".</p>
+<p>It must contain the following attributes:</p>
+<dl>
+  <dt>type</dt>
+  <dd>The proof type, as defined in the Verifiable Credentials specification. The value MUST be `"EthereumAttestationRegistry2019"`.</dd>
+
+  <dt>contractAddress</dt>
+  <dd>A string containing the hexadecimal Ethereum address of the smart contract that allows the verification of the credential. For example: `"0x123f681646d4a755815f9cb19e1acc8565a0c2ac"`. That contract must implement **EIP-XXX (to be defined): Content Attestation Registry**.</dd>
+
+  <dt>networkId</dt>
+  <dd>A string containing the hexadecimal NetworkId of the Ethereum network where the contract is deployed. In order to be able to verify the credential, the verifier must have read access to a node running on that network.</dd>
+</dl>
+
+<p>For a proof to be valid, it MUST be possible to determine an Ethereum address from the <code>"issuer"</code> attribute. For example, the <code>"ev"</code> DID method allows to determine the Ethereum address from a DID.</p>
+<h2 id="example">Example</h2>
+<p>The following example shows a Verifiable Credential with an Ethereum Attestation Registry proof.</p>
+<pre><code class="json">{
+  &quot;@type&quot;: &quot;VerifiableCredential&quot;,
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;credentialSubject&quot;: {
+    &quot;@id&quot;: &quot;did:example:abcd&quot;,
+    &quot;name&quot;: &quot;John Doe&quot;,
+    &quot;birthdate&quot;: &quot;2018-01-01&quot;
+  },
+  &quot;issuer&quot;: &quot;did:ev:2uukHPBYMjdZPkg4p5ZjipKHzkaXLr4T5ut&quot;,
+  &quot;proof&quot;: {
+      &quot;type&quot;: &quot;EthereumAttestationRegistry2019&quot;,
+      &quot;contractAddress&quot;: &quot;0x123f681646d4a755815f9cb19e1acc8565a0c2ac&quot;,
+      &quot;networkId&quot;: &quot;0x19&quot;
+    }
+}
+</code></pre>
+
+<h2 id="proof-generation-method">Proof Generation Method</h2>
+<p>The following steps MUST be applied by a credential's issuer in order to generate an Ethereum Attestation Registry proof of the credential:</p>
+<ol>
+<li>Create the proof object as defined in previous sections and add it to the credential as a <code>proof</code> attribute. If <code>proof</code> already exists, ensure it becomes an array containing previous values + the new object.</li>
+<li>At this point, the issuer MAY distribute the credential. However, it won't be possible to verify the proof until the rest of the steps are applied, so it is RECOMMENDED to wait until the end of the proof generation to distribute the credential.</li>
+<li>Compute the credential's hash:<ol>
+<li>Temporarily strip the whole <code>"proof"</code> attribute from the credential, even if it contains multiple proofs.</li>
+<li>Serialize the resulting object as a string. TODO: Describe the serialization method (it must be deterministic).</li>
+<li>Compute the SHA256 hash of the string.</li>
+</ol>
+</li>
+<li>Determine the Ethereum address corresponding to the issuer's URI.</li>
+<li>Decide on the validity timerange of the attestation in the form of a integer couple <code>(iat, exp)</code>, where <code>iat</code> is the start date and <code>exp</code> is the expiration date.</li>
+<li>Decide on the Ethereum network and smart contract to be used for storing the attestation.</li>
+<li>Send a transaction to the Ethereum network and smart contract containing a call to the <code>attest(bytes32 hash, uint iat, uint exp)</code> function, where <code>hash</code>, <code>iat</code> and <code>exp</code> are the values computed above.</li>
+<li>Keep and distribute the resulting credential.</li>
+</ol>
+<h2 id="proof-revocation-method">Proof Revocation Method</h2>
+<p>This proof type allows for an already-emitted credential to be revoked by its original issuer. The following steps MUST be applied by the credential's issuer in order to revoke an Ethereum Attestation Registry proof:</p>
+<ol>
+<li>Compute the credential's hash:<ol>
+<li>Temporarily strip the whole <code>"proof"</code> attribute from the credential, even if it contains multiple proofs.</li>
+<li>Serialize the resulting object as a string. TODO: Describe the serialization method (it must be deterministic).</li>
+<li>Compute the SHA256 hash of the string.</li>
+</ol>
+</li>
+<li>Determine the Ethereum address corresponding to the issuer's URI.</li>
+<li>Send a transaction to the Ethereum network and smart contract listed in the proof to be revoked, containing a call to the <code>attest(bytes32 hash, 0, 0)</code> function, where <code>hash</code> is the credential's hash.</li>
+</ol>
+<p>Note that no further action is required, since the attestation registry will be updated as soon as the transaction goes through. The attestation registry will also notify interested parties through an Ethereum event that the proof is no longer valid.</p>
+<h2 id="proof-verification-method">Proof Verification Method</h2>
+<p>The following steps MUST be applied by a credential's verifier in order to verify an Ethereum Attestation Registry proof of the credential:</p>
+<ol>
+<li>Compute the credential's hash:<ol>
+<li>Temporarily strip the whole <code>"proof"</code> attribute from the credential, even if it contains multiple proofs.</li>
+<li>Serialize the resulting object as a string. TODO: Describe the serialization method (it must be deterministic).</li>
+<li>Compute the SHA256 hash of the string.</li>
+</ol>
+</li>
+<li>Determine the Ethereum address corresponding to the issuer's URI.</li>
+<li>Call the <code>attestations(hash, issuer)</code> function of the smart contract listed in the proof, where <code>hash</code> is the credential's hash and <code>issuer</code> is issuer's Ethereum address and store the returned value couple as <code>(iat, exp)</code>. Those are the start date and end date, respectively, specified by the issuer when signing the credential.</li>
+<li>Verify that the time range is acceptable. The following two conditions below SHOULD both be verified for the credential to be considered valid. However, the verifier MAY apply a different policy if the use case justifies it.<ul>
+<li><code>iat</code> is not <code>0</code> and is lower than the time of the verification.</li>
+<li><code>exp</code> is <code>0</code> or is higher than the time of the verification.</li>
+</ul>
+</li>
+</ol>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<p>With this proof type, an Ethereum transaction must be executed for each new attestation. This specification should be improved in the future to allow more scalable approaches.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.instant'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
