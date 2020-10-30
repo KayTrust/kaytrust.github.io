@@ -427,20 +427,45 @@
 <p><img alt="chainoftrust.png" src="../../img/chainoftrust.png" /></p>
 <h2 id="technical-specification">Technical specification</h2>
 <h3 id="schema">Schema</h3>
-<p>The following schema is used by an issuer inside a Verifiable Credential's <code>credentialSubject</code> section to say that the subject is authoritative for a given claim type.</p>
-<pre><code class="json">
-  &quot;credentialAuthority&quot;: {
-    &quot;authoritativeFor&quot;: &quot;http://schema.org/driverLicense&quot;, # The type of claim the entity is authoritative for
-    &quot;depth&quot;: 1 # Number of delegation hops, defaults to 0
+<p>The following schema is used in a Verifiable Credential issued by "entity A" to say that "entity B" is authoritative for a given claim type.</p>
+<pre><code class="json">  &quot;issuer&quot;: &quot;did:xxx:entityA&quot;,
+  &quot;credentialSubject&quot;: {
+    &quot;id&quot;: &quot;did:xxx:entityB&quot;
+    &quot;credentialAuthority&quot;: {
+      &quot;authoritativeFor&quot;: &quot;http://schema.org/driverLicense&quot;, # The type of claim the entity is authoritative for
+      &quot;depth&quot;: 2 # Number of delegation hops, defaults to 0
+    }
   }
 </code></pre>
 
 <h3 id="trusting-claims">Trusting claims</h3>
 <p>A claim can be either implicitly or explicitly trusted. The sections below detail how trust is determined in either case. Implicit trust is defined recursively, with explicit trust being the exit case of the recursivity.</p>
 <h4 id="implicit-trust">Implicit trust</h4>
-<p>A claim is <em>implicitly trusted</em> when the issuer of the credential is considered an authority for that claim, i.e. when the verifier trusts (implicitly or explicitly) an <code>authoritativeFor</code> claim about the issuer.</p>
-<p>Additionally, when the claim to be trusted has type <code>authoritativeFor</code> itself, the issuer's <code>authoritativeFor</code> claim must have a <code>depth</code> property strictly higher than that of the original claim.</p>
-<p>Example:</p>
+<p>A claim is <em>implicitly trusted</em> when the issuer of the credential is considered an authority for that claim.</p>
+<p>As an example, let's say the verifier has access to a credential such as the one in the example from the "Schema" section above. If the verifier trusts (implicitly or explicitly) that <code>credentialAuthority</code> claim, then they will <em>implicitly trust</em> the following types of claims contained by any credential issued by "entity B":</p>
+<ul>
+<li>Any <code>driverLicense</code> claim.</li>
+<li>Any <code>credentialAuthority</code> claim with <code>depth</code> strictly lower than 2, and about <code>driverLicense</code> claims.</li>
+</ul>
+<p>Example credentials for either case:</p>
+<pre><code class="json">  &quot;issuer&quot;: &quot;did:xxx:entityB&quot;,
+  &quot;credentialSubject&quot;: {
+    &quot;id&quot;: &quot;did:xxx:entityC&quot;,
+    &quot;driverLicense&quot;: { ... }
+  }
+</code></pre>
+
+<pre><code class="json">  &quot;issuer&quot;: &quot;did:xxx:entityB&quot;,
+  &quot;credentialSubject&quot;: {
+    &quot;id&quot;: &quot;did:xxx:entityC&quot;,
+    &quot;credentialAuthority&quot;: {
+      &quot;authoritativeFor&quot;: &quot;http://schema.org/driverLicense&quot;,
+      &quot;depth&quot;: 1
+    }
+  }
+</code></pre>
+
+<p>Example scenario:</p>
 <ul>
 <li>Recruiter X receives a credential claiming that John Doe has a Doctorate in Rocket Science (modelled as "diploma").<ul>
 <li>That credential is issued by University of the North.</li>
@@ -462,13 +487,13 @@
 </ul>
 <h4 id="explicit-trust">Explicit trust</h4>
 <p>A claim is <em>explicitly trusted</em> when the verifier makes the decision based on its own (business, regulatory, etc.) rules. This is the simplest case.</p>
-<p>Examples:</p>
+<p>Example scenarios:</p>
 <ol>
 <li>An identity wallet may allow the user to manually trust a specific credential.</li>
 <li>A verifier may choose to accept self-issued credentials (i.e. the subject is the issuer) for some claims.</li>
 <li><em>Big Buck Bank</em> chooses to explicitly trust a specific financial institution as an authority for credit score claims.</li>
 <li><em>Recruiter X</em> knows the DIDs of recognized universities and decides to trust any diplomas issued by those DIDs, for a specific range of issuance date.</li>
-<li><em>Ask Y</em> chooses to trust a specific public institution for <code>authoritativeFor</code> claims and a given depth, making that issuer a "Root authority" in a chain of trust.</li>
+<li><em>Ask Y</em> chooses to trust a specific public institution for <code>credentialAuthority</code> claims and a given depth, making that issuer a "Root authority" in a chain of trust.</li>
 </ol>
 <h2 id="notes">Notes</h2>
 <h3 id="transitivity-of-trust-delegation-friend-of-a-friend-of-a-friend-of">Transitivity of trust delegation: friend of a friend of a friend of...</h3>
@@ -480,7 +505,7 @@
 <p>However, that limitation shouldn't be a problem thanks to the trust model. If an entity abuses their authority and starts signing certificates that they shouldn't, or otherwise fails to demonstrate that they're following a rigorous issuance process, they will take the risk of losing their status as an authority. Note the similarity with the inclusion of Root CAs by browsers in traditional PKI.</p>
 <h3 id="relation-with-eidas">Relation with eIDAS</h3>
 <p>Verifiable Credentials may contain a <code>levelOfAssurance</code> attribute as part of their metadata (i.e. at the same level as <code>credentialSubject</code>). The value of that property indicates how reliable the claims contained in the credential are.</p>
-<p>The <code>authoritativeFor</code> claims discussed in this specification play nicely with a credential's level of assurance, because the level of assurance of such credentials indicates the level of assurance given to that issuer by a higher-level authority.</p>
+<p>The <code>credentialAuthority</code> claims discussed in this specification play nicely with a credential's level of assurance, because the level of assurance of such credentials indicates the level of assurance given to that issuer by a higher-level authority.</p>
 <h4 id="example-1-level-of-assurance-for-a-normal-credential">Example 1: level of assurance for a normal credential</h4>
 <p>The credential below claims the name of subject <code>did:xxx:abc</code> to be John Doe, with a level of assurance "High" set by issuer <code>did:xxx:def</code>.</p>
 <pre><code class="json">{

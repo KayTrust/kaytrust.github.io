@@ -43,13 +43,16 @@ Some entities, such as governments, have the authority to issue claims themselve
 
 ### Schema
 
-The following schema is used by an issuer inside a Verifiable Credential's `credentialSubject` section to say that the subject is authoritative for a given claim type.
+The following schema is used in a Verifiable Credential issued by "entity A" to say that "entity B" is authoritative for a given claim type.
 
 ```json
-
-  "credentialAuthority": {
-    "authoritativeFor": "http://schema.org/driverLicense", # The type of claim the entity is authoritative for
-    "depth": 1 # Number of delegation hops, defaults to 0
+  "issuer": "did:xxx:entityA",
+  "credentialSubject": {
+    "id": "did:xxx:entityB"
+    "credentialAuthority": {
+      "authoritativeFor": "http://schema.org/driverLicense", # The type of claim the entity is authoritative for
+      "depth": 2 # Number of delegation hops, defaults to 0
+    }
   }
 ```
 
@@ -59,11 +62,35 @@ A claim can be either implicitly or explicitly trusted. The sections below detai
 
 #### Implicit trust
 
-A claim is _implicitly trusted_ when the issuer of the credential is considered an authority for that claim, i.e. when the verifier trusts (implicitly or explicitly) an `authoritativeFor` claim about the issuer.
+A claim is _implicitly trusted_ when the issuer of the credential is considered an authority for that claim.
 
-Additionally, when the claim to be trusted has type `authoritativeFor` itself, the issuer's `authoritativeFor` claim must have a `depth` property strictly higher than that of the original claim.
+As an example, let's say the verifier has access to a credential such as the one in the example from the "Schema" section above. If the verifier trusts (implicitly or explicitly) that `credentialAuthority` claim, then they will _implicitly trust_ the following types of claims contained by any credential issued by "entity B":
 
-Example:
+ - Any `driverLicense` claim.
+ - Any `credentialAuthority` claim with `depth` strictly lower than 2, and about `driverLicense` claims.
+
+Example credentials for either case:
+
+```json
+  "issuer": "did:xxx:entityB",
+  "credentialSubject": {
+    "id": "did:xxx:entityC",
+    "driverLicense": { ... }
+  }
+```
+
+```json
+  "issuer": "did:xxx:entityB",
+  "credentialSubject": {
+    "id": "did:xxx:entityC",
+    "credentialAuthority": {
+      "authoritativeFor": "http://schema.org/driverLicense",
+      "depth": 1
+    }
+  }
+```
+
+Example scenario:
 
   - Recruiter X receives a credential claiming that John Doe has a Doctorate in Rocket Science (modelled as "diploma").
     - That credential is issued by University of the North.
@@ -80,13 +107,13 @@ Example:
 
 A claim is _explicitly trusted_ when the verifier makes the decision based on its own (business, regulatory, etc.) rules. This is the simplest case.
 
-Examples:
+Example scenarios:
 
 1. An identity wallet may allow the user to manually trust a specific credential.
 2. A verifier may choose to accept self-issued credentials (i.e. the subject is the issuer) for some claims.
 3. _Big Buck Bank_ chooses to explicitly trust a specific financial institution as an authority for credit score claims.
 4. _Recruiter X_ knows the DIDs of recognized universities and decides to trust any diplomas issued by those DIDs, for a specific range of issuance date.
-5. _Ask Y_ chooses to trust a specific public institution for `authoritativeFor` claims and a given depth, making that issuer a "Root authority" in a chain of trust.
+5. _Ask Y_ chooses to trust a specific public institution for `credentialAuthority` claims and a given depth, making that issuer a "Root authority" in a chain of trust.
 
 ## Notes
 
@@ -108,7 +135,7 @@ However, that limitation shouldn't be a problem thanks to the trust model. If an
 
 Verifiable Credentials may contain a `levelOfAssurance` attribute as part of their metadata (i.e. at the same level as `credentialSubject`). The value of that property indicates how reliable the claims contained in the credential are.
 
-The `authoritativeFor` claims discussed in this specification play nicely with a credential's level of assurance, because the level of assurance of such credentials indicates the level of assurance given to that issuer by a higher-level authority.
+The `credentialAuthority` claims discussed in this specification play nicely with a credential's level of assurance, because the level of assurance of such credentials indicates the level of assurance given to that issuer by a higher-level authority.
 
 #### Example 1: level of assurance for a normal credential
 
