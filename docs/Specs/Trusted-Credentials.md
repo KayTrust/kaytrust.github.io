@@ -29,11 +29,11 @@ Some entities, such as governments, have the authority to issue claims themselve
 
 **Examples:**
 
-- A car reseller may attest to a car's functioning state but may not delegate that authority to another entity (authority with depth 0).
-- A car brand may give authority to car resellers to attest to a car's functioning state (depth 1).
-- A university may issue diplomas but may not delegate that authority (depth 0).
-- The Ministry of Education of a country may give authority to universities to issue diplomas (depth 1).
-- The government of a country may give authority to the Ministry of Education to give that authority to universities (depth 2).
+- A car reseller may attest to a car's functioning state but may not delegate that authority to another entity (authority with delegation depth 0).
+- A car brand may give authority to car resellers to attest to a car's functioning state (delegation depth 1).
+- A university may issue diplomas but may not delegate that authority (delegation depth 0).
+- The Ministry of Education of a country may give authority to universities to issue diplomas (delegation depth 1).
+- The government of a country may give authority to the Ministry of Education to give that authority to universities (delegation depth 2).
 
 ## Big picture
 
@@ -50,8 +50,9 @@ The following schema is used in a Verifiable Credential issued by "entity A" to 
   "credentialSubject": {
     "id": "did:xxx:entityB"
     "credentialAuthority": {
+      "@type": "AuthorityScope",
       "authoritativeFor": "http://schema.org/driverLicense", # The type of claim the entity is authoritative for
-      "depth": 2 # Number of delegation hops, defaults to 0
+      "delegationDepth": 2 # Number of delegation hops, defaults to 0
     }
   }
 ```
@@ -67,7 +68,7 @@ A claim is _implicitly trusted_ when the issuer of the credential is considered 
 As an example, let's say the verifier has access to a credential such as the one in the example from the "Schema" section above. If the verifier trusts (implicitly or explicitly) that `credentialAuthority` claim, then they will _implicitly trust_ the following types of claims contained by any credential issued by "entity B":
 
  - Any `driverLicense` claim.
- - Any `credentialAuthority` claim with `depth` strictly lower than 2, and about `driverLicense` claims.
+ - Any `credentialAuthority` claim with `delegationDepth` strictly lower than 2, and about `driverLicense` claims.
 
 Example credentials for either case:
 
@@ -84,8 +85,9 @@ Example credentials for either case:
   "credentialSubject": {
     "id": "did:xxx:entityC",
     "credentialAuthority": {
+      "@type": "AuthorityScope",
       "authoritativeFor": "http://schema.org/driverLicense",
-      "depth": 1
+      "delegationDepth": 1
     }
   }
 ```
@@ -94,11 +96,11 @@ Example scenario:
 
   - Recruiter X receives a credential claiming that John Doe has a Doctorate in Rocket Science (modelled as "diploma").
     - That credential is issued by University of the North.
-  - University of the North, in a separate credential, claims to be an authority for claims of type "diploma" with default depth 0.
+  - University of the North, in a separate credential, claims to be an authority for claims of type "diploma" with default delegation depth 0.
     - That second credential was issued by Ministry of Education.
-  - Ministry of Education, in a separate credential, claims to be an authority for "diploma" claims, with depth 1.
+  - Ministry of Education, in a separate credential, claims to be an authority for "diploma" claims, with delegation depth 1.
     - That third credential is signed by Government of Country X.
-  - Government of Country X, in a separate credential, claims to be authoritative for claim "diploma" with depth 3.
+  - Government of Country X, in a separate credential, claims to be authoritative for claim "diploma" with delegation depth 3.
     - That third credential is explicitly trusted by the verifier (see below).
   - As a result, Recruiter X implicitly trusts John Doe's diploma.
 
@@ -113,7 +115,7 @@ Example scenarios:
 2. A verifier may choose to accept self-issued credentials (i.e. the subject is the issuer) for some claims.
 3. _Big Buck Bank_ chooses to explicitly trust a specific financial institution as an authority for credit score claims.
 4. _Recruiter X_ knows the DIDs of recognized universities and decides to trust any diplomas issued by those DIDs, for a specific range of issuance date.
-5. _Ask Y_ chooses to trust a specific public institution for `credentialAuthority` claims and a given depth, making that issuer a "Root authority" in a chain of trust.
+5. _Ask Y_ chooses to trust a specific public institution for `credentialAuthority` claims and a given delegation depth, making that issuer a "Root authority" in a chain of trust.
 
 ## Notes
 
@@ -165,6 +167,7 @@ The credential below claims that subject `did:xxx:def` (issuer of the credential
     "@context": "http://schema.kaytrust.id/",
     "@id": "did:xxx:def",
     "credentialAuthority": {
+      "@type": "AuthorityScope",
       "authoritativeFor": "http://schema.org/name"
     }
   },
