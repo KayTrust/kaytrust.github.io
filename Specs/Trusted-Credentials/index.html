@@ -417,11 +417,11 @@
 <p>Some entities, such as governments, have the authority to issue claims themselves but choose to delegate that authority to other entities.</p>
 <p><strong>Examples:</strong></p>
 <ul>
-<li>A car reseller may attest to a car's functioning state but may not delegate that authority to another entity (authority with depth 0).</li>
-<li>A car brand may give authority to car resellers to attest to a car's functioning state (depth 1).</li>
-<li>A university may issue diplomas but may not delegate that authority (depth 0).</li>
-<li>The Ministry of Education of a country may give authority to universities to issue diplomas (depth 1).</li>
-<li>The government of a country may give authority to the Ministry of Education to give that authority to universities (depth 2).</li>
+<li>A car reseller may attest to a car's functioning state but may not delegate that authority to another entity (authority with delegation depth 0).</li>
+<li>A car brand may give authority to car resellers to attest to a car's functioning state (delegation depth 1).</li>
+<li>A university may issue diplomas but may not delegate that authority (delegation depth 0).</li>
+<li>The Ministry of Education of a country may give authority to universities to issue diplomas (delegation depth 1).</li>
+<li>The government of a country may give authority to the Ministry of Education to give that authority to universities (delegation depth 2).</li>
 </ul>
 <h2 id="big-picture">Big picture</h2>
 <p><img alt="chainoftrust.png" src="../../img/chainoftrust.png" /></p>
@@ -432,8 +432,9 @@
   &quot;credentialSubject&quot;: {
     &quot;id&quot;: &quot;did:xxx:entityB&quot;
     &quot;credentialAuthority&quot;: {
+      &quot;@type&quot;: &quot;AuthorityScope&quot;,
       &quot;authoritativeFor&quot;: &quot;http://schema.org/driverLicense&quot;, # The type of claim the entity is authoritative for
-      &quot;depth&quot;: 2 # Number of delegation hops, defaults to 0
+      &quot;delegationDepth&quot;: 2 # Number of delegation hops, defaults to 0
     }
   }
 </code></pre>
@@ -445,7 +446,7 @@
 <p>As an example, let's say the verifier has access to a credential such as the one in the example from the "Schema" section above. If the verifier trusts (implicitly or explicitly) that <code>credentialAuthority</code> claim, then they will <em>implicitly trust</em> the following types of claims contained by any credential issued by "entity B":</p>
 <ul>
 <li>Any <code>driverLicense</code> claim.</li>
-<li>Any <code>credentialAuthority</code> claim with <code>depth</code> strictly lower than 2, and about <code>driverLicense</code> claims.</li>
+<li>Any <code>credentialAuthority</code> claim with <code>delegationDepth</code> strictly lower than 2, and about <code>driverLicense</code> claims.</li>
 </ul>
 <p>Example credentials for either case:</p>
 <pre><code class="json">  &quot;issuer&quot;: &quot;did:xxx:entityB&quot;,
@@ -459,8 +460,9 @@
   &quot;credentialSubject&quot;: {
     &quot;id&quot;: &quot;did:xxx:entityC&quot;,
     &quot;credentialAuthority&quot;: {
+      &quot;@type&quot;: &quot;AuthorityScope&quot;,
       &quot;authoritativeFor&quot;: &quot;http://schema.org/driverLicense&quot;,
-      &quot;depth&quot;: 1
+      &quot;delegationDepth&quot;: 1
     }
   }
 </code></pre>
@@ -471,15 +473,15 @@
 <li>That credential is issued by University of the North.</li>
 </ul>
 </li>
-<li>University of the North, in a separate credential, claims to be an authority for claims of type "diploma" with default depth 0.<ul>
+<li>University of the North, in a separate credential, claims to be an authority for claims of type "diploma" with default delegation depth 0.<ul>
 <li>That second credential was issued by Ministry of Education.</li>
 </ul>
 </li>
-<li>Ministry of Education, in a separate credential, claims to be an authority for "diploma" claims, with depth 1.<ul>
+<li>Ministry of Education, in a separate credential, claims to be an authority for "diploma" claims, with delegation depth 1.<ul>
 <li>That third credential is signed by Government of Country X.</li>
 </ul>
 </li>
-<li>Government of Country X, in a separate credential, claims to be authoritative for claim "diploma" with depth 3.<ul>
+<li>Government of Country X, in a separate credential, claims to be authoritative for claim "diploma" with delegation depth 3.<ul>
 <li>That third credential is explicitly trusted by the verifier (see below).</li>
 </ul>
 </li>
@@ -493,7 +495,7 @@
 <li>A verifier may choose to accept self-issued credentials (i.e. the subject is the issuer) for some claims.</li>
 <li><em>Big Buck Bank</em> chooses to explicitly trust a specific financial institution as an authority for credit score claims.</li>
 <li><em>Recruiter X</em> knows the DIDs of recognized universities and decides to trust any diplomas issued by those DIDs, for a specific range of issuance date.</li>
-<li><em>Ask Y</em> chooses to trust a specific public institution for <code>credentialAuthority</code> claims and a given depth, making that issuer a "Root authority" in a chain of trust.</li>
+<li><em>Ask Y</em> chooses to trust a specific public institution for <code>credentialAuthority</code> claims and a given delegation depth, making that issuer a "Root authority" in a chain of trust.</li>
 </ol>
 <h2 id="notes">Notes</h2>
 <h3 id="transitivity-of-trust-delegation-friend-of-a-friend-of-a-friend-of">Transitivity of trust delegation: friend of a friend of a friend of...</h3>
@@ -528,6 +530,7 @@
     &quot;@context&quot;: &quot;http://schema.kaytrust.id/&quot;,
     &quot;@id&quot;: &quot;did:xxx:def&quot;,
     &quot;credentialAuthority&quot;: {
+      &quot;@type&quot;: &quot;AuthorityScope&quot;,
       &quot;authoritativeFor&quot;: &quot;http://schema.org/name&quot;
     }
   },
