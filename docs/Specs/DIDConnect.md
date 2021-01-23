@@ -55,10 +55,12 @@ An authentication request is a URL of the following form: `didconnect://auth?...
 
 When a user's Authorization Server receives a request from the application's client_id, it must treat `client_id` as an URL and fetch the Verifiable Presentation (VP) from it. Then, the AS must check the following conditions:
 
-- The VP is valid and current.
-- The `redirect_uri` value from the request matches one of the values present in the VP's credentials. Only valid and current credentials must be used.
+- The VP's proof is valid against its "holder" attribute, and the VP is within validity date.
+- The `redirect_uri` value from the request matches one of the values present in the VP's valid credentials.
 
-Then, the AS should request user's consent after showing the user all relevant claims, based on valid and current credential from the VP. Invalid or expired credentials should be ignored.
+Then, the AS should request user's consent after showing the user all relevant claims, based on valid credentials.
+
+Note: For `redirect_uri` and claims, "valid credentials" are credentials with a valid proof, within validity dates, and whose subject ID is the same as the VP's holder.
 
 ### 4. Token generation
 
