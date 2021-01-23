@@ -470,10 +470,11 @@
 <h3 id="3-obtaining-user-consent-from-as">3. Obtaining user consent from AS</h3>
 <p>When a user's Authorization Server receives a request from the application's client_id, it must treat <code>client_id</code> as an URL and fetch the Verifiable Presentation (VP) from it. Then, the AS must check the following conditions:</p>
 <ul>
-<li>The VP is valid and current.</li>
-<li>The <code>redirect_uri</code> value from the request matches one of the values present in the VP's credentials. Only valid and current credentials must be used.</li>
+<li>The VP's proof is valid against its "holder" attribute, and the VP is within validity date.</li>
+<li>The <code>redirect_uri</code> value from the request matches one of the values present in the VP's valid credentials.</li>
 </ul>
-<p>Then, the AS should request user's consent after showing the user all relevant claims, based on valid and current credential from the VP. Invalid or expired credentials should be ignored.</p>
+<p>Then, the AS should request user's consent after showing the user all relevant claims, based on valid credentials.</p>
+<p>Note: For <code>redirect_uri</code> and claims, "valid credentials" are credentials with a valid proof, within validity dates, and whose subject ID is the same as the VP's holder.</p>
 <h3 id="4-token-generation">4. Token generation</h3>
 <p>See OpenID Connect specification.</p>
 <h3 id="5-getting-the-tokens-andor-authorization-code">5. Getting the tokens and/or authorization code</h3>
