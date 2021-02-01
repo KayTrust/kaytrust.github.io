@@ -21,10 +21,4 @@ Inside the verifiable credential, the following fields are to be used inside the
 
 ## Token ID
 
-The token ID of a given Verifiable Credential is the SHA256 hash of the following string:
-
-1. Define the following string and :
-```json
-{"id":<credential ID>,"issuer":<credential issuer>}
-```
-2. 
+The token ID of a given Verifiable Credential is the SHA256 hash of the credential.
