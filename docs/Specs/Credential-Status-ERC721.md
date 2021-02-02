@@ -31,8 +31,6 @@ A verifier may decide to apply certain rules to consider whether an ERC721-enabl
 - Verify that current owner is a particular address of interest.
 - Verify that current owner is **not** a particular address of interest.
 
-Non-fungible tokens may be destroyed. A verifier may decide to consider
-
 ## Example use cases
 
 - Check current owner or transfer ownership:
