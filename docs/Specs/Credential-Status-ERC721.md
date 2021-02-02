@@ -35,7 +35,15 @@ Non-fungible tokens may be destroyed. A verifier may decide to consider
 
 ## Example use cases
 
-TODO. Artwork. supply chain tracking.
+- Check current owner or transfer ownership:
+  - When buying a piece of artwork or during customs inspection
+  - When renting a house or flat from its legitimate owner. Same for buying.
+  - When traveling with animals.
+  - As part of a pet's pedigree.
+- Supply chain:
+  - Passing a package from one intermediate to the next.
+  - Controlling current responsibility.
+
 
 ## Privacy considerations
 
