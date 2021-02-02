@@ -1,5 +1,3 @@
-Related development: #21
-
 # Introduction
 The [Verifiable Credential Data Model](https://www.w3.org/TR/vc-data-model/) includes a `credentialStatus` attribute for credentials. The data model doesn't define an approach for credential statuses, but rather allows different implementations to coexist depending on the `type` attribute of the `credentialStatus` object.
 
