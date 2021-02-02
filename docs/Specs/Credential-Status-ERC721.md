@@ -36,7 +36,7 @@ A verifier may decide to apply certain rules to consider whether an ERC721-enabl
 - Check current owner or transfer ownership:
   - When buying a piece of artwork or during customs inspection
   - When renting a house or flat from its legitimate owner. Same for buying.
-  - When traveling with animals.
+  - When traveling with animals, at the customs.
   - As part of a pet's pedigree.
 - Package tracking:
   - Passing a package from one intermediate to the next.
