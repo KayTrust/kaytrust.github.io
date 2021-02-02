@@ -40,10 +40,14 @@ Non-fungible tokens may be destroyed. A verifier may decide to consider
   - When renting a house or flat from its legitimate owner. Same for buying.
   - When traveling with animals.
   - As part of a pet's pedigree.
-- Supply chain:
+- Package tracking:
   - Passing a package from one intermediate to the next.
   - Controlling current responsibility.
-
+- Production tracking from fabrication to final consumer:
+  - Precious metals with certificate, diamonds.
+  - Medicine
+  - Food industry (e.g. palm oil).
+- As a traffic police officer, checking property title of a vehicle.
 
 ## Privacy considerations
 
