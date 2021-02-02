@@ -54,3 +54,12 @@ Since a hash of the whole credential is stored on the blockchain, issuers should
 
 ### TODO
 Other privacy considerations?
+
+## Integration notes
+
+### Identification of the owner
+In ERC721, the owner of a token is an Ethereum address, which makes it a good fit for on-chain use cases such as transfer or identification of owners by other contracts.
+
+However, verifiable credentials are typically used in contexts where individuals or organizations are identified by different, off-chain identifiers, such as DIDs or other types of identifiers.
+
+This specification doesn't define a mapping between Ethereum addresses and off-chain identifiers. Depending on the use cases, it would be useful to define ways to link an Ethereum address to a subject.
