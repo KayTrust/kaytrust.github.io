@@ -20,10 +20,18 @@ Inside the verifiable credential, the following fields are to be used inside the
   <dd>A string containing the hexadecimal NetworkId of the Ethereum network where the contract is deployed. In order to be able to check status, the verifier must have read access to a node running on that network.</dd>
 </dl>
 
-
 ## Token ID
 
 The token ID of a given Verifiable Credential is the SHA256 hash of the credential.
+
+## Status validity
+
+A verifier may decide to apply certain rules to consider whether an ERC721-enabled credential is valid. Some of the rules include:
+- Verify that the non-fungible token is still valid inside the smart contract, i.e. that it hasn't been destroyed.
+- Verify that current owner is a particular address of interest.
+- Verify that current owner is **not** a particular address of interest.
+
+Non-fungible tokens may be destroyed. A verifier may decide to consider
 
 ## Example use cases
 
