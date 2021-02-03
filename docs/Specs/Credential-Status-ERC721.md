@@ -30,6 +30,7 @@ As [stated in the VC data model](https://w3c.github.io/vc-data-model/#status-0),
 - Token ID must exist inside the smart contract, i.e. the token hasn't been destroyed.
 - Current owner must be in a green list of addresses.
 - Current owner must **not** be in a red list of addresses.
+- etc.
 
 ## Example use cases
 
