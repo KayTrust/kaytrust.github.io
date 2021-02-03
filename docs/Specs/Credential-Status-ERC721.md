@@ -27,7 +27,7 @@ The token ID of a given Verifiable Credential is the SHA256 hash of the credenti
 ## Status validation
 
 As [stated in the VC data model](https://w3c.github.io/vc-data-model/#status-0), a verifier may decide to apply their own rules on the status of a credential. In the case of an ERC721 status, some of the rules might include:
-- The non-fungible token must still valid inside the smart contract, i.e. that it hasn't been destroyed.
+- Token ID must exist inside the smart contract, i.e. the token hasn't been destroyed.
 - Current owner must be in a green list of addresses.
 - Current owner must **not** be in a red list of addresses.
 
