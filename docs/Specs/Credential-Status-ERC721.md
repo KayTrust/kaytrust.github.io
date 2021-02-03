@@ -24,9 +24,9 @@ Inside the verifiable credential, the following fields are to be used inside the
 
 The token ID of a given Verifiable Credential is the SHA256 hash of the credential.
 
-## Status validity
+## Status validation
 
-A verifier may decide to apply certain rules to consider whether an ERC721-enabled credential is valid. Some of the rules include:
+As [stated in the VC data model](https://w3c.github.io/vc-data-model/#status-0), a verifier may decide to apply their own rules on the status of a credential. In the case of an ERC721 status, some of the rules might include:
 - Verify that the non-fungible token is still valid inside the smart contract, i.e. that it hasn't been destroyed.
 - Verify that current owner is a particular address of interest.
 - Verify that current owner is **not** a particular address of interest.
