@@ -89,7 +89,7 @@ The JWT contained in the `id_token` provides the following claims:
 | Parameter | Description
 |-----------|------------
 | `sub`     | The user's DID.
-| `iss`| The public key of the user's device. The JWT is only valid if the device is authorised for that DID and if the JWT is correctly signed by that public key.
+| `iss`| The identifier (resolved from the DID Document) of the public key that is signing the JWT. The JWT is only valid if the key is authorised for that DID and if the JWT is correctly signed by that public key.
 | `aud`| The requester's DID. The JWT is only valid if that value matches the value of `client_id` in the request.
 | `state`| The state present in the request, to avoid replay attacks.
 | `iat`| The date the JWT was issued at. You should check the JWT is not too old, otherwise it might be insecure.
@@ -100,10 +100,10 @@ The JWT contained in the `id_token` provides the following claims:
 
 To properly verify the user's identity, the client must:
 
-- Verify the signature of id_token JWT against the public key present as `iss`.
+- Verify the signature of id_token JWT against the public key identified in `iss`.
 - Make sure the JWT's issuer is an authorized key of the JWT's subject (i.e. the user's DID), by matching it against the DID Document.
 
-#### Note for KayTrust
+#### Note for GID
 Currently, KayTrust's "GID" DID method does not support DID Documents. Until it does, the steps to validate a public key are the following:
 
 1. Compute the user's Proxy address from the DID
