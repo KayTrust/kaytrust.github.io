@@ -93,7 +93,7 @@ The JWT contained in the `id_token` provides the following claims:
 | Parameter | Description
 |-----------|------------
 | `sub`     | The user's DID.
-| `iss`| The identifier (resolved from the DID Document) of the public key that is signing the JWT. The JWT is only valid if the key is authorised for that DID and if the JWT is correctly signed by that public key.
+| `iss`| The identifier (resolved from the DID Document) of the public key that is signing the JWT. The JWT is only valid if the key is valid for that DID and if the JWT is correctly signed by that public key.
 | `aud`| The requester's DID. The JWT is only valid if that value matches the value of `client_id` in the request.
 | `state`| The state present in the request, to avoid replay attacks.
 | `iat`| The date the JWT was issued at. You should check the JWT is not too old, otherwise it might be insecure.
