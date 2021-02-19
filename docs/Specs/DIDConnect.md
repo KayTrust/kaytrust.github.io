@@ -25,8 +25,8 @@ The objective of DID Connect is to extend OIDC in a way that makes it as resourc
 The OIDC specification defines the following general flow:
 
 1. Client registers (once).
-2. Client presents an authentication request in the form of a `didconnect://auth?...` URI.
-3. Authorization Server (AS) authenticates the Resource Owner (for example, if the AS is a mobile app, the user should unlock the app) and asks for consent.
+2. Client presents an authentication request in the form of a URL pointing to the Authorization Server (AS).
+3. AS authenticates the Resource Owner (for example, if the AS is a mobile app, the user should unlock the app) and asks for consent.
 4. Depending on the value of `response_type`, AS generates a combination of identity token, grant code, and/or access token, then provides them to the client's `redirect_uri` contained in the request, following the `response_mode` parameter (form, post or fragment).
 5. The client receives the tokens and/or code.
 6. *Authorization flow only.* Client gets the URL of the token endpoint and uses it to request the `id_token` and/or `access_token`.
