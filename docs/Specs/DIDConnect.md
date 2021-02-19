@@ -27,44 +27,37 @@ The OIDC specification defines the following general flow:
 1. Client registers (once).
 2. Client presents an authentication request in the form of a `didconnect://auth?...` URI.
 3. Authorization Server (AS) authenticates the Resource Owner (for example, if the AS is a mobile app, the user should unlock the app) and asks for consent.
-4. Depending on the selected flow, AS generates a combination of identity token, grant code, and/or access token, then provides them to the client's `redirect_uri` contained in the request, following the `response_mode` parameter (form, post or fragment).
+4. Depending on the value of `response_type`, AS generates a combination of identity token, grant code, and/or access token, then provides them to the client's `redirect_uri` contained in the request, following the `response_mode` parameter (form, post or fragment).
 5. The client receives the tokens and/or code.
 6. *Authorization flow only.* Client gets the URL of the token endpoint and uses it to request the `id_token` and/or `access_token`.
-7. If `id_token` was provided, client checks its signature and reads user's identity from the token as a JWT.
-8. If a `userinfo` endpoint is available, client queries it, providing the access token for authentication.
+7. Client checks the signature of `id_token` as a JWT and reads user's identity from the token.
+8. If a `userinfo` claim is available in `id_token` and an `access_token` was provided, client queries that endpoint, using the access token for authentication.
 
-Steps for the DIDConnect profile are detailed in the next sections.
+Specificities on how those steps are to be applied for DIDConnect are detailed in the following sections.
 
 ### 1. Client registration
 
-1. Create a DID for your application.
-2. Obtain Verifiable Credentials that come from issuers the users will trust. The credentials may be self-issued if the users trust your application's DID. The credentials should typically claim information about your DID, such as the application's name, originating organization, logo, website, etc.
-3. Issue an additional Verifiable Credential containing the claim "redirect_uri" with the value of your application's whitelisted callback URL(s). That credential can be issued by your application's DID.
-4. Create a Verifiable Presentation containing those credentials and held by your app's DID.
-5. Place the Verifiable Presentation somewhere your users will be able to access it. The presentation's URL is your application's client ID.
+1. Relying Party obtains a DID.
+2. RP obtains Verifiable Credentials whose subject is the RP's DID, and issued by entities trusted by the targeted users. How users should trust the RP's DID and/or credentials is outside the scope of this specification. The credentials should typically claim information about the RP, such as the application's name, originating organization, logo, website, etc, but the semantics of such claims is also outside the scope of this specification.
+3. RP obtains a Verifiable Credential whose subject is the RP's DID, and containing the claim `redirect_uri` with the value of whitelisted callback URL(s). Like the previous point, how the AS should trust that credential is not defined in this document. However, it is recommended that the credential is self-issued, i.e. the issuer is also the RP's DID.
+4. RP creates a Verifiable Presentation containing those credentials, and whose holder is the RP's DID.
+5. The Verifiable Presentation is available at a location where users will be able to access it. The RP's Client ID is the presentation's URL.
 
 ### 2. Authentication request
 
-An authentication request is a URL of the following form: `didconnect://auth?...` with the following query parameters.
-
-| Parameter | Status | Description
-|-----------|--------|------------
-| `client_id` | Required | The URL of the client Verifiable Presentation.
-| `redirect_uri` | Required | The callback URI the user should call after the AS generated the identity token. This URI will receive the token as a HTTP Bearer token (recommended) or as a query parameter.
-| `state` | Optional | An opaque string defined by the client. That string will be provided as-is to the callback URI, as a query parameter also named `state`, allowing the client to link the response to the original request.
-| `response_type` | Optional | Depends on the grant flow. Each flow is described by a combination of `id_token`, `token`, `code`, as defined by OIDC.
-| `response_mode` | Optional | How the AS must issue the tokens. Must be one of `query`, `fragment`, `form_post`.
+An authentication request is a URL of the following form: `didconnect://auth?...` with the same query parameters as defined in the OIDC specification. The value of `client_id` is the one obtained during registration.
 
 ### 3. Obtaining user consent from AS
 
 When a user's Authorization Server receives a request from the application's client_id, it must treat `client_id` as an URL and fetch the Verifiable Presentation (VP) from it. Then, the AS must check the following conditions:
 
-- The VP's proof is valid against its "holder" attribute, and the VP is within validity date.
-- The `redirect_uri` value from the request matches one of the values present in the VP's valid credentials.
+- The VP's proof is valid.
+- The VP is within validity date.
+- The `redirect_uri` value from the authentication request matches one of the values present in the VP's _valid credentials_.
 
-Then, the AS should request user's consent after showing the user all relevant claims, based on valid credentials.
+Then, the AS should ask for user's consent after displaying all relevant claims, based on _valid credentials_.
 
-Note: For `redirect_uri` and claims, "valid credentials" are credentials with a valid proof, within validity dates, and whose subject ID is the same as the VP's holder.
+Note: For `redirect_uri` and displayed claims, **_valid credentials_** are credentials with a valid proof, that are within validity dates, and whose subject ID is the same as the VP's holder.
 
 ### 4. Token generation
 
@@ -80,60 +73,43 @@ See OpenID Connect specification. Token endpoint URI is taken from the `token_ur
 
 ### 7. Verification of user's identity
 
-The endpoint listening on `redirect_uri` receives the following query parameters (as query parameters, HTML fragment or form post depending on the requested response mode):
+The RP's endpoint listening on `redirect_uri` receives the same data as defined in OIDC specification.
 
-| Parameter      | Status   | Description
-|----------------|----------|------------
-| `id_token`     | Required | A JSON Web Token (JWT) containing the user's DID.
-| `state`        | Optional | The original `state` from the authentication request, if any.
-| `access_token` | Optional | A Bearer token authorizing access to information about the user
+The JWT contained in the `id_token` is the same as defined in the OIDC specification, with the following differences:
 
-The JWT contained in the `id_token` provides the following claims:
-
-| Parameter | Description
-|-----------|------------
+| Parameter | Meaning in DID Connect
+|-----------|-----------------------
 | `sub`     | The user's DID.
-| `iss`| The identifier (resolved from the DID Document) of the public key that is signing the JWT. The JWT is only valid if the key is valid for that DID and if the JWT is correctly signed by that public key.
-| `aud`| The requester's DID. The JWT is only valid if that value matches the value of `client_id` in the request.
-| `state`| The state present in the request, to avoid replay attacks.
-| `iat`| The date the JWT was issued at. You should check the JWT is not too old, otherwise it might be insecure.
-| `exp`| The date until which the JWT is valid. You should check that the JWT is not expired, otherwise it might be insecure.
-| `at_hash`| The hash of the `access_token`.
-| `c_hash` | The hash of the `code`.
+| `iss`| The identifier (resolved from the DID Document) of the public key that is signing the JWT. The key must be valid for that DID and the JWT must be signed by that key.
+| `aud`| The requester's DID. It must match the value of `client_id` in the request.
 | `userinfo` | The URL of the Resource Server where a user's Verifiable Presentation is available.
 
-To properly verify the user's identity, the client must:
+The Relying Party must verify that:
 
-- Verify the signature of id_token JWT against the public key identified in `iss`.
-- Make sure the JWT's issuer is an authorized key of the JWT's subject (i.e. the user's DID), by matching it against the DID Document.
-
-#### Note for GID
-Currently, KayTrust's "GID" DID method does not support DID Documents. Until it does, the steps to validate a public key are the following:
-
-1. Compute the user's Proxy address from the DID
-2. Call `proxy.owner()` to get the Identity Manager's address, or use a well-known Identity Manager address for legacy DIDs.
-4. Call `im.hasCap(proxy, device, "auth")` and verify the result is `true`. To support Levels of Assurance, replace "auth" with the expected Level of Assurance.
+- The key identified in `iss` is an authorized key of the DID value in `sub`, by looking at the DID Document.
+- The JWT is signed by that key.
 
 ### 8. Accessing the user's protected resources (when applicable)
 
 If an access token was provided, the client can access user's information by querying the URL referenced as `userinfo` in the id_token, and provide the access token as an `Authorization` header, as described in [OpenID Connect specification](https://openid.net/specs/openid-connect-core-1_0.html#UserInfoRequest).
 
-The response is a Verifiable Presentation. The presentation's holder must be the user's authenticated DID. The presentation contains a `proof` attribute that allows the client to verify the holder's consent before using the included credentials.
-
+The response is a Verifiable Presentation. The presentation must be valid (proof-wise), within validity dates, and the presentation's holder must be the user's authenticated DID.
 
 ## Registration of custom scheme by Authorization Server applications
 
-Examples of Authorization Servers implementations include:
+This specification describes the use of a custom URI scheme to express authorization requests, very much like the use of `mailto:` or `tel:` URI schemes. This makes it possible for any registered application on the user agent to handle requests after registering itself for the `didconnect:` custom scheme on the RO's operating system.
 
-- **Mobile or desktop applications.** Registration to the `didconnect:` scheme is specific to the operating system.
-- **Web applications.** Registration to the `didconnect:` scheme is done using `registerProtocolHandler()` on the web browser.
+Below are examples of Authorization Servers.
+
+| AS implementation | Custom scheme registration |
+|--|--|
+| Mobile or desktop application | Specific to the operating system |
+| Web application | Using `registerProtocolHandler()` on the web browser |
 
 ## Current limitations
 
 ### Variable flow support
 
-This specification describes the use of a custom URI scheme to express authorization requests. This makes it possible for any registered application on the user agent to handle requests. This approach, similar to that of the `mailto:` and `tel:` URI schemes, implies the client app does not know what AS implementation will actually respond to authorization requests. Specifically, native AS implementations (either mobile or desktop) don't always support `code` response types since they can't easily provide a token endpoint.
+Some authorization servers, especially native implementations (either mobile or desktop), are usually not exposed to the public internet and thus can't easily provide a token endpoint, which means they will have limited or no support for `code` response types.
 
-This uncertainty represents both a risk of failure and added out-of-band work on the client side to try and guess what flow to request. One approach is to determine the type of AS based on heuristics.
-
-TODO: Provide a good solution.
+This possibility represents both a risk of failure and added out-of-band work on the client side to try and guess what flow to request. One approach is to determine the type of AS based on heuristics, but work must still be done to propose a good workaround to this limitation.
