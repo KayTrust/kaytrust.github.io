@@ -121,7 +121,7 @@ If an access token was provided, the client can access user's information by que
 The response is a Verifiable Presentation. The presentation's holder must be the user's authenticated DID. The presentation contains a `proof` attribute that allows the client to verify the holder's consent before using the included credentials.
 
 
-## Examples of AS
+## Registration of custom scheme by Authorization Server applications
 
 Examples of Authorization Servers implementations include:
 
@@ -130,7 +130,7 @@ Examples of Authorization Servers implementations include:
 
 ## Current limitations
 
-### Flow support uncertainty
+### Variable flow support
 
 This specification describes the use of a custom URI scheme to express authorization requests. This makes it possible for any registered application on the user agent to handle requests. This approach, similar to that of the `mailto:` and `tel:` URI schemes, implies the client app does not know what AS implementation will actually respond to authorization requests. Specifically, native AS implementations (either mobile or desktop) don't always support `code` response types since they can't easily provide a token endpoint.
 
