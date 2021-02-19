@@ -132,15 +132,8 @@ Examples of Authorization Servers implementations include:
 
 ### Flow support uncertainty
 
-This specification describes the use of a custom URI scheme to express authorization requests. This makes it possible for any registered application on the user agent to handle requests. This approach, similar to that of the `mailto:` and `tel:` URI schemes, implies the client app does not know what AS implementation will actually respond to authorization requests, and what grant flows it will support.
+This specification describes the use of a custom URI scheme to express authorization requests. This makes it possible for any registered application on the user agent to handle requests. This approach, similar to that of the `mailto:` and `tel:` URI schemes, implies the client app does not know what AS implementation will actually respond to authorization requests. Specifically, native AS implementations (either mobile or desktop) don't always support `code` response types since they can't easily provide a token endpoint.
 
-This uncertainty represents both a risk and added out-of-band work on the client side to try and guess what flow to request. One approach is to determine the type of AS based on heuristics.
+This uncertainty represents both a risk of failure and added out-of-band work on the client side to try and guess what flow to request. One approach is to determine the type of AS based on heuristics.
 
-One possible improvement would be to use negotiation: the client would announces the flows it supports, and the AS makes a decision based on its own capabilities. This is similar to content type or language negotiation in HTTP.
-
-The negotiation takes place in two steps:
-
-1. Client announces in the authorization request the grant flows it supports, as a semicolon-separated list of supported response types.
-2. AS selects a grant flow according on its own capabilities.
-
-TODO: Details and examples.
+TODO: Provide a good solution.
