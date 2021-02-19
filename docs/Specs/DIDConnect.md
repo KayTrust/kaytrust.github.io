@@ -2,19 +2,23 @@
 
 ## Introduction
 
-This document explains how to authenticate a user against their self-sovereign identity. This method uses [OpenID Connect (OIDC)](https://openid.net/developers/specs/), which itself builds upon the [OAuth 2.0 framework](https://tools.ietf.org/html/rfc6749).
+This document describes a method, nicknamed "DID Connect", to authenticate a user against their [Decentralized Identifier (DID)](https://www.w3.org/TR/did-core/). This method uses [OpenID Connect (OIDC)](https://openid.net/developers/specs/), which itself builds upon the [OAuth 2.0 framework](https://tools.ietf.org/html/rfc6749).
 
-DID Connect uses OIDC in a way that enables Self-Sovereign Identity (SSI) and favours decentralization, by combining it with DIDs and, optionally, Verifiable Credentials. That makes it different from traditional provider-centric flows in a few aspects, as detailed below.
+The objective of DID Connect is to extend OIDC in a way that makes it as resource-owner-centric as possible, to enable Self-Sovereign Identity (SSI) scenarios. That decentralization makes DID Connect different from traditional provider-centric OIDC flows in a few aspects, as detailed below.
 
 | Aspect                    | Provider-Centric Identity          | Self-Sovereign Identity
 | ------------------------- | ------------------------- | -----------------------
-| Authorization request URIs| Use the Identity Provider (IdP)'s hostname | Use `didconnect:` scheme.
-| Authorization Server      | Identity Provider (IdP), known before when creating the request.   | Selected dynamically by user. Examples: user's own identity wallet, or a web application.
-| Subject ID                | Assigned by IdP.         | User's DID.
-| Client registration flow  | Client registers against IdP (must be authorized by IdP). Client ID is an opaque string.           | No authorization needed by a central entity for acting as a client. Client exposes a Verifiable Presentation, containing Verifiable Credentials issued by relevant authorities. Client ID is the URL of that presentation.
-| Userinfo endpoint           | Managed by IdP. Endpoint URL is either static or discovered through OIDC Discovery.   | Provided dynamically: endpoint URL is present in id_token ("userinfo" claim).
-| Public key for id_token's signature by client | Either static or discovered through OIDC Discovery. | Provided by DID Document (DDO).
+| Subject ID (`sub`)               | IdP-assigned.         | User's DID.
+| Client registration flow  | Client registers against IdP (must be authorized by IdP).           | No authorization needed by a central entity for acting as a client. Authorization is whatever set of Verifiable Credentials the client is able to present.
+| Client information        | Held and shown by IdP.       | Verifiable Presentation, containing Verifiable Credentials issued by any relevant authorities.
+| Client ID                 | IdP-assigned. | URL of the Verifiable Presentation.
+| Authorization Server      | Identity Provider (IdP), known by the Relying Party before creating the request.   | Chosen by user during authentication. Examples: user's own identity wallet, or a web application.
+| Authorization endpoint    | Contains the Identity Provider (IdP)'s hostname. Either static or discovered through OIDC Discovery. | Custom scheme (`didconnect:`).
+| Token endpoint (when applicable)           | Contains the Identity Provider (IdP)'s hostname. Either static or discovered through OIDC Discovery. | Part of the authorization response. (**TBD**.)
+| Userinfo endpoint           | Managed by IdP. Either static or discovered through OIDC Discovery.   | Contained in `id_token` (`userinfo` claim).
+| Public key for id_token's signature by client | Either static or discovered through OIDC Discovery. | Listed in DID Document (DDO).
 | Client's whitelisted redirect_uri endpoints | Registered and checked by the IdP. | Announced as a claim in the Client ID's Verifiable Presentation.
+| Supported flows | Either static or discovered through OIDC Discovery. | **TBD**.
 
 ## General flow
 
