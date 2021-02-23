@@ -81,7 +81,6 @@ The JWT contained in the `id_token` is the same as defined in the OIDC specifica
 |-----------|-----------------------
 | `sub`     | The user's DID.
 | `iss`| The identifier (resolved from the DID Document) of the public key that is signing the JWT. The key must be valid for that DID and the JWT must be signed by that key.
-| `aud`| The requester's DID. It must match the value of `client_id` in the request.
 | `userinfo` | The URL of the Resource Server where a user's Verifiable Presentation is available.
 
 The Relying Party must verify that:
