@@ -61,7 +61,7 @@ Note: For `redirect_uri` and displayed claims, **_valid credentials_** are crede
 
 ### 4. Token generation
 
-See OpenID Connect specification.
+See OpenID Connect specification. The token must be signed with a key that is listed in the DID document of the subject's DID.
 
 ### 5. Getting the tokens and/or authorization code
 
@@ -111,4 +111,6 @@ Below are examples of Authorization Servers.
 
 Some authorization servers, especially native implementations (either mobile or desktop), are usually not exposed to the public internet and thus can't easily provide a token endpoint, which means they will have limited or no support for `code` response types.
 
-This possibility represents both a risk of failure and added out-of-band work on the client side to try and guess what flow to request. One approach is to determine the type of AS based on heuristics, but work must still be done to propose a good workaround to this limitation.
+This possibility represents both a risk of failure and added out-of-band work on the client side to try and guess what flow to request based on heuristics. Work must still be done to propose a good workaround to this limitation.
+
+TODO: Possible introduction of new `response_type` values: `code,id_token` and `code,token`.
