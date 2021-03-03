@@ -54,9 +54,14 @@ This proof type requires the DID document of the issuer's DID to contain an `eth
 }
 ```
 
-## Proof Generation Method
+## Hash calculation method
 
-The following steps MUST be applied by a credential's issuer in order to generate an Ethereum Attestation Registry proof of the credential:
+This proof type involves 2 types of hashes:
+- The Attestation Hash is written on the Ethereum network by the issuer when a credential is issued.
+- The Revocation Hash is a different hash, written on the Ethereum network by the issuer if the credential is ever revoked.
+
+
+The following steps MUST be applied to generate the Attestation Hash or the Revocation Hash:
 
 1. **Step 1: Calculate the content's hash.**
    1. If present, temporarily strip the whole `"proof"` attribute from the credential, even if it contains multiple proofs.
@@ -68,19 +73,25 @@ The following steps MUST be applied by a credential's issuer in order to generat
       ```json
       {
          "hash": <content's hash in hexadecimal>,
-         "status": "Valid"
+         "status": "Valid" | "Revoked"
       }
       ```
    2. Serialize the object as a string. TODO: Describe the serialization method (it must be deterministic).
    3. Compute the SHA256 hash of the string. 
 
-3. **Step 3: Send the Ethereum transaction.**
+
+## Proof Generation Method
+
+The following steps MUST be applied by a credential's issuer in order to generate an Ethereum Attestation Registry proof of the credential:
+
+1. **Step 1: Calculate Attestation Hash** using method above.
+2. **Step 2: Send the Ethereum transaction.**
    1. Decide on the Ethereum network and the registry smart contract to be used.
    2. On that Ethereum network, make a call to the registry smart contract containing a call to the `verify(bytes32 hash, uint iat, uint exp)` function, where `hash` is the status object's hash computed at step 2.
       - A good value for both `iat` and `exp` is `0`, but you can use different values or make subsequent calls to the contract as needed. See ERC for details.
       - The call to the registry smart contract must be done from an `ethereumAddress` present in the issuer's DID Document.
 
-4. **Create the `proof` object.**
+3. **Create the `proof` object.**
    1. If necessary, place back in the credential the `proof` object (or array) previously stripped in step 1.1.
    2. Update the credential with the new `proof` object (see Specification section above).
 
@@ -94,38 +105,26 @@ The registry contract will be updated as soon as the transaction goes through. T
 
 ## Proof Verification Method
 
-The following steps MUST be applied by a credential's verifier to verify the proof.
+To verify the proof, the hashes must be looked up on the registry smart contract. A credential is deemed valid if the Attestation Hash is valid *and* the Revocation Hash is not valid.
 
-1. **Step 1: Calculate the content's hash.**
-   1. If present, temporarily strip the whole `"proof"` attribute from the credential, even if it contains multiple proofs.
-   2. Serialize the resulting object as a string. TODO: Describe the serialization method (it must be deterministic).
-   3. Compute the SHA256 hash of the string.
+The overall verification strategy is the following:
 
-2. **Step 2: Determine both the Attestation and Revocation objects hashes.**
-   1. Create the following object:
-      ```json
-      {
-         "hash": <content's hash in hexadecimal>,
-         "status": "Valid"
-      }
-      ```
-   2. Serialize the object as a string. TODO: Describe the serialization method (it must be deterministic).
-   3. Compute the SHA256 hash of the string. Let's call this hash *Attestation Hash*.
-   4. Repeat operations 1-3, this time with a "Revoked" status instead of "Valid". Let's call this hash *Revocation Hash*.
+- Look up the Verification Hash.
+  - If it is found, the credential is not valid.
+  - Otherwise, look up the Attestation Hash.
+    - If it is found, the credential is valid.
+    - Otherwise, the credential is not valid.
 
-3. **Step 3: Look up the hashes on Ethereum.**
-   1. Check the credential's *revoked status*, by making a read call to the registry smart contract.
-      - Use the contract address and network as listed in the `proof` object.
-      - Method: `verifications(bytes32 hash, address issuer)` function, where:
-        - `hash` is the *Revocation Hash*.
-        - `issuer` is the `ethereumAddress` of the issuer's DID, read from the DID Document.
-      - The function returns an `(iat, exp)` pair.
-      - The revoked status is successful (i.e. the credential is revoked) if the following conditions are met:
-        - `iat` is not `0` and is lower than the time of the verification.
-        - `exp` is `0` or is higher than the time of the verification.
-   2. If the revocation status fails, check the *validity status* likewise, using the *Attestation Hash*.
+The following steps MUST be applied to look up either hash:
 
-The credential is deemed valid is the validity status is successful AND the revocation status is unsuccessful.
+- Use the contract address and network listed in the `proof` object.
+- Call the `verifications(bytes32 hash, address issuer)` function, where:
+  - `hash` is the hash to verify.
+  - `issuer` is the `ethereumAddress` of the issuer's DID, read from the DID Document.
+- The function returns an `(iat, exp)` pair.
+- The hash is found if the following conditions are met:
+  - `iat` is not `0` and is lower than the time of the verification.
+  - `exp` is `0` or is higher than the time of the verification.
 
 ## Performance Considerations
 
