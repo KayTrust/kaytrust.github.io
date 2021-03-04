@@ -56,28 +56,25 @@ This proof type requires the DID document of the issuer's DID to contain an `eth
 
 ## Hash calculation method
 
-This proof type involves 2 types of hashes:
-- The Attestation Hash is written on the Ethereum network by the issuer when a credential is issued.
-- The Revocation Hash is a different hash, written on the Ethereum network by the issuer if the credential is ever revoked.
+This proof type involves 2 different hashes per credential: *Attestation Hash* and *Revocation Hash*, respectively written on the Ethereum newtwork when the credential is issued and (optionally) revoked.
 
+The following steps MUST be applied to generate either hash.
 
-The following steps MUST be applied to generate the Attestation Hash or the Revocation Hash:
-
-1. **Step 1: Calculate the content's hash.**
+1. **Step 1: Calculate the credential's hash.**
    1. If present, temporarily strip the whole `"proof"` attribute from the credential, even if it contains multiple proofs.
    2. Serialize the resulting object as a string. TODO: Describe the serialization method (it must be deterministic).
-   3. Compute the SHA256 hash of the string.
+   3. The SHA256 hash of the string is the credential's hash.
 
-2. **Step 2: Determine the status object's hash.**
+2. **Step 2: Calculate the final hash.**
    1. Create the following object:
       ```json
       {
-         "hash": <content's hash in hexadecimal>,
+         "hash": <credential's hash in hexadecimal>,
          "status": "Valid" | "Revoked"
       }
       ```
    2. Serialize the object as a string. TODO: Describe the serialization method (it must be deterministic).
-   3. Compute the SHA256 hash of the string. 
+   3. The SHA256 hash of the string is the final hash (i.e. either Attestation Hash or Revocation Hash depending on the value of `status`).
 
 
 ## Proof Generation Method
