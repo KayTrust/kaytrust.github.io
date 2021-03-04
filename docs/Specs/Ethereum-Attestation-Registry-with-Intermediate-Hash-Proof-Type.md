@@ -87,7 +87,7 @@ The following steps MUST be applied by a credential's issuer in order to generat
 1. **Step 1: Calculate Attestation Hash** using method above.
 2. **Step 2: Send the Ethereum transaction.**
    1. Decide on the Ethereum network and the registry smart contract to be used.
-   2. On that Ethereum network, make a call to the registry smart contract containing a call to the `verify(bytes32 hash, uint iat, uint exp)` function, where `hash` is the status object's hash computed at step 2.
+   2. On that Ethereum network, make a call to the registry smart contract containing a call to the `verify(bytes32 hash, uint iat, uint exp)` function, where `hash` is the Attestation Hash.
       - A good value for both `iat` and `exp` is `0`, but you can use different values or make subsequent calls to the contract as needed. See ERC for details.
       - The call to the registry smart contract must be done from an `ethereumAddress` present in the issuer's DID Document.
 
@@ -97,11 +97,15 @@ The following steps MUST be applied by a credential's issuer in order to generat
 
 ## Proof Revocation Method
 
-This proof type allows for an already-emitted credential to be revoked by the issuer before its expiration date.
+This proof type allows for an issued credential to be revoked by the issuer before its expiration date.
 
-Revoking a credential involves the same steps as issuing a credential, but replacing the `"Valid"` status with `"Revoked"`.
+1. **Step 1: Calculate Revocation Hash**
+2. **Step 2: Send the Ethereum transaction**
+   - Use the contract address and network listed in the `proof` object.
+   - On that Ethereum network, make a call to the registry smart contract containing a call to the `verify(bytes32 hash, uint iat, uint exp)` function, where `hash` is the status object's hash computed at step 2.
+      - A good value for both `iat` and `exp` is `0`, but you can use different values or make subsequent calls to the contract as needed. See ERC for details.
+      - The call to the registry smart contract must be done from an `ethereumAddress` present in the issuer's DID Document.
 
-The registry contract will be updated as soon as the transaction goes through. The contract will also notify interested parties through an Ethereum event that the proof is no longer valid.
 
 ## Proof Verification Method
 
