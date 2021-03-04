@@ -81,7 +81,7 @@ The following steps MUST be applied to generate either hash.
 
 The following steps MUST be applied by a credential's issuer in order to generate an Ethereum Attestation Registry proof of the credential:
 
-1. **Step 1: Calculate Attestation Hash** using method above.
+1. **Step 1: Calculate Attestation Hash** (see above).
 2. **Step 2: Send the Ethereum transaction.**
    1. Decide on the Ethereum network and the registry smart contract to be used.
    2. On that Ethereum network, make a call to the registry smart contract containing a call to the `verify(bytes32 hash, uint iat, uint exp)` function, where `hash` is the Attestation Hash.
@@ -89,7 +89,7 @@ The following steps MUST be applied by a credential's issuer in order to generat
       - The call to the registry smart contract must be done from an `ethereumAddress` present in the issuer's DID Document.
 
 3. **Create the `proof` object.**
-   1. If necessary, place back in the credential the `proof` object (or array) previously stripped in step 1.1.
+   1. Use the original credential (i.e. without stripping the `proof object`).
    2. Update the credential with the new `proof` object (see Specification section above).
 
 ## Proof Revocation Method
