@@ -45,7 +45,7 @@ KayTrust introduces a way for identity owners (a.k.a. subjects) to authenticate 
 
 | Specification                         | Builds on top of | What is it good for?
 | ------------------------------------- | ---------------- | ------------------------------------
-| [DIDConnect OIDC Profile](/Specs/DIDConnect) | OpenID Connect   | Self-sovereign use of OpenID Connect
+| [DIDConnect OIDC Profile](https://github.com/KayTrust/did-connect) | OpenID Connect   | Self-sovereign use of OpenID Connect
 
 ### Schemas
 
