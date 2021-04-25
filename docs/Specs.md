@@ -53,4 +53,4 @@ KayTrust mostly relies on well-known schemas, such as the great work done by the
 
 | Schema                                            | Purpose
 | ------------------------------------------------- | --------------------------------------------------
-| [Trusted Credentials](/Specs/Trusted-Credentials) | Chain of Trust for Verifiable Credentials
+| [Trusted Credentials](https://github.com/KayTrust/schemas/blob/draft/Trusted-Credentials.md) | Chain of Trust for Verifiable Credentials
