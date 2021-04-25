@@ -14,7 +14,7 @@
     
     
       
-        <title>Content Attestation Registry ERC - KayTrust Developer Documentation</title>
+        <title>Ethereum Attestation Registry with Intermediate Hash Proof Type - KayTrust Developer Documentation</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#simple-summary" class="md-skip">
+        <a href="#ethereum-attestation-registry-with-intermediate-hash-proof-type" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Content Attestation Registry ERC
+              Ethereum Attestation Registry with Intermediate Hash Proof Type
             
           </span>
         </div>
@@ -241,19 +241,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#simple-summary" class="md-nav__link">
-    Simple Summary
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#abstract" class="md-nav__link">
@@ -263,15 +258,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#motivation" class="md-nav__link">
-    Motivation
+  <a href="#status-of-this-document" class="md-nav__link">
+    Status of this Document
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#definitions" class="md-nav__link">
-    Definitions
+  <a href="#introduction" class="md-nav__link">
+    Introduction
   </a>
   
 </li>
@@ -284,56 +279,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#note-about-validity-times" class="md-nav__link">
-    Note about validity times
+  <a href="#example" class="md-nav__link">
+    Example
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#rationale" class="md-nav__link">
-    Rationale
-  </a>
-  
-    <nav class="md-nav" aria-label="Rationale">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#storing-validity-times-on-chain-vs-off-chain" class="md-nav__link">
-    Storing validity times on-chain vs. off-chain
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#attesting-hashes-vs-plain-data" class="md-nav__link">
-    Attesting hashes vs. plain data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#backwards-compatibility" class="md-nav__link">
-    Backwards Compatibility
+  <a href="#hash-calculation-method" class="md-nav__link">
+    Hash calculation method
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
-    Implementation
+  <a href="#proof-generation-method" class="md-nav__link">
+    Proof Generation Method
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#copyright" class="md-nav__link">
-    Copyright
+  <a href="#proof-revocation-method" class="md-nav__link">
+    Proof Revocation Method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof-verification-method" class="md-nav__link">
+    Proof Verification Method
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    Performance Considerations
   </a>
   
 </li>
@@ -351,78 +333,121 @@
               
                 
                 
-                  <h1>Content Attestation Registry ERC</h1>
-                
-                <pre><code>eip: &lt;to be assigned&gt;
-title: ERC: Content Attestation Registry
-author: David Ammouial (@davux) &lt;dammouia@everis.com&gt;
-discussions-to: &lt;URL&gt;
-status: Draft
-type: Standards Track
-category: ERC
-created: 2019-03-29
-</code></pre>
-<h2 id="simple-summary">Simple Summary</h2>
-<p>A generic and privacy-aware registry of attested information.</p>
+                <h1 id="ethereum-attestation-registry-with-intermediate-hash-proof-type">Ethereum Attestation Registry with Intermediate Hash Proof Type</h1>
 <h2 id="abstract">Abstract</h2>
-<p>This ERC describes a way for any entity to express and record its agreement with a given content, independently from the type of content, by storing a hash on chain along with a validity time range. Even though the existence of the agreement itself is provable and non-ambiguous, this specification doesn't place any semantics on the type of original content, how it's hashed, or what it means to agree with it. Likewise, it doesn't define any recommendation on the semantic validity of an attestation in relation to its recorded time range. As with any kind of recorded agreement, it is generally a good idea for the involved parties to ensure a mutual understanding on what is agreed upon and to what extent.</p>
-<p>This ERC also allows the agreeing party to amend a previously recorded attestation by redefining the validity time range (including retracting the attestation altogether).</p>
-<h2 id="motivation">Motivation</h2>
-<p>Traditionally, attesting to some kind of content is done through static signatures, e.g. a base64-encoded embedded RSA signature or a PGP signature. As for the smart contract world, hashes are often used in functions to certify content approval but no stable interface has been defined. This EIP is an attempt to homogenize a common interface for agreement that interoperable contract-based and web-based applications may start benefitting from.</p>
-<p>Also, traditional signatures, in order to be retracted or amended, need to be put in context of Certificate Revocation Lists (CRLs) or similar mechanisms. This EIP attempts to leverage blockchain technology to remove the need for such centralized databases.</p>
-<h2 id="definitions">Definitions</h2>
-<p><strong>Attester</strong></p>
-<p>The attester of a given content is any entity, represented by an Ethereum address, that records its agreement with that content.</p>
-<p><strong>Attestation</strong></p>
-<p>In this specification, an attestation is defined as a (start time, end time) tuple that represents the time range during which a content is agreed upon by a specific attester.</p>
-<p><strong>Verifier</strong></p>
-<p>The verifier of an attestation is an entity going through the process of reading an attestation for a given content and making conclusions on whether to trust that content.</p>
+<p>This document describes an embedded proof type, applicable both for Verifiable Credentials and for Verifiable Presentations, as described in the <a href="https://w3c.github.io/vc-data-model/">Verifiable Credentials Data Model</a>'s <a href="https://w3c.github.io/vc-data-model/#proofs-signatures">"Proofs" section</a> by the W3C Credentials Community Group.</p>
+<h2 id="status-of-this-document">Status of this Document</h2>
+<p>This specification is an unofficial draft. It is provided as a reference for people and organisations who wish to implement Ethereum-based proofs.</p>
+<h2 id="introduction">Introduction</h2>
+<p>The Verifiable Credentials specification <a href="https://w3c.github.io/vc-data-model/#proofs-signatures">describes</a> a modular mechanism for declaring how a given credential must be verified.</p>
+<p>This specification introduces a new type of embedded proof called <code>"EthereumAttestationRegistryIntermediateStatus2021"</code>. This type of proof is based on a trusted smart contract deployed on an Ethereum blockchain accessible by the verifier. Verification of a credential containing this type of proof is done by calls a specific function to the smart contract.</p>
+<p>This document extends the <a href="https://w3c.github.io/vc-data-model/">Verifiable Credentials specification</a> and assumes that the terminology and concepts of that specification are known.</p>
 <h2 id="specification">Specification</h2>
-<p>The general idea of this EIP is that attesting a given content is equivalent to attesting a hash of that content, as long as the hashing function is known by the attester and the verifier.</p>
-<p>An attestation is recorded as an <code>(iat, exp)</code> tuple, where <code>iat</code> ("issued at") is the time the attestation starts to be valid, and <code>exp</code> ("expires") is the time after which the attestation is no longer valid.</p>
-<p>Note the special meaning of the following values:</p>
-<ul>
-<li><code>iat == 0</code> means the attester is NOT currently attesting to that content. In this case, the value of <code>exp</code> is irrelevant. Per Solidity rules, this is the initial value for any attestation. Its intended usage inside the <code>attest()</code> function is to explicitly revoke an existing (i.e. non-zero <code>iat</code>) attestation.</li>
-<li><code>exp == 0</code> means the attester is not currently placing any expiration time on the attestation. Just like any other value, a value of <code>0</code> may be amended later if the attester decides so.</li>
-</ul>
-<p>This EIP defines the following functions:</p>
-<p><strong>attest</strong></p>
-<p>Used in a transaction to record an <code>(iat, exp)</code> attestation of a given hash.</p>
-<pre><code class="language-js"> function attest(bytes32 hash, uint iat, uint exp) public;
+<p>An "EthereumAttestationRegistryIntermediateStatus2021" proof is represented by an object contained in the <code>"proof"</code> section of a Verifiable Credential. As such, per the VC Data Model, it is considered an "embedded proof".</p>
+<p>It must contain the following attributes:</p>
+<dl>
+  <dt>type</dt>
+  <dd>The proof type, as defined in the Verifiable Credentials specification. The value MUST be <code>"EthereumAttestationRegistryIntermediateStatus2021"</code>.</dd>
+
+  <dt>contractAddress</dt>
+  <dd>A string containing the hexadecimal Ethereum address of the smart contract that allows the verification of the credential. For example: <code>"0x123f681646d4a755815f9cb19e1acc8565a0c2ac"</code>. That contract must implement **EIP-XXX (to be defined): Content Attestation Registry**.</dd>
+
+  <dt>networkId</dt>
+  <dd>A string containing the hexadecimal NetworkId of the Ethereum network where the contract is deployed. In order to be able to verify the credential, the verifier must have read access to a node running on that network.</dd>
+</dl>
+
+<p>This proof type requires the DID document of the issuer's DID to contain an <code>ethereumAddress</code> entry.</p>
+<h2 id="example">Example</h2>
+<pre><code class="language-json">{
+  &quot;@type&quot;: &quot;VerifiableCredential&quot;,
+  &quot;@context&quot;: &quot;http://schema.org&quot;,
+  &quot;credentialSubject&quot;: {
+    &quot;@id&quot;: &quot;did:example:abcd&quot;,
+    &quot;name&quot;: &quot;John Doe&quot;,
+    &quot;birthdate&quot;: &quot;2018-01-01&quot;
+  },
+  &quot;issuer&quot;: &quot;did:gid:2uukHPBYMjdZPkg4p5ZjipKHzkaXLr4T5ut&quot;,
+  &quot;proof&quot;: {
+      &quot;type&quot;: &quot;EthereumAttestationRegistryIntermediateStatus2021&quot;,
+      &quot;contractAddress&quot;: &quot;0x123f681646d4a755815f9cb19e1acc8565a0c2ac&quot;,
+      &quot;networkId&quot;: &quot;0x19&quot;
+    }
+}
 </code></pre>
-<p><strong>attestations</strong></p>
-<p>Used to read the most recent attestation, if any, of a given <code>hash</code>, recorded by a given <code>attester</code>. Its return value is an <code>(iat, exp)</code> tuple.</p>
-<pre><code class="language-js">function attestations(bytes32 hash, address attester) public;
-</code></pre>
-<p>This EIP defines the following event:</p>
-<p><strong>Verified</strong></p>
-<p>This event is emitted everytime a <code>hash</code> is attested or revoked by an <code>attester</code> and contains the <code>iat</code> and <code>exp</code> times of the attestation. A value of <code>0</code> for <code>iat</code> means any previous attestation is being revoked. The event may be emitted with any values for <code>iat</code> and <code>exp</code>, including values equal to the previous ones (for example an already revoked attestation may be revoked again, or an attestation may be attested again with the same values).</p>
-<pre><code class="language-js">event Verified(bytes32 indexed hash, address attester, uint iat, uint exp);
-</code></pre>
-<h2 id="note-about-validity-times">Note about validity times</h2>
-<p>The validity time range is a mere indication by the attester. This EIP does not define what policy should be applied by verifying software or people with respect to current time. Here are a few real-life policy examples:</p>
+<h2 id="hash-calculation-method">Hash calculation method</h2>
+<p>This proof type involves 2 different hashes per credential: <em>Attestation Hash</em> and <em>Revocation Hash</em>, respectively written on the Ethereum newtwork when the credential is issued and (optionally) revoked.</p>
+<p>The following steps MUST be applied to generate either hash.</p>
+<ol>
+<li><strong>Step 1: Calculate the credential's hash.</strong></li>
+<li>If present, temporarily strip the whole <code>"proof"</code> attribute from the credential, even if it contains multiple proofs.</li>
+<li>Serialize the resulting object as a string. TODO: Describe the serialization method (it must be deterministic).</li>
+<li>
+<p>The SHA256 hash of the string is the credential's hash.</p>
+</li>
+<li>
+<p><strong>Step 2: Calculate the final hash.</strong></p>
+</li>
+<li>Create the following object:
+      <code>json
+      {
+         "hash": &lt;credential's hash in hexadecimal&gt;,
+         "status": "Valid" | "Revoked"
+      }</code></li>
+<li>Serialize the object as a string. TODO: Describe the serialization method (it must be deterministic).</li>
+<li>The SHA256 hash of the string is the final hash (i.e. either Attestation Hash or Revocation Hash depending on the value of <code>status</code>).</li>
+</ol>
+<h2 id="proof-generation-method">Proof Generation Method</h2>
+<p>The following steps MUST be applied by a credential's issuer in order to generate an Ethereum Attestation Registry proof of the credential:</p>
+<ol>
+<li><strong>Step 1: Calculate Attestation Hash</strong> (see above).</li>
+<li><strong>Step 2: Send the Ethereum transaction.</strong></li>
+<li>Decide on the Ethereum network and the registry smart contract to be used.</li>
+<li>
+<p>On that Ethereum network, make a call to the registry smart contract containing a call to the <code>verify(bytes32 hash, uint iat, uint exp)</code> function, where <code>hash</code> is the Attestation Hash.</p>
 <ul>
-<li><strong>Safe policy</strong>. Some verifiers might decide that an attestation is only acceptable if the expiration time is at least 6 months in the future.</li>
-<li><strong>Flexible policy</strong>. Some verifiers might leave a tolerance window during which they still accept an expired attestation.</li>
-<li><strong>Strict policy</strong>. Some verifiers might only accept an attestation during the attestation time range.</li>
-<li>Some verifiers might apply more complex policies, e.g. where the tolerance depends on the identity of the attester, on the content, on the actual transaction time of the attestation, on the existence of previous attestations, etc.</li>
+<li>Good values for <code>iat</code> and <code>exp</code> are the current time and <code>0</code> respectively, but you can use different values or make subsequent calls to the contract as needed. See ERC for details.</li>
+<li>The call to the registry smart contract must be done from an <code>ethereumAddress</code> present in the issuer's DID Document.</li>
 </ul>
-<h2 id="rationale">Rationale</h2>
-<h3 id="storing-validity-times-on-chain-vs-off-chain">Storing validity times on-chain vs. off-chain</h3>
-<p>Information stored on a blockchain is both public and permanent, which makes it a crucial decision to decide what to store and what not to store. For this reason, a balance should always be seeked between privacy and usefulness. Specifically, the decision to include validity times on chain rather than in the original content is a result of that subjective balance:</p>
+</li>
+<li>
+<p><strong>Create the <code>proof</code> object.</strong></p>
+</li>
+<li>Use the original credential (i.e. without stripping the <code>proof object</code>).</li>
+<li>Update the credential with the new <code>proof</code> object (see Specification section above).</li>
+</ol>
+<h2 id="proof-revocation-method">Proof Revocation Method</h2>
+<p>This proof type allows for an issued credential to be revoked by the issuer before its expiration date.</p>
+<ol>
+<li><strong>Step 1: Calculate Revocation Hash</strong></li>
+<li><strong>Step 2: Send the Ethereum transaction</strong></li>
+<li>Use the contract address and network listed in the <code>proof</code> object.</li>
+<li>Same recommendations as for proof generation, this time using the Revocation Hash.</li>
+</ol>
+<h2 id="proof-verification-method">Proof Verification Method</h2>
+<p>To verify the proof, the hashes must be looked up on the registry smart contract. A credential is deemed valid if the Attestation Hash is valid <em>and</em> the Revocation Hash is not valid.</p>
+<p>The overall verification strategy is the following:</p>
 <ul>
-<li>Including validity times means leaking out information allowing to suspect or discard specific contents for a given hash. For example, time ranges of 3 weeks might give up certain types of documents, and exclude e.g. passports.</li>
-<li>Leaving validity times off-chain (typically in the original document) might not work very well for some types of documents where the issuer and the attester are separate entities and the attester doesn't have the liberty to emit an "attestation document" containing validity times.</li>
+<li>Look up the Verification Hash.</li>
+<li>If it is found, the credential is not valid.</li>
+<li>Otherwise, look up the Attestation Hash.<ul>
+<li>If it is found, the credential is valid.</li>
+<li>Otherwise, the credential is not valid.</li>
 </ul>
-<p>This specification allows verifiers to store date information on-chain. However, the attester and the verifier are always free to use any non-zero value in the <code>(iat, exp)</code> tuple and maintain date information off-chain instead.</p>
-<h3 id="attesting-hashes-vs-plain-data">Attesting hashes vs. plain data</h3>
-<p>To follow best practices, it was deemed equally secure, cheaper, and most respectful to privacy to record fixed-length <code>bytes32</code> data rather than actual content.</p>
-<h2 id="backwards-compatibility">Backwards Compatibility</h2>
-<p>This EIP doesn't introduce any known backwards compatibility issues.</p>
-<h2 id="implementation">Implementation</h2>
-<p>An implementation may be found <a href="https://gitlab.com/KayTrust/developer/blob/master/contracts/AttestationRegistry.sol">here</a>.</p>
-<h2 id="copyright">Copyright</h2>
-<p>Copyright and related rights waived via <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.</p>
+</li>
+</ul>
+<p>The following steps MUST be applied to look up either hash:</p>
+<ul>
+<li>Use the contract address and network listed in the <code>proof</code> object.</li>
+<li>Call the <code>verifications(bytes32 hash, address issuer)</code> function, where:</li>
+<li><code>hash</code> is the hash to verify.</li>
+<li><code>issuer</code> is the <code>ethereumAddress</code> of the issuer's DID, read from the DID Document.</li>
+<li>The function returns an <code>(iat, exp)</code> pair.</li>
+<li>The hash is found if the following conditions are met:</li>
+<li><code>iat</code> is not <code>0</code> and is lower than the time of the verification.</li>
+<li><code>exp</code> is <code>0</code> or is higher than the time of the verification.</li>
+</ul>
+<h2 id="performance-considerations">Performance Considerations</h2>
+<p>With this proof type, an Ethereum transaction must be executed for each new attestation. This specification should be improved in the future to allow more scalable approaches.</p>
                 
               
               
