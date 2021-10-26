@@ -8,19 +8,20 @@
       
       
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
     
     
       
-        <title>OpenID Connect Profile for self-sovereign identity (DIDConnect) - KayTrust Developer Documentation</title>
+        <title>DIDConnect - KayTrust Developer Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e35208c4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
         
           
           
@@ -32,9 +33,9 @@
     
       
         
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
-        <style>body,input{font-family:"Lato",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <style>:root{--md-text-font-family:"Lato";--md-code-font-family:""}</style>
       
     
     
@@ -52,66 +53,65 @@
     
     
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="">
-      
   
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#openid-connect-profile-for-self-sovereign-identity-didconnect" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
       
     </div>
     
-      
-
-<header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="../.." title="KayTrust Developer Documentation" class="md-header-nav__button md-logo" aria-label="KayTrust Developer Documentation">
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KayTrust Developer Documentation" class="md-header__button md-logo" aria-label="KayTrust Developer Documentation" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41L2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18l-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41 2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
 
     </a>
-    <label class="md-header-nav__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
     </label>
-    <div class="md-header-nav__title" data-md-component="header-title">
-      
-        <div class="md-header-nav__ellipsis">
-          <span class="md-header-nav__topic md-ellipsis">
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
             KayTrust Developer Documentation
           </span>
-          <span class="md-header-nav__topic md-ellipsis">
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
             
-              OpenID Connect Profile for self-sovereign identity (DIDConnect)
+              DIDConnect
             
           </span>
         </div>
-      
+      </div>
     </div>
     
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
       
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
       </button>
     </form>
     <div class="md-search__output">
@@ -140,17 +140,19 @@
         <div class="md-main__inner md-grid">
           
             
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
 
+
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="KayTrust Developer Documentation" class="md-nav__button md-logo" aria-label="KayTrust Developer Documentation">
+    <a href="../.." title="KayTrust Developer Documentation" class="md-nav__button md-logo" aria-label="KayTrust Developer Documentation" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41L2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18l-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41 2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
 
     </a>
     KayTrust Developer Documentation
@@ -162,48 +164,60 @@
       
       
 
-
-  <li class="md-nav__item">
-    <a href="../.." class="md-nav__link">
-      Home
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../" class="md-nav__link">
-      Specs
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
 
     
       
       
       
 
-
-  <li class="md-nav__item">
-    <a href="../../Manuals/" class="md-nav__link">
-      Manuals
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Specs
+      </a>
+    </li>
+  
 
     
       
       
       
 
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Manuals/" class="md-nav__link">
+        Manuals
+      </a>
+    </li>
+  
 
-  <li class="md-nav__item">
-    <a href="../../Tutorials/" class="md-nav__link">
-      Tutorials
-    </a>
-  </li>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
 
     
   </ul>
@@ -213,383 +227,17 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    Introduction
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#general-flow" class="md-nav__link">
-    General flow
-  </a>
-  
-    <nav class="md-nav" aria-label="General flow">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-client-registration" class="md-nav__link">
-    1. Client registration
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-authentication-request" class="md-nav__link">
-    2. Authentication request
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-obtaining-user-consent-from-as" class="md-nav__link">
-    3. Obtaining user consent from AS
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-token-generation" class="md-nav__link">
-    4. Token generation
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-getting-the-tokens-andor-authorization-code" class="md-nav__link">
-    5. Getting the tokens and/or authorization code
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-accessing-the-tokens-if-applicable" class="md-nav__link">
-    6. Accessing the tokens (if applicable)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-verification-of-users-identity" class="md-nav__link">
-    7. Verification of user's identity
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Verification of user's identity">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#note-for-kaytrust" class="md-nav__link">
-    Note for KayTrust
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8-accessing-the-users-protected-resources-when-applicable" class="md-nav__link">
-    8. Accessing the user's protected resources (when applicable)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples-of-as" class="md-nav__link">
-    Examples of AS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#limitations-and-possible-improvements" class="md-nav__link">
-    Limitations and possible improvements
-  </a>
-  
-    <nav class="md-nav" aria-label="Limitations and possible improvements">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#flow-support-uncertainty" class="md-nav__link">
-    Flow support uncertainty
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
-          <div class="md-content">
+          <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                <h1 id="openid-connect-profile-for-self-sovereign-identity-didconnect">OpenID Connect Profile for self-sovereign identity (DIDConnect)</h1>
-<h2 id="introduction">Introduction</h2>
-<p>This document explains how to authenticate a user against their self-sovereign identity. This method uses <a href="https://openid.net/developers/specs/">OpenID Connect (OIDC)</a>, which itself builds upon the <a href="https://tools.ietf.org/html/rfc6749">OAuth 2.0 framework</a>.</p>
-<p>DID Connect uses OIDC in a way that enables Self-Sovereign Identity (SSI) and favours decentralization, by combining it with DIDs and, optionally, Verifiable Credentials. That makes it different from traditional provider-centric flows in a few aspects, as detailed below.</p>
-<table>
-<thead>
-<tr>
-<th>Aspect</th>
-<th>Provider-Centric Identity</th>
-<th>Self-Sovereign Identity</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Authorization request URIs</td>
-<td>Use the Identity Provider (IdP)'s hostname</td>
-<td>Use <code>didconnect:</code> scheme.</td>
-</tr>
-<tr>
-<td>Authorization Server</td>
-<td>Identity Provider (IdP), known before when creating the request.</td>
-<td>Selected dynamically by user. Examples: user's own identity wallet, or a web application.</td>
-</tr>
-<tr>
-<td>Subject ID</td>
-<td>Assigned by IdP.</td>
-<td>User's DID.</td>
-</tr>
-<tr>
-<td>Client registration flow</td>
-<td>Client registers against IdP (must be authorized by IdP). Client ID is an opaque string.</td>
-<td>No authorization needed by a central entity for acting as a client. Client exposes a Verifiable Presentation, containing Verifiable Credentials issued by relevant authorities. Client ID is the URL of that presentation.</td>
-</tr>
-<tr>
-<td>Userinfo endpoint</td>
-<td>Managed by IdP. Endpoint URL is either static or discovered through OIDC Discovery.</td>
-<td>Provided dynamically: endpoint URL is present in id_token ("userinfo" claim).</td>
-</tr>
-<tr>
-<td>Public key for id_token's signature by client</td>
-<td>Either static or discovered through OIDC Discovery.</td>
-<td>Provided by DID Document (DDO).</td>
-</tr>
-<tr>
-<td>Client's whitelisted redirect_uri endpoints</td>
-<td>Registered and checked by the IdP.</td>
-<td>Announced as a claim in the Client ID's Verifiable Presentation.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="general-flow">General flow</h2>
-<p>The OIDC specification defines the following general flow:</p>
-<ol>
-<li>The clients registers (only once).</li>
-<li>The client presents an authentication request in the form of a <code>didconnect://auth?...</code> URI.</li>
-<li>The Authorization Server authenticates the user (for example, if the AS is a mobile app, the user should unlock the app) and obtains their consent.</li>
-<li>Depending on the grant flow, the Authorization Server generates a combination of identity token, grant code, and/or access token, then provides them to the client's <code>redirect_uri</code> contained in the request, according to the <code>response_mode</code> parameter (form, post or fragment).</li>
-<li>The client receives the tokens and/or code.</li>
-<li>If a code was received, the client gets the URL of the token endpoint from the <code>token_uri</code> parameter contained in the response and uses it to get the id_token and/or access_token.</li>
-<li>If an id_token was provided, the client verifies the user's identity from it.</li>
-<li>If a <code>userinfo</code> claim was present in the id_token, the client extracts the userinfo endpoint URL from it and queries it, providing the access token for authentication. The response is a verifiable presentation held by the user.</li>
-</ol>
-<p>Steps for the DIDConnect profile are detailed in the next sections.</p>
-<h3 id="1-client-registration">1. Client registration</h3>
-<ol>
-<li>Create a DID for your application.</li>
-<li>Obtain Verifiable Credentials that come from issuers the users will trust. The credentials may be self-issued if the users trust your application's DID. The credentials should typically claim information about your DID, such as the application's name, originating organization, logo, website, etc.</li>
-<li>Issue an additional Verifiable Credential containing the claim "redirect_uri" with the value of your application's whitelisted callback URL(s). That credential can be issued by your application's DID.</li>
-<li>Create a Verifiable Presentation containing those credentials and held by your app's DID.</li>
-<li>Place the Verifiable Presentation somewhere your users will be able to access it. The presentation's URL is your application's client ID.</li>
-</ol>
-<h3 id="2-authentication-request">2. Authentication request</h3>
-<p>An authentication request is a URL of the following form: <code>didconnect://auth?...</code> with the following query parameters.</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Status</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>client_id</code></td>
-<td>Required</td>
-<td>The URL of the client Verifiable Presentation.</td>
-</tr>
-<tr>
-<td><code>redirect_uri</code></td>
-<td>Required</td>
-<td>The callback URI the user should call after the AS generated the identity token. This URI will receive the token as a HTTP Bearer token (recommended) or as a query parameter.</td>
-</tr>
-<tr>
-<td><code>state</code></td>
-<td>Optional</td>
-<td>An opaque string defined by the client. That string will be provided as-is to the callback URI, as a query parameter also named <code>state</code>, allowing the client to link the response to the original request.</td>
-</tr>
-<tr>
-<td><code>response_type</code></td>
-<td>Optional</td>
-<td>Depends on the grant flow. Each flow is described by a combination of <code>id_token</code>, <code>token</code>, <code>code</code>, as defined by OIDC.</td>
-</tr>
-<tr>
-<td><code>response_mode</code></td>
-<td>Optional</td>
-<td>How the AS must issue the tokens. Must be one of <code>query</code>, <code>fragment</code>, <code>form_post</code>.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="3-obtaining-user-consent-from-as">3. Obtaining user consent from AS</h3>
-<p>When a user's Authorization Server receives a request from the application's client_id, it must treat <code>client_id</code> as an URL and fetch the Verifiable Presentation (VP) from it. Then, the AS must check the following conditions:</p>
-<ul>
-<li>The VP's proof is valid against its "holder" attribute, and the VP is within validity date.</li>
-<li>The <code>redirect_uri</code> value from the request matches one of the values present in the VP's valid credentials.</li>
-</ul>
-<p>Then, the AS should request user's consent after showing the user all relevant claims, based on valid credentials.</p>
-<p>Note: For <code>redirect_uri</code> and claims, "valid credentials" are credentials with a valid proof, within validity dates, and whose subject ID is the same as the VP's holder.</p>
-<h3 id="4-token-generation">4. Token generation</h3>
-<p>See OpenID Connect specification.</p>
-<h3 id="5-getting-the-tokens-andor-authorization-code">5. Getting the tokens and/or authorization code</h3>
-<p>See OpenID Connect specification.</p>
-<h3 id="6-accessing-the-tokens-if-applicable">6. Accessing the tokens (if applicable)</h3>
-<p>See OpenID Connect specification. TODO: Describe how token endpoint is read dynamically from response.</p>
-<h3 id="7-verification-of-users-identity">7. Verification of user's identity</h3>
-<p>The endpoint listening on <code>redirect_uri</code> receives the following query parameters (as query parameters, HTML fragment or form post depending on the requested response mode):</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Status</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>id_token</code></td>
-<td>Required</td>
-<td>A JSON Web Token (JWT) containing the user's DID.</td>
-</tr>
-<tr>
-<td><code>state</code></td>
-<td>Optional</td>
-<td>The original <code>state</code> from the authentication request, if any.</td>
-</tr>
-<tr>
-<td><code>access_token</code></td>
-<td>Optional</td>
-<td>A Bearer token authorizing access to information about the user</td>
-</tr>
-</tbody>
-</table>
-<p>The JWT contained in the <code>id_token</code> provides the following claims:</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>sub</code></td>
-<td>The user's DID.</td>
-</tr>
-<tr>
-<td><code>iss</code></td>
-<td>The public key of the user's device. The JWT is only valid if the device is authorised for that DID and if the JWT is correctly signed by that public key.</td>
-</tr>
-<tr>
-<td><code>aud</code></td>
-<td>The requester's DID. The JWT is only valid if that value matches the value of <code>client_id</code> in the request.</td>
-</tr>
-<tr>
-<td><code>state</code></td>
-<td>The state present in the request, to avoid replay attacks.</td>
-</tr>
-<tr>
-<td><code>iat</code></td>
-<td>The date the JWT was issued at. You should check the JWT is not too old, otherwise it might be insecure.</td>
-</tr>
-<tr>
-<td><code>exp</code></td>
-<td>The date until which the JWT is valid. You should check that the JWT is not expired, otherwise it might be insecure.</td>
-</tr>
-<tr>
-<td><code>at_hash</code></td>
-<td>The hash of the <code>access_token</code>.</td>
-</tr>
-<tr>
-<td><code>c_hash</code></td>
-<td>The hash of the <code>code</code>.</td>
-</tr>
-<tr>
-<td><code>userinfo</code></td>
-<td>The URL of the Resource Server where a user's Verifiable Presentation is available.</td>
-</tr>
-</tbody>
-</table>
-<p>To properly verify the user's identity, the client must:</p>
-<ul>
-<li>Verify the signature of id_token JWT against the public key present as <code>iss</code>.</li>
-<li>Make sure the JWT's issuer is an authorized key of the JWT's subject (i.e. the user's DID), by matching it against the DID Document.</li>
-</ul>
-<h4 id="note-for-kaytrust">Note for KayTrust</h4>
-<p>Currently, KayTrust's "GID" DID method does not support DID Documents. Until it does, the steps to validate a public key are the following:</p>
-<ol>
-<li>Compute the user's Proxy address from the DID</li>
-<li>Call <code>proxy.owner()</code> to get the Identity Manager's address, or use a well-known Identity Manager address for legacy DIDs.</li>
-<li>Call <code>im.hasCap(proxy, device, "auth")</code> and verify the result is <code>true</code>. To support Levels of Assurance, replace "auth" with the expected Level of Assurance.</li>
-</ol>
-<h3 id="8-accessing-the-users-protected-resources-when-applicable">8. Accessing the user's protected resources (when applicable)</h3>
-<p>If an access token was provided, the client can access user's information by querying the URL referenced as <code>userinfo</code> in the id_token, and provide the access token as an <code>Authorization</code> header, as described in <a href="https://openid.net/specs/openid-connect-core-1_0.html#UserInfoRequest">OpenID Connect specification</a>.</p>
-<p>The response is a Verifiable Presentation. The presentation's holder must be the user's authenticated DID. The presentation contains a <code>proof</code> attribute that allows the client to verify the holder's consent before using the included credentials.</p>
-<h2 id="examples-of-as">Examples of AS</h2>
-<p>Examples of Authorization Servers implementations include:</p>
-<ul>
-<li><strong>Mobile or desktop applications.</strong> Registration to the <code>didconnect:</code> scheme is specific to the operating system.</li>
-<li><strong>Web applications.</strong> Registration to the <code>didconnect:</code> scheme is done using <code>registerProtocolHandler()</code> on the web browser.</li>
-</ul>
-<h2 id="limitations-and-possible-improvements">Limitations and possible improvements</h2>
-<h3 id="flow-support-uncertainty">Flow support uncertainty</h3>
-<p>This specification describes the use of a custom URI scheme to express authorization requests. This makes it possible for any registered software on  the user agent to handle requests. This approach, similar to that of the <code>mailto:</code> and <code>tel:</code> URI schemes, implies the client app does not know what AS will actually respond to authorization requests, and what grant flows it will support.</p>
-<p>This uncertainty represents both a risk and added out-of-band work on the client side to try to guess what flow to request. One approach is to determine the type of AS based on heuristics. Another approach is to present multiple requests and let the user or the user agent make a decision.</p>
-<p>A possible improvement (see Appendix below) would be for a negotiation mechanism to be defined, where the client would announce the flows it supports, and let the AS make a decision based on its own capabilities. This would be similar to content type or language negotiation in HTTP.</p>
-<h1 id="appendix-ideas-around-authorization-server-diversity-and-flow-negotiation">Appendix: Ideas around Authorization Server diversity and flow negotiation</h1>
-<p>This appendix describes a method for an OAuth client to dynamically negotiate with the AS the OAuth grant flow to be used, similar to content type or language negotiation in HTTP. This is useful in situations where the client can't know the flows that will be supported by the AS. One such example is a DIDConnect flow.</p>
-<p>The negotiation is in two steps:</p>
-<ol>
-<li>The client announces in the authorization request the grant flows it supports, as a semicolon-separated list of supported response types.</li>
-<li>The AS selects a grant flow according on its own capabilities.</li>
-</ol>
-<p>TODO: Details and examples.</p>
+                  <h1>DIDConnect</h1>
+                
+                <p>Now you can find the <a href="https://github.com/KayTrust/did-connect">DIDConnect draft specification</a> on Github.</p>
+<p>We moved it there to let anyone contribute to the specification or ask questions.</p>
+<p>Please update your bookmarks as this page will disappear eventually.</p>
                 
               
               
@@ -600,6 +248,7 @@
             </article>
           </div>
         </div>
+        
       </main>
       
         
@@ -613,6 +262,7 @@
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs
         </a>
+        
       </div>
       
     </div>
@@ -620,19 +270,13 @@
 </footer>
       
     </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
     
-      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
-      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
-      
-      <script>
-        app = initialize({
-          base: "../..",
-          features: ['navigation.instant'],
-          search: Object.assign({
-            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
-          }, typeof search !== "undefined" && search)
-        })
-      </script>
+    
+      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
       
     
   </body>

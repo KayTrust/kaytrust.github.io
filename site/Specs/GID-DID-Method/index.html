@@ -8,19 +8,20 @@
       
       
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.0">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
     
     
       
-        <title>GlobalID DID Method - KayTrust Developer Documentation</title>
+        <title>GID DID Method - KayTrust Developer Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.bc7e593a.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e35208c4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab28b872.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
         
           
           
@@ -32,9 +33,9 @@
     
       
         
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700%7C&display=fallback">
-        <style>body,input{font-family:"Lato",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <style>:root{--md-text-font-family:"Lato";--md-code-font-family:""}</style>
       
     
     
@@ -52,66 +53,65 @@
     
     
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="">
-      
   
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#globalid-did-method" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
       
     </div>
     
-      
-
-<header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href="../.." title="KayTrust Developer Documentation" class="md-header-nav__button md-logo" aria-label="KayTrust Developer Documentation">
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KayTrust Developer Documentation" class="md-header__button md-logo" aria-label="KayTrust Developer Documentation" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41L2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18l-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41 2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
 
     </a>
-    <label class="md-header-nav__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
     </label>
-    <div class="md-header-nav__title" data-md-component="header-title">
-      
-        <div class="md-header-nav__ellipsis">
-          <span class="md-header-nav__topic md-ellipsis">
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
             KayTrust Developer Documentation
           </span>
-          <span class="md-header-nav__topic md-ellipsis">
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
             
-              GlobalID DID Method
+              GID DID Method
             
           </span>
         </div>
-      
+      </div>
     </div>
     
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
       
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
       </button>
     </form>
     <div class="md-search__output">
@@ -140,17 +140,19 @@
         <div class="md-main__inner md-grid">
           
             
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
 
+
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="KayTrust Developer Documentation" class="md-nav__button md-logo" aria-label="KayTrust Developer Documentation">
+    <a href="../.." title="KayTrust Developer Documentation" class="md-nav__button md-logo" aria-label="KayTrust Developer Documentation" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41L2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18l-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.59 3.41 2 8l4.59 4.6L8 11.18 4.82 8 8 4.82 6.59 3.41m5.82 0L11 4.82 14.18 8 11 11.18l1.41 1.42L17 8l-4.59-4.59m9.18 8.18-8.09 8.09L9.83 16l-1.41 1.41 5.08 5.09L23 13l-1.41-1.41z"/></svg>
 
     </a>
     KayTrust Developer Documentation
@@ -162,48 +164,60 @@
       
       
 
-
-  <li class="md-nav__item">
-    <a href="../.." class="md-nav__link">
-      Home
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../" class="md-nav__link">
-      Specs
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
 
     
       
       
       
 
-
-  <li class="md-nav__item">
-    <a href="../../Manuals/" class="md-nav__link">
-      Manuals
-    </a>
-  </li>
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Specs
+      </a>
+    </li>
+  
 
     
       
       
       
 
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Manuals/" class="md-nav__link">
+        Manuals
+      </a>
+    </li>
+  
 
-  <li class="md-nav__item">
-    <a href="../../Tutorials/" class="md-nav__link">
-      Tutorials
-    </a>
-  </li>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tutorials/" class="md-nav__link">
+        Tutorials
+      </a>
+    </li>
+  
 
     
   </ul>
@@ -213,239 +227,17 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#abstract" class="md-nav__link">
-    Abstract
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#status-of-this-document" class="md-nav__link">
-    Status of this Document
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    Introduction
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#terminology" class="md-nav__link">
-    Terminology
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dids" class="md-nav__link">
-    DIDs
-  </a>
-  
-    <nav class="md-nav" aria-label="DIDs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#did-format" class="md-nav__link">
-    DID format
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#did-method-name" class="md-nav__link">
-    DID Method Name
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#method-specific-identifier" class="md-nav__link">
-    Method-Specific Identifier
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    Example
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#did-document" class="md-nav__link">
-    DID Document
-  </a>
-  
-    <nav class="md-nav" aria-label="DID Document">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example_1" class="md-nav__link">
-    Example
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#crud-operation-definitions" class="md-nav__link">
-    CRUD Operation Definitions
-  </a>
-  
-    <nav class="md-nav" aria-label="CRUD Operation Definitions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-register" class="md-nav__link">
-    Create (Register)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#read-resolve" class="md-nav__link">
-    Read (Resolve)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#update" class="md-nav__link">
-    Update
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete-revoke" class="md-nav__link">
-    Delete (Revoke)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#performance-considerations" class="md-nav__link">
-    Performance Considerations
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
-          <div class="md-content">
+          <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                <h1 id="globalid-did-method">GlobalID DID Method</h1>
-<h2 id="abstract">Abstract</h2>
-<p>This document describes the GlobalID DID method. It conforms to the requirements specified in the <a href="https://w3c-ccg.github.io/did-spec/">DID draft specification</a> currently published by the W3C Credentials Community Group.</p>
-<h2 id="status-of-this-document">Status of this Document</h2>
-<p>This specification is an unofficial draft. It is provided as a reference for people and organisations who wish to implement software meant to interact with GlobalID DID method.</p>
-<h2 id="introduction">Introduction</h2>
-<p>The DID specification seeks to facilitate internet-wide, self-sovereign identity. On that basis, identifiers must be both assigned, resolved and used in a decentralised way.</p>
-<p>Every GlobalID DID lives on a specific Ethereum blockchain and translates naturally to and from an Ethereum address on that blockchain, representing the entity in front of DApps. Additionally, any system that has access to a node in the same blockchain as a DID may perform (read, write, auth...) operations on that DID and use it off-chain if needed.</p>
-<p>The purpose of DIDs, and URIs in general, is interoperability. For that reason, GlobalID DIDs are as compatible as possible with existing standards such as Verifiable Credentials, and try to not impose that other actors in a given interaction use the same blockchain, the same DID method, or even a DID as their identifier.</p>
-<h2 id="terminology">Terminology</h2>
-<ul>
-<li>DID: A distributed identifier</li>
-<li>Entity: Any person, organization, thing, vehicle, house, etc. that may be uniquely identified.</li>
-</ul>
-<h2 id="dids">DIDs</h2>
-<h3 id="did-format">DID format</h3>
-<p>The DID specification defines the following format for DIDs:</p>
-<pre><code>did:&lt;scheme&gt;:&lt;scheme-specific-identifier&gt;
-</code></pre>
-
-<h3 id="did-method-name">DID Method Name</h3>
-<p>The scheme that shall identify this DID method is: <code>gid</code>.</p>
-<h3 id="method-specific-identifier">Method-Specific Identifier</h3>
-<p>The method-specific identifier is composed of an optional Ethereum network identifier with a <code>:</code> separator, followed by an MNID.</p>
-<pre><code>  gid-did = &quot;did:gid:&quot; mnid
-  mnid  = 40*HEXDIG
-</code></pre>
-
-<p>The <code>mnid</code> is a string that is compliant with the <a href="https://github.com/uport-project/mnid">Multi-Network ID format</a>. It refers to the Multi-Network identifier of the identity's Proxy contract. An MNID is an encoding of an (address, networkID) pair, so it's possible to compute a DID from an address and networkID pair, and vice versa. Assuming networkIDs are unique and well known, a DID thus allows to discover the specific Proxy contract behind a given DID, and reciprocally.</p>
-<h3 id="example">Example</h3>
-<p>Example <code>gid</code> DID:</p>
-<ul>
-<li><code>did:gid:2uzPtwJmXbBqMmP9DkR7dE3FcLmgYejdJ42</code></li>
-</ul>
-<h2 id="did-document">DID Document</h2>
-<h3 id="example_1">Example</h3>
-<pre><code class="json">{
-  &quot;@context&quot;: &quot;https://w3id.org/did/v1&quot;,
-  &quot;id&quot;: &quot;did:gid:2uzPtwJmXbBqMmP9DkR7dE3FcLmgYejdJ42&quot;,
-  &quot;authentication&quot;: [{
-    &quot;id&quot;: &quot;did:gid:2uzPtwJmXbBqMmP9DkR7dE3FcLmgYejdJ42#keys-1&quot;,
-    &quot;type&quot;: &quot;EthereumAddress&quot;,
-    &quot;controller&quot;: &quot;did:gid:2uzPtwJmXbBqMmP9DkR7dE3FcLmgYejdJ42&quot;,
-    &quot;publicKeyAddress&quot;: &quot;0xaeaefd50a2c5cda393e9a1eef2d6ba23f2c4fd6d&quot;
-  }]
-}
-</code></pre>
-
-<h2 id="crud-operation-definitions">CRUD Operation Definitions</h2>
-<p>Each identity is represented by the address of a smart contract called "Proxy contract", available on an Ethereum network.</p>
-<h3 id="create-register">Create (Register)</h3>
-<p>In order to create an <code>gid</code> DID, a Proxy contract must be deployed on Ethereum. The address of the deployed contract is used to compute the DID using the following algorithm:
-1. The contract's address and the Ethereum network ID are put together and converted into an MNID.
-2. The string "did:gid:" is prepended to the MNID.</p>
-<h3 id="read-resolve">Read (Resolve)</h3>
-<p>To construct a valid DID document from an <code>gid</code> DID, the following steps are performed:</p>
-<ol>
-<li>Extract the MNID as the method-specific part of the DID</li>
-<li>Determine the Ethereum network identifier and address from the MNID.</li>
-<li>Access relevant information about that DID: public profile, public keys authorized for authentication, etc.</li>
-</ol>
-<h3 id="update">Update</h3>
-<p>Only an authorized device for a given DID may update information about that DID.</p>
-<h3 id="delete-revoke">Delete (Revoke)</h3>
-<p>The delete operation is not currently supported. However, for must use cases it is sufficient to stop using a given DID, authenticating as that DID, or providing private or public information about it.</p>
-<h2 id="performance-considerations">Performance Considerations</h2>
-<p>In Ethereum, looking up a raw public key from a native 20-byte address is a complex and resource-intensive process, which is why this specification refers to public keys in their "address" hash form. This makes the DID method much simpler to implement, while at the same time not really limiting the spirit of the DID specification.</p>
+                  <h1>GID DID Method</h1>
+                
+                <p>Now you can find the <a href="https://github.com/KayTrust/did-method-ev">EV DID method specification</a> on Github.</p>
+<p>We moved it there to let anyone contribute to the specification or ask questions.</p>
+<p>Please update your bookmarks as this page will disappear eventually.</p>
                 
               
               
@@ -456,6 +248,7 @@
             </article>
           </div>
         </div>
+        
       </main>
       
         
@@ -469,6 +262,7 @@
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs
         </a>
+        
       </div>
       
     </div>
@@ -476,19 +270,13 @@
 </footer>
       
     </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
     
-      <script src="../../assets/javascripts/vendor.6a3d08fc.min.js"></script>
-      <script src="../../assets/javascripts/bundle.71201edf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
-      
-      <script>
-        app = initialize({
-          base: "../..",
-          features: ['navigation.instant'],
-          search: Object.assign({
-            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
-          }, typeof search !== "undefined" && search)
-        })
-      </script>
+    
+      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
       
     
   </body>
