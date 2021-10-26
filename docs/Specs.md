@@ -6,7 +6,7 @@ KayTrust uses the standard DID protocol for identifiers, and defines a ["gid" DI
 
 | Specification                                  | Builds on top of        | What is it good for?
 | ---------------------------------------------- | ----------------------- | --------------------
-| ["gid" DID method](/Specs/GID-DID-Method)      | W3C's DID Specification | Ethereum-based DIDs
+| ["ev" DID method](https://github.com/KayTrust/did-method-ev)      | W3C's DID Specification | Ethereum-based DIDs
 | [Proxy contract ERC](/Specs/Proxy-Contract-ERC)| Ethereum                | Transaction forwarding, on-chain representation, single Ethereum addresses
 | Identity Manager ERC                           | Ethereum                | Flexible controlling logic for Proxy contracts
 
