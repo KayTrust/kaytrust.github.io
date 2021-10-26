@@ -221,50 +221,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-did-you-need-to-define-anything" class="md-nav__link">
-    Why did you need to define anything?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#to-the-point-please" class="md-nav__link">
-    To the point, please.
-  </a>
-  
-    <nav class="md-nav" aria-label="To the point, please.">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#core-identity" class="md-nav__link">
     Core identity
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#verifiable-credentials-and-presentations" class="md-nav__link">
     Verifiable credentials and Presentations
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#real-world-self-sovereign-authentication-did-connect" class="md-nav__link">
     Real-world, self-sovereign authentication: "DID Connect"
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#schemas" class="md-nav__link">
     Schemas
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#why-did-you-need-to-define-anything" class="md-nav__link">
+    Why did you need to define anything?
+  </a>
   
 </li>
       
@@ -332,50 +319,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-did-you-need-to-define-anything" class="md-nav__link">
-    Why did you need to define anything?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#to-the-point-please" class="md-nav__link">
-    To the point, please.
-  </a>
-  
-    <nav class="md-nav" aria-label="To the point, please.">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#core-identity" class="md-nav__link">
     Core identity
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#verifiable-credentials-and-presentations" class="md-nav__link">
     Verifiable credentials and Presentations
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#real-world-self-sovereign-authentication-did-connect" class="md-nav__link">
     Real-world, self-sovereign authentication: "DID Connect"
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#schemas" class="md-nav__link">
     Schemas
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#why-did-you-need-to-define-anything" class="md-nav__link">
+    Why did you need to define anything?
+  </a>
   
 </li>
       
@@ -393,15 +367,7 @@
                 
                 
                 <h1 id="kaytrust-specifications">KayTrust Specifications</h1>
-<h2 id="why-did-you-need-to-define-anything">Why did you need to define anything?</h2>
-<p><em>Websites</em>, <em>electronic mail</em> (email), <em>email addresses</em>, <em>TCP connections</em>, <em>IP addresses</em>, <em>URLs</em>, <em>HTML pages</em>, <em>JPEG</em>. Those are known and mature concepts.</p>
-<p><em>Passwords</em>, <em>cryptographic keys</em>, <em>digital signatures</em>, <em>unique identifiers</em>. Also mature concepts.</p>
-<p><em>Likes</em>, <em>tweets</em>, <em>cookies</em>, <em>browser-side scripts</em>, user profiles. Those are a bit younger but also well known.</p>
-<p><em>Blockchain</em>. <em>Verifiable credentials</em>. <em>Digital identity</em>. Now we're talking about something more recent in the history of internet. Those concepts are slowly taking shape, paving their way into users' and developers' minds, and into standards organizations' discussions. RFCs are being written, W3C Working Groups are being set up, blog articles are being cited.</p>
-<p>Since digital identity is both a young a wide domain, KayTrust's objective is to bind together the state of the art of digital identity standards and turn them into a usable package for people and for businesses.</p>
-<h2 id="to-the-point-please">To the point, please.</h2>
-<p>Fair enough.</p>
-<h3 id="core-identity">Core identity</h3>
+<h2 id="core-identity">Core identity</h2>
 <p>KayTrust uses the standard DID protocol for identifiers, and defines a <a href="/Specs/GID-DID-Method">"gid" DID method</a> based on <a href="/Specs/Proxy-Contract-ERC">smart contracts</a>.</p>
 <table>
 <thead>
@@ -413,7 +379,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="/Specs/GID-DID-Method">"gid" DID method</a></td>
+<td><a href="https://github.com/KayTrust/did-method-ev">"ev" DID method</a></td>
 <td>W3C's DID Specification</td>
 <td>Ethereum-based DIDs</td>
 </tr>
@@ -429,7 +395,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="verifiable-credentials-and-presentations">Verifiable credentials and Presentations</h3>
+<h2 id="verifiable-credentials-and-presentations">Verifiable credentials and Presentations</h2>
 <p>Besides identifiers, the point of an identity is to have credentials associated to it. A credential answers the question <em>"Who are you?"</em> and contains one or more key-value claims (e.g. birth date, name, qualifications, citizenships, etc.) about an entity called subject, issued by another entity called issuer. The Verifiable Credentials Working Group at the W3C is defining a standard that KayTrust follows.</p>
 <p>Both Verifiable Credentials (VC) and Verifiable Presentations (VP) contain proofs, which is what makes them verifiable. The VC specification doesn't enforce a specific proof algorithm but describes the articulation between a credential/presentation and a specific proof method. Implementers are free to come up with their own proof method or to follow someone else's.</p>
 <p>The <a href="/Specs/Content-Attestation-Registry-ERC">draft ERC</a> (Ethereum Request for Comments) describes a way for any entity to attest arbitrary content on a smart contract. There is a corresponding <a href="/Specs/Ethereum-Attestation-Registry-Proof-Type">proof type</a> that enables to use that attestation registry inside a Verifiable Credential or a Verifiable Presentation.</p>
@@ -454,7 +420,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="real-world-self-sovereign-authentication-did-connect">Real-world, self-sovereign authentication: "DID Connect"</h3>
+<h2 id="real-world-self-sovereign-authentication-did-connect">Real-world, self-sovereign authentication: "DID Connect"</h2>
 <p>KayTrust introduces a way for identity owners (a.k.a. subjects) to authenticate on third-party apps. We propose using OpenID Connect, only in a self-sovereign fashion. The trick is to use as Authorization Server the identity owner's own device, as opposed to a predefined AS in traditional services.</p>
 <table>
 <thead>
@@ -472,7 +438,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="schemas">Schemas</h3>
+<h2 id="schemas">Schemas</h2>
 <p>KayTrust mostly relies on well-known schemas, such as the great work done by the schema.org community. However, when the need arises, additional schemas are defined.</p>
 <table>
 <thead>
@@ -488,6 +454,12 @@
 </tr>
 </tbody>
 </table>
+<h2 id="why-did-you-need-to-define-anything">Why did you need to define anything?</h2>
+<p><em>Websites</em>, <em>electronic mail</em> (email), <em>email addresses</em>, <em>TCP connections</em>, <em>IP addresses</em>, <em>URLs</em>, <em>HTML pages</em>, <em>JPEG</em>. Those are known and mature concepts.</p>
+<p><em>Passwords</em>, <em>cryptographic keys</em>, <em>digital signatures</em>, <em>unique identifiers</em>. Also mature concepts.</p>
+<p><em>Likes</em>, <em>tweets</em>, <em>cookies</em>, <em>browser-side scripts</em>, user profiles. Those are a bit younger but also well known.</p>
+<p><em>Blockchain</em>. <em>Verifiable credentials</em>. <em>Digital identity</em>. Now we're talking about something more recent in the history of internet. Those concepts are slowly taking shape, paving their way into users' and developers' minds, and into standards organizations' discussions. RFCs are being written, W3C Working Groups are being set up, blog articles are being cited.</p>
+<p>Since digital identity is both a young a wide domain, KayTrust's objective is to bind together the state of the art of digital identity standards and turn them into a usable package for people and for businesses.</p>
                 
               
               

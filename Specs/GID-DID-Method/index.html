@@ -14,7 +14,7 @@
     
     
       
-        <title>GlobalID DID Method - KayTrust Developer Documentation</title>
+        <title>GID DID Method - KayTrust Developer Documentation</title>
       
     
     
@@ -62,11 +62,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#globalid-did-method" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -93,7 +88,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              GlobalID DID Method
+              GID DID Method
             
           </span>
         </div>
@@ -232,238 +227,17 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#abstract" class="md-nav__link">
-    Abstract
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#status-of-this-document" class="md-nav__link">
-    Status of this Document
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    Introduction
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#terminology" class="md-nav__link">
-    Terminology
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dids" class="md-nav__link">
-    DIDs
-  </a>
-  
-    <nav class="md-nav" aria-label="DIDs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#did-format" class="md-nav__link">
-    DID format
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#did-method-name" class="md-nav__link">
-    DID Method Name
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#method-specific-identifier" class="md-nav__link">
-    Method-Specific Identifier
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    Example
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#did-document" class="md-nav__link">
-    DID Document
-  </a>
-  
-    <nav class="md-nav" aria-label="DID Document">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example_1" class="md-nav__link">
-    Example
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#crud-operation-definitions" class="md-nav__link">
-    CRUD Operation Definitions
-  </a>
-  
-    <nav class="md-nav" aria-label="CRUD Operation Definitions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-register" class="md-nav__link">
-    Create (Register)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#read-resolve" class="md-nav__link">
-    Read (Resolve)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#update" class="md-nav__link">
-    Update
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete-revoke" class="md-nav__link">
-    Delete (Revoke)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#performance-considerations" class="md-nav__link">
-    Performance Considerations
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                <h1 id="globalid-did-method">GlobalID DID Method</h1>
-<h2 id="abstract">Abstract</h2>
-<p>This document describes the GlobalID DID method. It conforms to the requirements specified in the <a href="https://w3c-ccg.github.io/did-spec/">DID draft specification</a> currently published by the W3C Credentials Community Group.</p>
-<h2 id="status-of-this-document">Status of this Document</h2>
-<p>This specification is an unofficial draft. It is provided as a reference for people and organisations who wish to implement software meant to interact with GlobalID DID method.</p>
-<h2 id="introduction">Introduction</h2>
-<p>The DID specification seeks to facilitate internet-wide, self-sovereign identity. On that basis, identifiers must be both assigned, resolved and used in a decentralised way.</p>
-<p>Every GlobalID DID lives on a specific Ethereum blockchain and translates naturally to and from an Ethereum address on that blockchain, representing the entity in front of DApps. Additionally, any system that has access to a node in the same blockchain as a DID may perform (read, write, auth...) operations on that DID and use it off-chain if needed.</p>
-<p>The purpose of DIDs, and URIs in general, is interoperability. For that reason, GlobalID DIDs are as compatible as possible with existing standards such as Verifiable Credentials, and try to not impose that other actors in a given interaction use the same blockchain, the same DID method, or even a DID as their identifier.</p>
-<h2 id="terminology">Terminology</h2>
-<ul>
-<li>DID: A distributed identifier</li>
-<li>Entity: Any person, organization, thing, vehicle, house, etc. that may be uniquely identified.</li>
-</ul>
-<h2 id="dids">DIDs</h2>
-<h3 id="did-format">DID format</h3>
-<p>The DID specification defines the following format for DIDs:</p>
-<pre><code>did:&lt;scheme&gt;:&lt;scheme-specific-identifier&gt;
-</code></pre>
-<h3 id="did-method-name">DID Method Name</h3>
-<p>The scheme that shall identify this DID method is: <code>gid</code>.</p>
-<h3 id="method-specific-identifier">Method-Specific Identifier</h3>
-<p>The method-specific identifier is composed of an optional Ethereum network identifier with a <code>:</code> separator, followed by an MNID.</p>
-<pre><code>  gid-did = &quot;did:gid:&quot; mnid
-  mnid  = 40*HEXDIG
-</code></pre>
-<p>The <code>mnid</code> is a string that is compliant with the <a href="https://github.com/uport-project/mnid">Multi-Network ID format</a>. It refers to the Multi-Network identifier of the identity's Proxy contract. An MNID is an encoding of an (address, networkID) pair, so it's possible to compute a DID from an address and networkID pair, and vice versa. Assuming networkIDs are unique and well known, a DID thus allows to discover the specific Proxy contract behind a given DID, and reciprocally.</p>
-<h3 id="example">Example</h3>
-<p>Example <code>gid</code> DID:</p>
-<ul>
-<li><code>did:gid:2uzPtwJmXbBqMmP9DkR7dE3FcLmgYejdJ42</code></li>
-</ul>
-<h2 id="did-document">DID Document</h2>
-<h3 id="example_1">Example</h3>
-<pre><code class="language-json">{
-  &quot;@context&quot;: &quot;https://w3id.org/did/v1&quot;,
-  &quot;id&quot;: &quot;did:gid:2uzPtwJmXbBqMmP9DkR7dE3FcLmgYejdJ42&quot;,
-  &quot;authentication&quot;: [{
-    &quot;id&quot;: &quot;did:gid:2uzPtwJmXbBqMmP9DkR7dE3FcLmgYejdJ42#keys-1&quot;,
-    &quot;type&quot;: &quot;EthereumAddress&quot;,
-    &quot;controller&quot;: &quot;did:gid:2uzPtwJmXbBqMmP9DkR7dE3FcLmgYejdJ42&quot;,
-    &quot;publicKeyAddress&quot;: &quot;0xaeaefd50a2c5cda393e9a1eef2d6ba23f2c4fd6d&quot;
-  }]
-}
-</code></pre>
-<h2 id="crud-operation-definitions">CRUD Operation Definitions</h2>
-<p>Each identity is represented by the address of a smart contract called "Proxy contract", available on an Ethereum network.</p>
-<h3 id="create-register">Create (Register)</h3>
-<p>In order to create an <code>gid</code> DID, a Proxy contract must be deployed on Ethereum. The address of the deployed contract is used to compute the DID using the following algorithm:
-1. The contract's address and the Ethereum network ID are put together and converted into an MNID.
-2. The string "did:gid:" is prepended to the MNID.</p>
-<h3 id="read-resolve">Read (Resolve)</h3>
-<p>To construct a valid DID document from an <code>gid</code> DID, the following steps are performed:</p>
-<ol>
-<li>Extract the MNID as the method-specific part of the DID</li>
-<li>Determine the Ethereum network identifier and address from the MNID.</li>
-<li>Access relevant information about that DID: public profile, public keys authorized for authentication, etc.</li>
-</ol>
-<h3 id="update">Update</h3>
-<p>Only an authorized device for a given DID may update information about that DID.</p>
-<h3 id="delete-revoke">Delete (Revoke)</h3>
-<p>The delete operation is not currently supported. However, for must use cases it is sufficient to stop using a given DID, authenticating as that DID, or providing private or public information about it.</p>
-<h2 id="performance-considerations">Performance Considerations</h2>
-<p>In Ethereum, looking up a raw public key from a native 20-byte address is a complex and resource-intensive process, which is why this specification refers to public keys in their "address" hash form. This makes the DID method much simpler to implement, while at the same time not really limiting the spirit of the DID specification.</p>
+                  <h1>GID DID Method</h1>
+                
+                <p>Now you can find the <a href="https://github.com/KayTrust/did-method-ev">EV DID method specification</a> on Github.</p>
+<p>We moved it there to let anyone contribute to the specification or ask questions.</p>
+<p>Please update your bookmarks as this page will disappear eventually.</p>
                 
               
               
