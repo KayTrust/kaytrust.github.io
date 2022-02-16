@@ -85,7 +85,7 @@ stages:
     strategy:
       runOnce:
         deploy:
-          steps:          
+          steps:
           - task: AzureFileCopy@4
             displayName: Copy site files to container on Azure
             inputs:
