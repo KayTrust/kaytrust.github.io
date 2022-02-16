@@ -93,5 +93,5 @@ stages:
               azureSubscription: 'Innovation & Labs(f79dbf8e-3065-4930-a70f-065b7403c892)'
               Destination: 'AzureBlob'
               storage: '$(AZURE_STORAGE_ACCOUNT)'
-              ContainerName: 'swagger-docs'
+              ContainerName: '$web'
 
