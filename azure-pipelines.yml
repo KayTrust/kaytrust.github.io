@@ -86,7 +86,7 @@ stages:
       runOnce:
         deploy:
           steps:          
-          - task: AzureFileCopy@2
+          - task: AzureFileCopy@3
             displayName: Copy site files to container on Azure
             inputs:
               SourcePath: '$(Pipeline.Workspace)/swagger/swagger-openapi.yaml'
