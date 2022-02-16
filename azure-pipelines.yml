@@ -75,7 +75,7 @@ stages:
 - stage: Build_swagger
   pool:
     vmImage: 'ubuntu-latest'
-  displayName: Build static documentation
+  displayName: Build swagger documentation
   jobs:
   - job: BuildSwaggerDoc
     displayName: Build documentation using MkDocs
