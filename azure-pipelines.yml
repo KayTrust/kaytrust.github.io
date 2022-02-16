@@ -89,7 +89,7 @@ stages:
           - task: AzureFileCopy@4
             displayName: Copy site files to container on Azure
             inputs:
-              SourcePath: '$(Pipeline.Workspace)/swagger/*'
+              SourcePath: '$(System.DefaultWorkingDirectory)/swagger/*'
               azureSubscription: 'Innovation & Labs(f79dbf8e-3065-4930-a70f-065b7403c892)'
               Destination: 'AzureBlob'
               storage: '$(AZURE_STORAGE_ACCOUNT)'
