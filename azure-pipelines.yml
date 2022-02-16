@@ -103,6 +103,13 @@ stages:
       runOnce:
         deploy:
           steps:
+          - task: AzureCLI@2
+            displayName: 'Clear Azure Swagger container'
+            inputs:
+              azureSubscription: 'Innovation & Labs(f79dbf8e-3065-4930-a70f-065b7403c892)'
+              scriptType: 'pscore'
+              scriptLocation: 'inlineScript'
+              inlineScript: 'az storage blob delete-batch -s `$swagger --account-name $(AZURE_STORAGE_ACCOUNT) --auth-mode login'
           - task: AzureFileCopy@4
             displayName: Copy site files to container on Azure
             inputs:
@@ -110,5 +117,5 @@ stages:
               azureSubscription: 'Innovation & Labs(f79dbf8e-3065-4930-a70f-065b7403c892)'
               Destination: 'AzureBlob'
               storage: '$(AZURE_STORAGE_ACCOUNT)'
-              ContainerName: '$web'
+              ContainerName: '$swagger'
 
