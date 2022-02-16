@@ -84,11 +84,12 @@ stages:
     - task: PublishPipelineArtifact@1
       inputs:
         targetPath: '$(Pipeline.Workspace)/s/swagger'
-        artifact: 'doc'
+        artifact: 'swagger'
         publishLocation: 'pipeline'
       displayName: 'Publish doc as artifact'
 
 - stage: Publish_SwaggerApi
+  dependsOn: Build_swagger
   pool:
     vmImage: 'windows-latest'
   displayName: Publish swagger-openapi.yaml to a blob block
