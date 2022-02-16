@@ -72,7 +72,7 @@ stages:
               storage: '$(AZURE_STORAGE_ACCOUNT)'
               ContainerName: '$web'
 
-- stage: Publish SwaggerApi
+- stage: Publish-SwaggerApi
   pool:
     vmImage: 'windows-latest'
   displayName: Publish swagger-openapi.yaml to a blob block
