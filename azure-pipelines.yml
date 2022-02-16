@@ -83,7 +83,7 @@ stages:
 
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Pipeline.Workspace)/s/doc'
+        targetPath: '$(Pipeline.Workspace)/s/swagger'
         artifact: 'doc'
         publishLocation: 'pipeline'
       displayName: 'Publish doc as artifact'
@@ -105,7 +105,7 @@ stages:
           - task: AzureFileCopy@4
             displayName: Copy site files to container on Azure
             inputs:
-              SourcePath: '$(Pipeline.Workspace)/doc/swagger/*'
+              SourcePath: '$(Pipeline.Workspace)/swagger/*'
               azureSubscription: 'Innovation & Labs(f79dbf8e-3065-4930-a70f-065b7403c892)'
               Destination: 'AzureBlob'
               storage: '$(AZURE_STORAGE_ACCOUNT)'
