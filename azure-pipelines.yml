@@ -72,6 +72,22 @@ stages:
               storage: '$(AZURE_STORAGE_ACCOUNT)'
               ContainerName: '$web'
 
+- stage: Build_swagger
+  pool:
+    vmImage: 'ubuntu-latest'
+  displayName: Build static documentation
+  jobs:
+  - job: BuildSwaggerDoc
+    displayName: Build documentation using MkDocs
+    steps:
+
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Pipeline.Workspace)/s/site'
+        artifact: 'site'
+        publishLocation: 'pipeline'
+      displayName: 'Publish site as artifact'
+
 - stage: Publish_SwaggerApi
   pool:
     vmImage: 'windows-latest'
@@ -89,7 +105,7 @@ stages:
           - task: AzureFileCopy@4
             displayName: Copy site files to container on Azure
             inputs:
-              SourcePath: '$(System.DefaultWorkingDirectory)/swagger/*'
+              SourcePath: '$(System.DefaultWorkingDirectory)/site/swagger/*'
               azureSubscription: 'Innovation & Labs(f79dbf8e-3065-4930-a70f-065b7403c892)'
               Destination: 'AzureBlob'
               storage: '$(AZURE_STORAGE_ACCOUNT)'
