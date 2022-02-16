@@ -79,6 +79,7 @@ stages:
   jobs:
   - deployment: Upload
     displayName: Upload to Azure Blob Storage
+    environment: KT-DeveloperSite-Prod
     variables:
       AZURE_STORAGE_ACCOUNT: 'kaytrustdemo'
     strategy:
