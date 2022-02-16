@@ -71,3 +71,33 @@ stages:
               Destination: 'AzureBlob'
               storage: '$(AZURE_STORAGE_ACCOUNT)'
               ContainerName: '$web'
+
+- stage: Publish SwaggerApi
+  pool:
+    vmImage: 'windows-latest'
+  displayName: Publish swagger-openapi.yaml to a blob block
+  jobs:
+  - deployment: Upload
+    displayName: Upload to Azure Blob Storage
+    variables:
+      AZURE_STORAGE_ACCOUNT: 'kaytrustdemo'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureCLI@2
+            displayName: 'Clear Azure container'
+            inputs:
+              azureSubscription: 'Innovation & Labs(f79dbf8e-3065-4930-a70f-065b7403c892)'
+              scriptType: 'pscore'
+              scriptLocation: 'inlineScript'
+              inlineScript: 'az storage blob delete -c swagger-docs -n swagger-openapi.yaml --account-name $(AZURE_STORAGE_ACCOUNT) --auth-mode login'
+          - task: AzureFileCopy@4
+            displayName: Copy site files to container on Azure
+            inputs:
+              SourcePath: '$(Pipeline.Workspace)/swagger/swagger-openapi.yaml'
+              azureSubscription: 'Innovation & Labs(f79dbf8e-3065-4930-a70f-065b7403c892)'
+              Destination: 'AzureBlob'
+              storage: '$(AZURE_STORAGE_ACCOUNT)'
+              ContainerName: 'swagger-docs'
+
