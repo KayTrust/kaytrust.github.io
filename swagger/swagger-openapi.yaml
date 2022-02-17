@@ -1,0 +1,751 @@
+openapi: 3.0.3
+info:
+  title: KayTrust Provider API
+  description: |
+    KayTrust Provider includes a set of APIs that let you manage Digital Identifiers (DIDs) and Verifiable Credentials (VCs).
+
+    Please feel free to reach out if you're interesting in using KayTrust in your organization, or even if you have any question about how it works!
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+
+tags:
+  - name: Identity
+    description: Management of Digital Identifiers (DIDs), including keys associated with each DID.
+  - name: Credential
+    description: Management of Verifiable Credentials (VCs), such as issuance and revocation.
+  - name: Presentation
+    description: Storage feature that lets users and services hold Verifiable Presentations on the server
+
+paths:
+  /identity:
+    get:
+      tags:
+        - Identity
+      summary: List of identities
+      description: Retrieve the list of identities available to the user.
+      responses:
+        '200':
+          description: Success. An array of identities is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityResponse'
+        '401':
+          description: Authentication Failure
+        '500':
+          description: Internal server error
+    post:
+      tags:
+        - Identity
+      summary: Create identity.
+      description: Create a new identity (DID), owned by the current user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DidCreateRequest'
+      responses:
+        '201':
+          description: Created. The created identity is returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DidResponse'
+        '401':
+          description: Authentication Failure
+        '500':
+          description: Internal Server Error
+  /identity/capability:
+    get:
+      tags:
+        - Identity
+      summary: List capabilities of the user for the specified DID.
+      description: Any key may have zero or more capabilities on a given DID. Since a user is represented internally by a key, this operation returns the capabilities of the current user on the specified DID.
+      parameters:
+        - name: did
+          in: query
+          description: DID of the identity to query for capabilities.
+          required: true
+          style: form
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityCapabilityResponse'
+        '400':
+          description: 'Bad request. Example: empty DID.'
+        '401':
+          description: Authentication Failure
+        '500':
+          description: Internal Server Error
+    post:
+      tags:
+        - Identity
+      summary: Set capabilities for a device on a DID
+      description: Set the specified capability for the specified device on the specified DID. That operation expects the user to have enough permissions (on the distributed ledger AND on the application backend) to perform that operation.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CapabilityRequest'
+      responses:
+        '200':
+          description: Success. The capability was properly set.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapabilityResponse'
+        '400':
+          description: 'Bad request. Example: empty DID.'
+        '401':
+          description: Authentication Failure
+        '403':
+          description: Forbidden. Either the user doesn't have sufficient permissions on that DID, or the operation was rejected by the underlying distributed ledger.
+        '500':
+          description: Internal Server Error
+  /identity/forward:
+    post:
+      tags:
+        - Identity
+      summary: Execute an Ethereum transaction to a contract through a DID's Proxy contract
+      description: |
+        Sign and execute the specified transaction on behalf of the Proxy smart contract that corresponds to the specified DID.
+
+        The Ethereum transaction must be passed as bytecode in the `data` body parameter. 
+
+        Note that this operation only makes sense for DID methods that are associated to Ethereum smart contracts and offer a Proxy forwarding feature. One such method is `did:ev`.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForwardRequest'
+      responses:
+        '200':
+          description: Success. The transaction was properly forwarded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForwardResponse'
+        '400':
+          description: 'Bad request. Example: empty DID.'
+        '401':
+          description: Authentication Failure
+        '403':
+          description: Forbidden. Either the user doesn't have sufficient permissions on that DID, or the operation was rejected by the underlying distributed ledger.
+        '500':
+          description: Internal Server Error
+  /identity/label:
+    put:
+      tags:
+        - Identity
+      summary: Set a label on an identity
+      description: |
+        Add or update the label of the specified identity. The label is only an informative detail for users to differentiate the DIDs they use.
+
+        Currently it's only possible to label an identity you can manage. However, that label is personal to each user, which means different users can assign whatever label they want to an identity, without affecting other users.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabelRequest'
+      responses:
+        '200':
+          description: Success. The label was properly set.
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden. The user doesn't have the required permission on that identity. Please note that in the future it might become possible to label any identity.
+        '500':
+          description: Internal Server Error
+  /credential:
+    post:
+      tags:
+      - Credential
+      summary: Issue Verifiable Credentials (VCs)
+      description: |
+        Issue new verifiable credentials. The provided content are the claims to be included, the issuing DID, and the proof type to employ.
+
+        This method assumes the user has control of the issuing DID, both at the application level and at the distributed ledger level.
+      requestBody:
+        description: The `credentials` parameter must contain an array of objects. Each element of that array contains the desired claims (`credentialSubject`), the issuing DID (`issuer`) and the proof type (`type`).
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CredentialListRequest'
+      responses:
+        "200":
+          description: Success. The output contains the complete credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialResponse'
+        "400":
+          description: Bad request. Either an invalid credential was supplied, or the requested proof type is not supported.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "401":
+          description: Authentication Failure
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+      - Credential
+      summary: Update credential status.
+      description: |
+        Change the status of a credential.
+
+        The accepted `status` values depend on the characteristics of the credential, such as proof type and credential status type.
+      requestBody:
+        description: Multipart/form-data that contains the credential as well as the desired status.
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CredentialUpdateRequestObject'
+            encoding:
+              verifiableCredential:
+                contentType: application/vc+json
+      responses:
+        "200":
+          description: Success. The credential status was changed to the requested value.
+        "400":
+          description: Bad request. Either the supplied credential is invalid, or it doesn't allow the requested status because of the proof type or credential status type.
+        "401":
+          description: Authentication Failure
+        "403":
+          description: Forbidden. Either the user is not allowed to update the credential's status to the requested value, or the status change was forbidden by the underlying distributed ledger.
+        "500":
+          description: Internal Server Error
+  /credential/{credential}:
+    get:
+      tags:
+      - Credential
+      summary: Verify credential
+      description: Obtain information about a credential, particularly whether the credential is valid.
+      parameters:
+      - name: credential
+        description: The credential to verify. The credential must be passed as a string in its serialized form.
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success. The credential was properly checked and you can see its validity in the response. Note that this response doesn't necessarily mean that the credential is valid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialResponse'
+        "400":
+          description: Invalid credential supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        "401":
+          description: Authentication Failure
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+                
+  /presentation/{identity}:
+    get:
+      tags:
+        - Presentation
+      summary: Get all Verifiable Presentations (VPs) available for the given identity.
+      description: This operation returns all the Verifiable Presentations that are stored on behalf of a given identity.
+      parameters:
+        - name: identity
+          in: path
+          description: The identity for which the VPs to be returned.
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Success. The result is a list of Verifiable Presentations belonging to the given identity.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllPresentationResponse'
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
+            
+  /presentation/{identity}/{handle}:
+    get:
+      tags:
+        - Presentation
+      summary: Get a VP by its handle
+      description: |
+        Every Verifiable Presentation is stored under a given "handle", which is an identifier used to retrieve the VP. This operation returns the VP stored under the provided handle.
+      
+        Note that handles are local to a given identity, i.e. the same handle may be used by different identities without conflicting with one another.
+      parameters:
+        - name: handle
+          in: path
+          description: The handle of the Verifiable Presentation to fetch.
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: identity
+          in: path
+          description: The identity that owns the VP to be retrieved.
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success. The Verifiable Presentation could be retrieved.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPresentationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden. The user doesn't have the permission to access VPs for that identity.
+        '404':
+          description: Not Found. The user has permission to fetch VPs for that identity, but the requested VP handle doesn't exist.
+        "500":
+          description: Internal Server Error
+    post:
+      tags:
+        - Presentation
+      summary: Create or update a Verifiable Presentation
+      description: Store the provided Verifiable Presentation on behalf of the provided identity, under the provided handle. If a VP was already stored under that handle, it is overwritten.
+      parameters:
+        - name: handle
+          in: path
+          description: Handle of the VP to create or update.
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: identity
+          in: path
+          description: DID of the identity that owns the provided VP.
+          required: true
+          style: simple
+          schema:
+            type: string
+      requestBody:
+        description: Content of the Verifiable Presentation to create or update. Currently only JSON content type is supported.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifiablePresentation'
+      responses:
+        '201':
+          description: Created. The provided presentation was stored on behalf of the given identity.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PresentationCreationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden. The user doesn't have the permission to create or update VPs for that identity.
+        "500":
+          description: Internal Server Error
+    delete:
+      tags:
+        - Presentation
+      summary: Delete a Verifiable Presentation
+      description: Delete the Verifiable Presentation with the provided handle from the provided identity's dedicated storage.
+      parameters:
+        - name: handle
+          in: path
+          description: Handle of the Verifiable Presentation to delete.
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: identity
+          in: path
+          description: DID of the identity that owns the VP to be deleted.
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success. The Verifiable Presentation with the given handle was deleted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletePresentationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden. The user doesn't have the permission to delete VPs for that identity.
+        '404':
+          description: Not Found. The user has permission to delete VPs for that identity, but the provided VP handle doesn't exist so it can't be deleted.
+components:
+  schemas:
+    CapabilityRequest:
+      title: Capability granting request body
+      required:
+        - did
+      type: object
+      properties:
+        capability:
+          type: string
+          description: The capability to be granted. The actual value depends on the DID method, but typical values include "fw", "auth", "devicemanager" and "admin".
+          example: auth
+        device:
+          type: string
+          description: The key identifier that will receive the new capability. For Ethereum-based DIDs, this is the Ethereum address.
+          example: '0x9f8c1e196F5696e014F4d1E4961B92db866BE271'
+        did:
+          type: string
+          description: The DID on which the capability must be granted.
+          example: did:ev:cwMLEDvx5whzCwNcN4YtqmydTphGcYY2KuzD3
+    CapabilityResponse:
+      title: Capability granting response
+      required:
+        - did
+      type: object
+      properties:
+        accepted:
+          type: boolean
+          description: Whether the capability was properly granted.
+          example: true
+        capability:
+          type: string
+          description: The actual capability that was granted.
+          example: fw
+        device:
+          type: string
+          description: The key identifier that was granted the capability.
+          example: '0x9f8c1e196F5696e014F4d1E4961B92db866BE271'
+        did:
+          type: string
+          description: The DID on which the capability was granted.
+          example: did:ev:cwMLEDvx5whzCwNcN4YtqmydTphGcYY2KuzD3
+    DidCreateRequest:
+      title: Identity creation request body
+      type: object
+      properties:
+        label:
+          type: string
+          description: Optional label to put on the created identity, for further identification.
+          example: "My new identity"
+    DidResponse:
+      title: Identity creation response
+      type: object
+      properties:
+        did:
+          type: string
+          description: The DID that was created.
+          example: did:ev:cwMLBgdhaQNB9eTkrYYSPXHaVHBupQUsTGqV9
+    ForwardRequest:
+      title: Transaction forward request body
+      required:
+        - data
+        - destination
+        - did
+      type: object
+      properties:
+        data:
+          type: string
+          description: Bytecode of the EVM-compatible transaction to be forwarded through the Proxy contract.
+          example: '0x382262fca99c9c17cf14d03d43fbc8e39e43e8002fd8d3ecb3bd0ed10af6bf15725ab11e0000000000000000000000000000000000000000000000000000000000000000'
+        destination:
+          type: string
+          description: Recipient address for the transaction.
+          example: '0x9f8c1e196F5696e014F4d1E4961B92db866BE271'
+        did:
+          type: string
+          description: DID on behalf of which the transaction must be executed. Only makes sense for DID methods that are associated to Ethereum smart contracts and offer a transaction-forwarding feature. One such method is `did:ev`.
+          example: did:ev:cwMLEDvx5whzCwNcN4YtqmydTphGcYY2KuzD3
+        factor:
+          type: number
+          description: Optional multiplying factor for the gas amount, to ensure proper execution of the transaction. Defaults to 1.
+          format: double
+          example: 1.4
+    ForwardResponse:
+      title: Transaction forward response
+      type: object
+      properties:
+        accepted:
+          type: boolean
+          description: Whether the transaction was properly executed.
+          example: true
+    IdentityCapabilityResponse:
+      title: Capability response
+      type: object
+      required:
+        - capability
+        - did
+      properties:
+        capability:
+          type: array
+          description: The list of capabilities the user's key has on the provided DID.
+          example: '["fw","auth","devicemanager","admin"]'
+          items:
+            type: string
+        did:
+          type: string
+          description: The DID which the user's key has capabilities on.
+          example: did:ev:cwMLBgdhaQNB9eTkrYYSPXHaVHBupQUsTGqV9
+    IdentityResponse:
+      title: Identity response
+      type: object
+      properties:
+        didJwk:
+          type: array
+          description: A list of available identities for that user.
+          items:
+            type: object
+            required:
+              - did
+            properties:
+              date:
+                type: string
+                description: The creation date of that identity, if available.
+                format: date-time
+              did:
+                type: string
+                description: The DID corresponding to the identity.
+                example: did:ev:cwMLBgdhaQNB9eTkrYYSPXHaVHBupQUsTGqV9
+              jsonWebKey:
+                $ref: '#/components/schemas/JsonWebKey'
+    JsonWebKey:
+      title: JSON Web Key (JWK)
+      description: The cryptographic key, in JWK format, used to represent the user for that DID.
+      type: object
+      properties:
+        kid:
+          type: string
+          description: Key ID
+          example: https://example.vault.azure.net/keys/1234567890/2db2fc864b9549a9a6b64d000cb22259
+        publicKey:
+          type: string
+          description: Public key
+          example: 1b236d37a3e998549c7812ca9d7700b4b4a4e5419af259ee489f5a9248948d4714f86afdd1c9d90de665a74b15071de991ff5ffb7921b512b6cd2e3a2f22e603
+    LabelRequest:
+      title: Label set request body
+      required:
+        - did
+        - label
+      type: object
+      properties:
+        did:
+          type: string
+          description: The DID to label.
+          example: did:ev:cwMLEDvx5whzCwNcN4YtqmydTphGcYY2KuzD3
+        label:
+          type: string
+          description: The label to put on the DID. The label is personal to each user, so this value won't affect other users.
+          example: My professional identity
+    CredentialUpdateRequestObject:
+      title: Credential update request object
+      required:
+      - verifiableCredential
+      - status
+      type: object
+      properties:
+        verifiableCredential:
+          description: The content of the verifiable credential to be updated. The content type must be `application/vc+json`.
+          type: string
+          format: binary
+        status:
+          description: The desired status for the verifiable credential. Accepted values will depend on the credential's proof type and/or credential status type.
+          type: string
+          example: revoked
+    CredentialListRequest:
+      title: Credential issuance request body
+      required:
+      - credentials
+      type: object
+      properties:
+        credentials:
+          type: array
+          items:
+            required:
+            - credentialSubject
+            - issuer
+            - type
+            type: object
+            properties:
+              credentialSubject:
+                description: The content of the desired [`credentialSubject` element](https://www.w3.org/TR/vc-data-model/#credential-subject) of the Verifiable Credential.
+                type: object
+                example:
+                  '@id': did:ev:cwMLLiMQGm9EaTqzY2k58refSoXdTsYvJ9Znp
+                  name: John Doe
+                  birthDate: 2018-01-01
+              expirationDate:
+                format: date
+                description: The time after which the credential won't be valid anymore. See [definition](https://www.w3.org/TR/vc-data-model/#expiration) in data model.
+                type: string
+                example: 2021-01-21T23:31:07+00:00
+              extra:
+                description: Additional claims to be included at the root level of the Verifiable Credential.
+                allOf:
+                - $ref: '#/components/schemas/MapStringObject'
+                  example:
+                    a: "1"
+                    b: 2
+              id:
+                description: An optional [identifier](https://www.w3.org/TR/vc-data-model/#identifiers) for the credential.
+                type: string
+                example: "1200"
+              issuanceDate:
+                format: date
+                description: Represents the initial time from which the credential is valid. See [definition](https://www.w3.org/TR/vc-data-model/#issuance-date) in data model.
+                type: string
+                example: 2021-01-21T23:31:07+00:00
+              issuer:
+                description: The [issuer](https://www.w3.org/TR/vc-data-model/#issuer) of the Verifiable Credential. For the credential to be issued on behalf of that issuer, the user must have sufficient permission on the corresponding identity. Insufficient permission will result in an error.
+                type: string
+                example: did:ev:cwMLAhhAc7VMDRdZYxHJMJ1HYbbz2zoiJBD33
+              proofType:
+                description: The [proof mechanism](https://www.w3.org/TR/vc-data-model/#proofs-signatures) to be used on that credential. Currently defaults to `EthereumAttestationRegistry2019`.
+                type: string
+                example: EthereumAttestationRegistryIntermediateStatus2021
+              type:
+                description: '[Type(s)](https://www.w3.org/TR/vc-data-model/#types) of the credential.'
+                type: array
+                example:
+                - VerifiableCredential
+                - DisputeCredential
+                items:
+                  type: string
+    MapStringObject:
+      type: object
+      additionalProperties: {}
+    CredentialItemResponse:
+      type: object
+      properties:
+        accepted:
+          description: Whether the credential could be issued.
+          type: boolean
+          example: true
+        credential:
+          description: The issued credential, serialized as a string.
+          type: string
+          example: "{\"@context\":[\"https://www.w3.org/2018/credentials/v1\",\"https://schema.org/\"\
+            ],\"id\":\"1200\",\"type\":[\"VerifiableCredential\",\"DisputeCredential\"\
+            ],\"issuer\":\"did:ev:cwMLMzxkpo4D7uojHyaiJi1ipq4dAPs9XajA3\",\"issuanceDate\"\
+            :\"2021-01-21T18:31:07-05:00\",\"expirationDate\":\"2021-01-21T18:31:07-05:00\"\
+            ,\"credentialSubject\":{\"@id\":\"did:ev:cwMLLiMQGm9EaTqzY2k58refSoXdTsYvJ9Znp\"\
+            ,\"name\":\"John Doe\",\"birthDate\":\"2018-01-01\"},\"proof\":{\"type\"\
+            :\"EthereumAttestationRegistry2019\",\"networkId\":\"0x9e551\",\"contractAddress\"\
+            :\"0x9f8c1e196F5696e014F4d1E4961B92db866BE271\"}}"
+    ListCredentialItemResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/CredentialItemResponse'
+    CredentialResponse:
+      title: Credential issuance response
+      type: object
+      properties:
+        credentials:
+          allOf:
+          - $ref: '#/components/schemas/ListCredentialItemResponse'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          description: Error code
+          type: string
+          example: "1001"
+        message:
+          description: Error message
+          type: string
+          example: Wrong input
+    DeletePresentationResponse:
+      title: Presentation deletion response
+      type: object
+      properties:
+        message:
+          type: string
+        status:
+          type: string
+    GetAllPresentationResponse:
+      title: Presentation list response
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetPresentationResponse'
+        message:
+          type: string
+        status:
+          type: string
+    GetPresentationResponse:
+      title: Presentation information response
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/PresentationInfo'
+        message:
+          type: string
+        status:
+          type: string
+    PresentationInfo:
+      title: Presentation information
+      type: object
+      properties:
+        handle:
+          description: The unique handle of the VP.
+          type: string
+        identity:
+          description: The DID of the identity that owns the VP.
+          type: string
+        verifiablepresentation:
+          $ref: '#/components/schemas/VerifiablePresentation'
+    PresentationCreationResponse:
+      title: Presentation creation response
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/PresentationCreatedResponse'
+        message:
+          type: string
+        status:
+          type: string
+    VerifiablePresentation:
+      title: Verifiable Presentation
+      type: object
+      properties:
+        '@context':
+          type: string
+        '@type':
+          type: string
+        id:
+          type: string
+        '@id':
+          type: string
+        verifiableCredential:
+          type: array
+          items:
+            type: object
+    PresentationCreatedResponse:
+      title: Created VP information
+      type: object
+      properties:
+        path:
+          type: string
+          description: The path where the VP is available.

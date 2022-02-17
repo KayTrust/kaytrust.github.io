@@ -7,67 +7,51 @@ trigger:
 - none
 
 stages:
-- stage: Build
+
+- stage: Build_Swagger
   pool:
     vmImage: 'ubuntu-latest'
-  displayName: Build static documentation
+  displayName: Build swagger documentation
   jobs:
-  - job: BuildDoc
+  - job: BuildSwaggerDoc
     displayName: Build documentation using MkDocs
     steps:
-    - task: UsePythonVersion@0
-      displayName: Use Python 3
-      inputs:
-        versionSpec: '3.x'
-        addToPath: true
-        architecture: 'x64'
-
-    - script: pip install --upgrade pip
-      displayName: 'Upgrade PIP'
-
-    - script: pip install mkdocs
-      displayName: 'Install mkdocs'
-    - script: pip install mkdocs-material
-      displayName: 'Install mkdocs Material theme'
-
-    - script: |
-        cd s
-        python -m mkdocs build
-      displayName: 'Build site'
 
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Pipeline.Workspace)/s/site'
-        artifact: 'site'
+        targetPath: '$(Pipeline.Workspace)/s/swagger'
+        artifact: 'swagger'
         publishLocation: 'pipeline'
-      displayName: 'Publish site as artifact'
+      displayName: 'Publish doc as artifact'
 
-- stage: Publish
+- stage: Publish_SwaggerApi
+  dependsOn: Build_Swagger
   pool:
     vmImage: 'windows-latest'
-  displayName: Publish to KayTrust Developer
+  displayName: Publish swagger-openapi.yaml to a blob block
   jobs:
   - deployment: Upload
     displayName: Upload to Azure Blob Storage
-    environment: KT-DeveloperSite-Prod
+    environment: KT-Swagger-Docs
     variables:
-      AZURE_STORAGE_ACCOUNT: 'kaytrust'
+      AZURE_STORAGE_ACCOUNT: 'ktswagger'
     strategy:
       runOnce:
         deploy:
           steps:
           - task: AzureCLI@2
-            displayName: 'Clear Azure container'
+            displayName: 'Clear Azure Swagger container'
             inputs:
-              azureSubscription: 'Everis Peru SAC(f6205eb2-ffec-4f83-bad1-b1454cfd198d)'
+              azureSubscription: 'KayTrust(c6b6dad0-020f-449d-9640-e67084c77750)'
               scriptType: 'pscore'
               scriptLocation: 'inlineScript'
-              inlineScript: 'az storage blob delete-batch -s `$web --account-name $(AZURE_STORAGE_ACCOUNT) --auth-mode login'
+              inlineScript: 'az storage blob delete-batch -s docs --account-name $(AZURE_STORAGE_ACCOUNT) --auth-mode login'
           - task: AzureFileCopy@4
             displayName: Copy site files to container on Azure
             inputs:
-              SourcePath: '$(Pipeline.Workspace)/site/*'
-              azureSubscription: 'Everis Peru SAC(f6205eb2-ffec-4f83-bad1-b1454cfd198d)'
+              SourcePath: '$(Pipeline.Workspace)/swagger/*'
+              azureSubscription: 'KayTrust(c6b6dad0-020f-449d-9640-e67084c77750)'
               Destination: 'AzureBlob'
               storage: '$(AZURE_STORAGE_ACCOUNT)'
-              ContainerName: '$web'
+              ContainerName: docs
+
