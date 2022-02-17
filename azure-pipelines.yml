@@ -99,6 +99,7 @@ stages:
     environment: KT-Swagger-Docs
     variables:
       AZURE_STORAGE_ACCOUNT: 'ktswagger'
+      AZURE_SUBSCRIPTION: 'KayTrust(c6b6dad0-020f-449d-9640-e67084c77750)'
     strategy:
       runOnce:
         deploy:
@@ -106,7 +107,7 @@ stages:
           - task: AzureCLI@2
             displayName: 'Clear Azure Swagger container'
             inputs:
-              azureSubscription: 'KayTrust(c6b6dad0-020f-449d-9640-e67084c77750)'
+              azureSubscription: '$(AZURE_SUBSCRIPTION)'
               scriptType: 'pscore'
               scriptLocation: 'inlineScript'
               inlineScript: 'az storage blob delete-batch -s `$web --account-name $(AZURE_STORAGE_ACCOUNT) --auth-mode login'
@@ -114,7 +115,7 @@ stages:
             displayName: Copy site files to container on Azure
             inputs:
               SourcePath: '$(Pipeline.Workspace)/swagger/*'
-              azureSubscription: 'KayTrust(c6b6dad0-020f-449d-9640-e67084c77750)'
+              azureSubscription: '$(AZURE_SUBSCRIPTION)'
               Destination: 'AzureBlob'
               storage: '$(AZURE_STORAGE_ACCOUNT)'
               ContainerName: '$web'
