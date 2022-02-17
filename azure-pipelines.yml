@@ -103,13 +103,13 @@ stages:
       runOnce:
         deploy:
           steps:
-          # - task: AzureCLI@2
-          #   displayName: 'Clear Azure Swagger container'
-          #   inputs:
-          #     azureSubscription: 'KayTrust(c6b6dad0-020f-449d-9640-e67084c77750)'
-          #     scriptType: 'pscore'
-          #     scriptLocation: 'inlineScript'
-          #     inlineScript: 'az storage blob delete-batch -s `$web --account-name $(AZURE_STORAGE_ACCOUNT) --auth-mode login'
+          - task: AzureCLI@2
+            displayName: 'Clear Azure Swagger container'
+            inputs:
+              azureSubscription: 'KayTrust(c6b6dad0-020f-449d-9640-e67084c77750)'
+              scriptType: 'pscore'
+              scriptLocation: 'inlineScript'
+              inlineScript: 'az storage blob delete-batch -s `$web --account-name $(AZURE_STORAGE_ACCOUNT) --auth-mode login'
           - task: AzureFileCopy@4
             displayName: Copy site files to container on Azure
             inputs:
