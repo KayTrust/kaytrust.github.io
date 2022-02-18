@@ -77,13 +77,6 @@ stages:
 
     - checkout: SwaggerUiGitHubRepo
 
-    # - task: PublishPipelineArtifact@1
-    #   displayName: 'Publish dist as an artifact'
-    #   inputs:
-    #     targetPath: '$(Pipeline.Workspace)/s/'
-    #     artifact: 'source'
-    #     publishLocation: 'pipeline'
-
     - script: 'sed -i ''s+https://petstore.swagger.io/v2/swagger.json+https://ktswagger.blob.core.windows.net/docs/swagger-openapi.yaml+g'' index.html'
       workingDirectory: '$(Pipeline.Workspace)/s/dist'
       displayName: 'Update url inside the index.html file'
@@ -117,6 +110,6 @@ stages:
             displayName: Publish to Static Web App
             inputs:
               app_location: "/"
-              skip_app_build: true
+              skip_app_build: true # To avoid : 'Could not detect the language from repo'
             env:
-              azure_static_web_apps_api_token: '2feaf5b099a7e58d18a7ca9a45b793a1d31144b7d367bfdc0c6142c9d1f6fd031-e40cb8b5-c6c1-4615-b34f-11d18ef75bbe00f25398'
+              azure_static_web_apps_api_token: $(azure_webapp_deployment_token)
