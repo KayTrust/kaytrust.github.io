@@ -25,6 +25,13 @@ paths:
         - Identity
       summary: List of identities
       description: Retrieve the list of identities available to the user.
+      parameters:
+        - name: capabilities
+          in: query
+          description: Space-separated list of acceptable capabilities. The operation will only return identities for which the user has any of the specified capabilities. Default is to return all identities.
+          schema:
+            type: string
+          example: devicemanager fw
       responses:
         '200':
           description: Success. An array of identities is returned.
