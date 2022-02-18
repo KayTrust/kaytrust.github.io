@@ -9,6 +9,13 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
+servers:
+  - url: https://demo.kaytrust.id/api
+    description: KayTrust Demo
+security:
+  - OAuth2:
+    - openid
+
 
 tags:
   - name: Profile
@@ -797,3 +804,12 @@ components:
         path:
           type: string
           description: The path where the VP is available.
+  securitySchemes:
+    OAuth2:
+       type: oauth2
+       flows:
+         authorizationCode:
+           authorizationUrl: https://auth.kaytrust.id/auth/realms/demo-innovation-labs/protocol/openid-connect/auth
+           tokenUrl: https://auth.kaytrust.id/auth/realms/demo-innovation-labs/protocol/openid-connect/token
+           scopes:
+             openid: Normal OpenID Connect
