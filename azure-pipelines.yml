@@ -3,6 +3,15 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+resources:
+  repositories:
+  - repository: SwaggerUiGitHubRepo # The name used to reference this repository in the checkout step
+    type: github
+    endpoint: FelixGitHub
+    name: swagger-api/swagger-ui
+    ref: master
+
+
 trigger:
 - none
 
@@ -55,3 +64,6 @@ stages:
               storage: '$(AZURE_STORAGE_ACCOUNT)'
               ContainerName: docs
 
+##############################################
+
+- stage: Build_React_SwaggerUI
