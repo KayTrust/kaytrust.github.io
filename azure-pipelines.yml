@@ -80,11 +80,11 @@ stages:
     - task: PublishPipelineArtifact@1
       displayName: 'Publish dist as an artifact'
       inputs:
-        targetPath: '$(Pipeline.Workspace)/s/dist'
+        targetPath: '$(Pipeline.Workspace)/s/'
         artifact: 'source'
         publishLocation: 'pipeline'
 
-    - script: 'sed -i ''s+''$ORIGINAL_SWAGGER_URL''+''$NEW_SWAGGER_URL''+g'' index.html'
+    - script: 'sed -i ''s+https://petstore.swagger.io/v2/swagger.json+https://ktswagger.blob.core.windows.net/docs/swagger-openapi.yaml+g'' index.html'
       workingDirectory: '$(Pipeline.Workspace)/s/dist'
       displayName: 'Update url inside the index.html file'
 
@@ -94,33 +94,4 @@ stages:
         targetPath: '$(Pipeline.Workspace)/s/dist'
         artifact: 'dist'
         artifactName: 'dist'
-        publishLocation: 'pipeline'
-      
-  - job: PublishRepoFiles
-    displayName: Publish files from Git Repository
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - task: PublishPipelineArtifact@1
-      displayName: 'Publish Nginx conf as an artifact'
-      inputs:
-        targetPath: '$(Pipeline.Workspace)/s/nginx/default.conf'
-        artifact: 'nginx'
-        artifactName: 'nginx'
-        publishLocation: 'pipeline'
-      
-    - task: PublishPipelineArtifact@1
-      displayName: 'Publish Dockerfile as an artifact'
-      inputs:
-        targetPath: '$(Pipeline.Workspace)/s/Dockerfile'
-        artifact: 'docker'
-        artifactName: 'docker'
-        publishLocation: 'pipeline'
-      
-    - task: PublishPipelineArtifact@1
-      displayName: 'Publish deployment.yml as an artifact'
-      inputs:
-        targetPath: '$(Pipeline.Workspace)/s/manifest/deployment.yml'
-        artifact: 'manifest'
-        artifactName: 'manifest'
-        publishLocation: 'pipeline'
+        publishLocation: 'pipeline'      
