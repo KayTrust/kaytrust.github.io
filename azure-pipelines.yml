@@ -77,7 +77,7 @@ stages:
 
     - checkout: SwaggerUiGitHubRepo
 
-    - script: 'sed -i ''s#.*url:.*#''$URLS_ARRAY''#g'' index.html' # the pound symbol is used as a separator
+    - script: 'sed -i ''s#.*url:.*#$(URLS_ARRAY)#g'' index.html' # the pound symbol is used as a separator
       workingDirectory: '$(Pipeline.Workspace)/s/dist'
       displayName: 'Update url inside the index.html file'
 
