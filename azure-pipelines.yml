@@ -94,4 +94,24 @@ stages:
         targetPath: '$(Pipeline.Workspace)/s/dist'
         artifact: 'dist'
         artifactName: 'dist'
-        publishLocation: 'pipeline'      
+        publishLocation: 'pipeline'
+
+- stage: Publish_StaticWebApp_SwaggerUI
+  dependsOn: Build_React_SwaggerUI
+  pool:
+    vmImage: 'ubuntu-latest'
+  displayName: Publish swagger UI to Static Web APP
+  jobs:
+  - deployment: Upload
+    displayName: Upload to Azure Static Web APP
+    environment: KT-Swagger-UI-APP
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: AzureStaticWebApp@0
+            displayName: Publish to Static Web App
+            inputs:
+              app_location: "/"
+            env:
+              azure_static_web_apps_api_token: '2feaf5b099a7e58d18a7ca9a45b793a1d31144b7d367bfdc0c6142c9d1f6fd031-e40cb8b5-c6c1-4615-b34f-11d18ef75bbe00f25398'
