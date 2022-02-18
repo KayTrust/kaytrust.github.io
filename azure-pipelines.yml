@@ -77,7 +77,7 @@ stages:
 
     - checkout: SwaggerUiGitHubRepo
 
-    - script: 'sed -i ''s+https://petstore.swagger.io/v2/swagger.json+https://ktswagger.blob.core.windows.net/docs/swagger-openapi.yaml+g'' index.html'
+    - script: 'sed -i ''s#.*url:.*#urls:[{url: "https://ktswagger.blob.core.windows.net/docs/swagger-openapi.yaml"}],#g'' index.html' # the pound symbol is used as a separator
       workingDirectory: '$(Pipeline.Workspace)/s/dist'
       displayName: 'Update url inside the index.html file'
 
