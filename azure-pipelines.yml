@@ -77,12 +77,12 @@ stages:
 
     - checkout: SwaggerUiGitHubRepo
 
-    - task: PublishPipelineArtifact@1
-      displayName: 'Publish dist as an artifact'
-      inputs:
-        targetPath: '$(Pipeline.Workspace)/s/'
-        artifact: 'source'
-        publishLocation: 'pipeline'
+    # - task: PublishPipelineArtifact@1
+    #   displayName: 'Publish dist as an artifact'
+    #   inputs:
+    #     targetPath: '$(Pipeline.Workspace)/s/'
+    #     artifact: 'source'
+    #     publishLocation: 'pipeline'
 
     - script: 'sed -i ''s+https://petstore.swagger.io/v2/swagger.json+https://ktswagger.blob.core.windows.net/docs/swagger-openapi.yaml+g'' index.html'
       workingDirectory: '$(Pipeline.Workspace)/s/dist'
