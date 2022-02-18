@@ -3,6 +3,15 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+resources:
+  repositories:
+  - repository: SwaggerUiGitHubRepo # The name used to reference this repository in the checkout step
+    type: github
+    endpoint: FelixGitHub
+    name: swagger-api/swagger-ui
+    ref: master
+
+
 trigger:
 - none
 
@@ -55,3 +64,52 @@ stages:
               storage: '$(AZURE_STORAGE_ACCOUNT)'
               ContainerName: docs
 
+##############################################
+
+- stage: Build_React_SwaggerUI
+  displayName: Build SwaggerUI React app
+  jobs:
+  - job: BuildReact
+    displayName: Build React app
+    pool:
+      vmImage: 'ubuntu-latest'      
+    steps:
+
+    - checkout: SwaggerUiGitHubRepo
+
+    - script: 'sed -i ''s#.*url:.*#$(URLS_ARRAY)#g'' index.html' # the pound symbol is used as a separator
+      workingDirectory: '$(Pipeline.Workspace)/s/dist'
+      displayName: 'Update url inside the index.html file'
+
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish dist as an artifact'
+      inputs:
+        targetPath: '$(Pipeline.Workspace)/s/dist'
+        artifact: 'dist'
+        publishLocation: 'pipeline'
+
+- stage: Publish_StaticWebApp_SwaggerUI
+  dependsOn: Build_React_SwaggerUI
+  pool:
+    vmImage: 'ubuntu-latest'
+  displayName: Publish swagger UI to Static Web APP
+  jobs:
+  - deployment: Upload
+    displayName: Upload to Azure Static Web APP
+    environment: KT-Swagger-UI-APP
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              artifact: dist
+              path: ./ # Put build artifact back into the project
+              displayName: "Download artifacts"
+          - task: AzureStaticWebApp@0
+            displayName: Publish to Static Web App
+            inputs:
+              app_location: "/"
+              skip_app_build: true # To avoid : 'Could not detect the language from repo'
+            env:
+              azure_static_web_apps_api_token: $(azure_webapp_deployment_token)
