@@ -116,6 +116,37 @@ paths:
           description: Forbidden. Either the user doesn't have sufficient permissions on that DID, or the operation was rejected by the underlying distributed ledger.
         '500':
           description: Internal Server Error
+    delete:
+      tags:
+        - Identity
+      summary: Remove capabilities of a key from a DID
+      description: Take the specified capability away from the specified key on the specified DID.
+      parameters:
+        - name: did
+          in: query
+          description: DID of the identity from which to remove the capability.
+          required: true
+          style: form
+          schema:
+            type: string
+        - name: device
+          in: query
+          description: Key that should be removed the capability from the given identity.
+          required: true
+          style: form
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success. The capability was properly removed from the provided key.
+        '400':
+          description: 'Bad request. Example: empty DID.'
+        '401':
+          description: Authentication Failure
+        '403':
+          description: Forbidden. Either the user doesn't have sufficient permissions on that DID, or the operation was rejected by the underlying distributed ledger.
+        '500':
+          description: Internal Server Error
   /identity/forward:
     post:
       tags:
