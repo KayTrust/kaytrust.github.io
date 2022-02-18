@@ -67,7 +67,7 @@ stages:
 ##############################################
 
 - stage: Build_React_SwaggerUI
-  displayName: Build NodeJS app
+  displayName: Build SwaggerUI React app
   jobs:
   - job: BuildReact
     displayName: Build React app
@@ -93,7 +93,6 @@ stages:
       inputs:
         targetPath: '$(Pipeline.Workspace)/s/dist'
         artifact: 'dist'
-        artifactName: 'dist'
         publishLocation: 'pipeline'
 
 - stage: Publish_StaticWebApp_SwaggerUI
@@ -109,6 +108,11 @@ stages:
       runOnce:
         deploy:
           steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              artifact: dist
+              path: ./ # Put build artifact back into the project
+              displayName: "Download artifacts"
           - task: AzureStaticWebApp@0
             displayName: Publish to Static Web App
             inputs:
