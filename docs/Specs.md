@@ -1,8 +1,10 @@
 # KayTrust Specifications
 
-## Core identity
+## DID methods
 
-KayTrust uses the standard DID protocol for identifiers, and defines a ["gid" DID method](/Specs/GID-DID-Method) based on [smart contracts](/Specs/Proxy-Contract-ERC).
+KayTrust uses the standard DID protocol for identifiers, and defines a ["ev" DID method](https://github.com/KayTrust/did-method-ev) based on [smart contracts](/Specs/Proxy-Contract-ERC).
+
+More DID methods might be defined in the future.
 
 | Specification                                  | Builds on top of        | What is it good for?
 | ---------------------------------------------- | ----------------------- | --------------------
@@ -21,7 +23,7 @@ The [draft ERC](/Specs/Content-Attestation-Registry-ERC) (Ethereum Request for C
 | Specification                                                         | Builds on top of        | What is it good for?
 | --------------------------------------------------------------------- | ----------------------- | --------------------
 | [Content Attestation Registry ERC](/Specs/Content-Attestation-Registry-ERC)  | Ethereum                | Attesting any kind of content on-chain
-| [Attestation Registry VC proof type](/Specs/Ethereum-Attestation-Registry-Proof-Type) | W3C's Verifiable Credentials Specification | Using a Content Attestation Registry as proof of a VC or a VP
+| [Attestation Registry VC proof type](/Specs/Ethereum-Attestation-Registry-Proof-Type) | W3C's Verifiable Credentials data model | Using a Content Attestation Registry as proof of a VC or a VP
 
 ## Real-world, self-sovereign authentication: "DID Connect"
 
