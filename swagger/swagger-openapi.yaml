@@ -122,6 +122,13 @@ paths:
       summary: Remove capabilities of a key from a DID
       description: Take the specified capability away from the specified key on the specified DID.
       parameters:
+        - name: capability
+          in: query
+          description: The capability to be removed. The actual value depends on the DID method, but typical values include "fw", "auth", "devicemanager" and "admin".
+          required: true
+          style: form
+          schema:
+            type: string
         - name: did
           in: query
           description: DID of the identity from which to remove the capability.
