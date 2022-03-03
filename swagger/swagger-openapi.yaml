@@ -572,6 +572,9 @@ components:
                 type: string
                 description: The DID corresponding to the identity.
                 example: did:ev:cwMLBgdhaQNB9eTkrYYSPXHaVHBupQUsTGqV9
+              label:
+                type: string
+                description: The label of the identity, if present.
               jsonWebKey:
                 $ref: '#/components/schemas/JsonWebKey'
     JsonWebKey:
