@@ -11,7 +11,7 @@ info:
   version: 1.0.0
 
 tags:
-  - name: Identity
+  - name: Profile
     description: Management of Digital Identifiers (DIDs), including keys associated with each DID.
   - name: Credential
     description: Management of Verifiable Credentials (VCs), such as issuance and revocation.
@@ -22,7 +22,7 @@ paths:
   /identity:
     get:
       tags:
-        - Identity
+        - Profile
       summary: List of identities
       description: Retrieve the list of identities available to the user.
       parameters:
@@ -45,7 +45,7 @@ paths:
           description: Internal server error
     post:
       tags:
-        - Identity
+        - Profile
       summary: Create identity.
       description: Create a new identity (DID), owned by the current user.
       requestBody:
@@ -67,7 +67,7 @@ paths:
   /identity/capability:
     get:
       tags:
-        - Identity
+        - Profile
       summary: List capabilities of the user for the specified DID.
       description: Any key may have zero or more capabilities on a given DID. Since a user is represented internally by a key, this operation returns the capabilities of the current user on the specified DID.
       parameters:
@@ -93,7 +93,7 @@ paths:
           description: Internal Server Error
     post:
       tags:
-        - Identity
+        - Profile
       summary: Set capabilities for a device on a DID
       description: Set the specified capability for the specified device on the specified DID. That operation expects the user to have enough permissions (on the distributed ledger AND on the application backend) to perform that operation.
       requestBody:
@@ -118,7 +118,7 @@ paths:
           description: Internal Server Error
     delete:
       tags:
-        - Identity
+        - Profile
       summary: Remove capabilities of a key from a DID
       description: Take the specified capability away from the specified key on the specified DID.
       parameters:
@@ -157,7 +157,7 @@ paths:
   /identity/forward:
     post:
       tags:
-        - Identity
+        - Profile
       summary: Execute an Ethereum transaction to a contract through a DID's Proxy contract
       description: |
         Sign and execute the specified transaction on behalf of the Proxy smart contract that corresponds to the specified DID.
@@ -188,7 +188,7 @@ paths:
   /identity/label:
     put:
       tags:
-        - Identity
+        - Profile
       summary: Set a label on an identity
       description: |
         Add or update the label of the specified identity. The label is only an informative detail for users to differentiate the DIDs they use.
