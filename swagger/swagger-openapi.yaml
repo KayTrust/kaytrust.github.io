@@ -26,7 +26,7 @@ tags:
     description: Storage feature that lets users and services hold Verifiable Presentations on the server
 
 paths:
-  /identity:
+  /ms-identity/identity:
     get:
       tags:
         - Profile
@@ -71,7 +71,7 @@ paths:
           description: Authentication Failure
         '500':
           description: Internal Server Error
-  /identity/capability:
+  /ms-identity/identity/capability:
     get:
       tags:
         - Profile
@@ -161,7 +161,7 @@ paths:
           description: Forbidden. Either the user doesn't have sufficient permissions on that DID, or the operation was rejected by the underlying distributed ledger.
         '500':
           description: Internal Server Error
-  /identity/forward:
+  /ms-identity/identity/forward:
     post:
       tags:
         - Profile
@@ -192,7 +192,7 @@ paths:
           description: Forbidden. Either the user doesn't have sufficient permissions on that DID, or the operation was rejected by the underlying distributed ledger.
         '500':
           description: Internal Server Error
-  /identity/label:
+  /ms-identity/identity/label:
     put:
       tags:
         - Profile
@@ -215,7 +215,7 @@ paths:
           description: Forbidden. The user doesn't have the required permission on that profile. Please note that in the future it might become possible to label any profile.
         '500':
           description: Internal Server Error
-  /credential:
+  /ms-credential/credential:
     post:
       tags:
       - Credential
@@ -279,7 +279,7 @@ paths:
           description: Forbidden. Either the user is not allowed to update the credential's status to the requested value, or the status change was forbidden by the underlying distributed ledger.
         "500":
           description: Internal Server Error
-  /credential/{credential}:
+  /ms-credential/credential/{credential}:
     get:
       tags:
       - Credential
@@ -314,7 +314,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
                 
-  /presentation/{identity}:
+  /ms-hub/presentation/{identity}:
     get:
       tags:
         - Presentation
@@ -339,8 +339,7 @@ paths:
           description: Unauthorized
         "500":
           description: Internal Server Error
-            
-  /presentation/{identity}/{handle}:
+  /ms-hub/presentation/{identity}/{handle}:
     get:
       tags:
         - Presentation
