@@ -80,6 +80,9 @@ stages:
     - script: 'sed -i ''s#.*url:.*#$(URLS_ARRAY)#g'' index.html' # the pound symbol is used as a separator
       workingDirectory: '$(Pipeline.Workspace)/s/dist'
       displayName: 'Update url inside the index.html file'
+    - script: sed -i 's/window.ui = ui;/& ui.initOAuth({clientId:"swagger-ui", scopes:"openid", usePkceWithAuthorizationCodeGrant:true});/' index.html
+      workingDirectory: '$(Pipeline.Workspace)/s/dist'
+      displayName: 'Configure OAuth 2.0 parameters'
 
     - task: PublishPipelineArtifact@1
       displayName: 'Publish dist as an artifact'
