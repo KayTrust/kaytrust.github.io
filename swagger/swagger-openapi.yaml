@@ -10,7 +10,7 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
 servers:
-  - url: https://demo.kaytrust.id/api
+  - url: https://provider-back.kaytrust.id/
     description: KayTrust Demo
 security:
   - OAuth2:
