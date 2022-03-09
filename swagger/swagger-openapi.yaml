@@ -9,32 +9,45 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
+servers:
+  - url: https://provider-back.kaytrust.id/
+    description: KayTrust Demo
+security:
+  - OAuth2:
+    - openid
+
 
 tags:
-  - name: Identity
-    description: Management of Digital Identifiers (DIDs), including keys associated with each DID.
+  - name: Profile
+    description: Profile management. Each profile is represented by a unique Digital Identifier (DID). This section allows you to manage profiles, including keys associated with each DID.
   - name: Credential
     description: Management of Verifiable Credentials (VCs), such as issuance and revocation.
   - name: Presentation
     description: Storage feature that lets users and services hold Verifiable Presentations on the server
 
 paths:
-  /identity:
+  /ms-identity/identity:
     get:
       tags:
-        - Identity
-      summary: List of identities
-      description: Retrieve the list of identities available to the user.
+        - Profile
+      summary: Get a list of profiles
+      description: Retrieve the list of profiles available to the user.
       parameters:
         - name: capabilities
           in: query
-          description: Space-separated list of acceptable capabilities. The operation will only return identities for which the user has any of the specified capabilities. Default is to return all identities.
+          description: Space-separated list of acceptable capabilities. The operation will only return profiles for which the user has any of the specified capabilities. Default is to return all profiles.
           schema:
             type: string
-          example: devicemanager fw
+          examples:
+            default:
+              summary: Return all profiles (default)
+              value: ''
+            devicemanager:
+              summary: Only capabilities that let you manage devices
+              value: devicemanager admin
       responses:
         '200':
-          description: Success. An array of identities is returned.
+          description: Success. An array of profiles is returned.
           content:
             application/json:
               schema:
@@ -45,9 +58,9 @@ paths:
           description: Internal server error
     post:
       tags:
-        - Identity
-      summary: Create identity.
-      description: Create a new identity (DID), owned by the current user.
+        - Profile
+      summary: Create profile.
+      description: Create a new profile, owned by the current user. You can optionally provide a label for the new profile.
       requestBody:
         content:
           application/json:
@@ -55,7 +68,7 @@ paths:
               $ref: '#/components/schemas/DidCreateRequest'
       responses:
         '201':
-          description: Created. The created identity is returned.
+          description: Created. The created profile information is returned.
           content:
             application/json:
               schema:
@@ -64,20 +77,21 @@ paths:
           description: Authentication Failure
         '500':
           description: Internal Server Error
-  /identity/capability:
+  /ms-identity/identity/capability:
     get:
       tags:
-        - Identity
-      summary: List capabilities of the user for the specified DID.
-      description: Any key may have zero or more capabilities on a given DID. Since a user is represented internally by a key, this operation returns the capabilities of the current user on the specified DID.
+        - Profile
+      summary: List capabilities of the user for the specified profile's DID.
+      description: Any key may have zero or more capabilities on a given DID. Since a user is represented internally by a key, this operation returns the capabilities of the current user on the specified profile's DID.
       parameters:
         - name: did
           in: query
-          description: DID of the identity to query for capabilities.
+          description: DID of the profile to query for capabilities.
           required: true
           style: form
           schema:
             type: string
+          example: did:example:1234abcd
       responses:
         '200':
           description: Success
@@ -93,9 +107,9 @@ paths:
           description: Internal Server Error
     post:
       tags:
-        - Identity
-      summary: Set capabilities for a device on a DID
-      description: Set the specified capability for the specified device on the specified DID. That operation expects the user to have enough permissions (on the distributed ledger AND on the application backend) to perform that operation.
+        - Profile
+      summary: Set capabilities for a key on a DID
+      description: Set the specified capability for the specified device on the specified profile's DID. That operation expects the user to have enough permissions (on the distributed ledger AND on the application backend) to perform that operation.
       requestBody:
         content:
           application/json:
@@ -113,32 +127,42 @@ paths:
         '401':
           description: Authentication Failure
         '403':
-          description: Forbidden. Either the user doesn't have sufficient permissions on that DID, or the operation was rejected by the underlying distributed ledger.
+          description: Forbidden. Either the user doesn't have sufficient permissions on that profile's DID, or the operation was rejected by the underlying distributed ledger.
         '500':
           description: Internal Server Error
     delete:
       tags:
-        - Identity
+        - Profile
       summary: Remove capabilities of a key from a DID
-      description: Take the specified capability away from the specified key on the specified DID.
+      description: Take the specified capability away from the specified key on the specified profile's DID.
       parameters:
+        - name: capability
+          in: query
+          description: The capability to be removed. The actual value depends on the DID method, but typical values include "fw", "auth", "devicemanager" and "admin".
+          required: true
+          style: form
+          schema:
+            type: string
+          example: fw
         - name: did
           in: query
-          description: DID of the identity from which to remove the capability.
+          description: DID of the profile from which to remove the capability.
           required: true
           style: form
           schema:
             type: string
+          example: did:example:abcd1234
         - name: device
           in: query
-          description: Key that should be removed the capability from the given identity.
+          description: Key that should be removed the capability from the given profile.
           required: true
           style: form
           schema:
             type: string
+          example: '0x9f8c1e196F5696e014F4d1E4961B92db866BE271'
       responses:
         '200':
-          description: Success. The capability was properly removed from the provided key.
+          description: Success. The capability was properly removed from the provided key on that DID.
         '400':
           description: 'Bad request. Example: empty DID.'
         '401':
@@ -147,10 +171,10 @@ paths:
           description: Forbidden. Either the user doesn't have sufficient permissions on that DID, or the operation was rejected by the underlying distributed ledger.
         '500':
           description: Internal Server Error
-  /identity/forward:
+  /ms-identity/identity/forward:
     post:
       tags:
-        - Identity
+        - Profile
       summary: Execute an Ethereum transaction to a contract through a DID's Proxy contract
       description: |
         Sign and execute the specified transaction on behalf of the Proxy smart contract that corresponds to the specified DID.
@@ -178,15 +202,15 @@ paths:
           description: Forbidden. Either the user doesn't have sufficient permissions on that DID, or the operation was rejected by the underlying distributed ledger.
         '500':
           description: Internal Server Error
-  /identity/label:
+  /ms-identity/identity/label:
     put:
       tags:
-        - Identity
-      summary: Set a label on an identity
+        - Profile
+      summary: Set a label on a profile
       description: |
-        Add or update the label of the specified identity. The label is only an informative detail for users to differentiate the DIDs they use.
+        Add or update the label of the specified profile. The label is only an informative detail for users to differentiate the profiles beyond their respective DIDs.
 
-        Currently it's only possible to label an identity you can manage. However, that label is personal to each user, which means different users can assign whatever label they want to an identity, without affecting other users.
+        Currently it's only possible to label a profile you have management capabilities on. However, that label is personal to each user, which means different users can assign whatever label they want to a profile, without affecting other users.
       requestBody:
         content:
           application/json:
@@ -198,10 +222,10 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: Forbidden. The user doesn't have the required permission on that identity. Please note that in the future it might become possible to label any identity.
+          description: Forbidden. The user doesn't have the required permission on that profile. Please note that in the future it might become possible to label any profile.
         '500':
           description: Internal Server Error
-  /credential:
+  /ms-credential/credential:
     post:
       tags:
       - Credential
@@ -209,7 +233,7 @@ paths:
       description: |
         Issue new verifiable credentials. The provided content are the claims to be included, the issuing DID, and the proof type to employ.
 
-        This method assumes the user has control of the issuing DID, both at the application level and at the distributed ledger level.
+        This method assumes the user has signing capabilities for the issuing DID, both at the application level and at the distributed ledger level.
       requestBody:
         description: The `credentials` parameter must contain an array of objects. Each element of that array contains the desired claims (`credentialSubject`), the issuing DID (`issuer`) and the proof type (`type`).
         content:
@@ -265,7 +289,7 @@ paths:
           description: Forbidden. Either the user is not allowed to update the credential's status to the requested value, or the status change was forbidden by the underlying distributed ledger.
         "500":
           description: Internal Server Error
-  /credential/{credential}:
+  /ms-credential/credential/{credential}:
     get:
       tags:
       - Credential
@@ -278,6 +302,7 @@ paths:
         required: true
         schema:
           type: string
+        example: '{"@context":["https://www.w3.org/2018/credentials/v1","https://schema.org/"],"id":"1200","type":["VerifiableCredential","DisputeCredential"],"issuer":"did:ev:cwMLMzxkpo4D7uojHyaiJi1ipq4dAPs9XajA3","issuanceDate":"2021-01-21T18:31:07-05:00","expirationDate":"2021-01-21T18:31:07-05:00","credentialSubject":{"@id":"did:ev:cwMLLiMQGm9EaTqzY2k58refSoXdTsYvJ9Znp","name":"John Doe","birthDate":"2018-01-01"},"proof":{"type":"EthereumAttestationRegistry2019","networkId":"0x9e551","contractAddress":"0x9f8c1e196F5696e014F4d1E4961B92db866BE271"}}'
       responses:
         "200":
           description: Success. The credential was properly checked and you can see its validity in the response. Note that this response doesn't necessarily mean that the credential is valid.
@@ -300,23 +325,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
                 
-  /presentation/{identity}:
+  /ms-hub/presentation/{identity}:
     get:
       tags:
         - Presentation
-      summary: Get all Verifiable Presentations (VPs) available for the given identity.
-      description: This operation returns all the Verifiable Presentations that are stored on behalf of a given identity.
+      summary: Get all Verifiable Presentations (VPs) stored on behalf of a profile
+      description: This operation returns all the Verifiable Presentations that are stored for the profile's DID given as `identity`.
       parameters:
         - name: identity
           in: path
-          description: The identity for which the VPs to be returned.
+          description: The DID of the profile for which the VPs to be returned.
           required: true
           style: simple
           schema:
             type: string
+          example: did:example:abcd1234
       responses:
         "200":
-          description: Success. The result is a list of Verifiable Presentations belonging to the given identity.
+          description: Success. The result is a list of Verifiable Presentations stored on behalf of the given profile.
           content:
             application/json:
               schema:
@@ -325,8 +351,7 @@ paths:
           description: Unauthorized
         "500":
           description: Internal Server Error
-            
-  /presentation/{identity}/{handle}:
+  /ms-hub/presentation/{identity}/{handle}:
     get:
       tags:
         - Presentation
@@ -334,7 +359,7 @@ paths:
       description: |
         Every Verifiable Presentation is stored under a given "handle", which is an identifier used to retrieve the VP. This operation returns the VP stored under the provided handle.
       
-        Note that handles are local to a given identity, i.e. the same handle may be used by different identities without conflicting with one another.
+        Note that handles are local to a given profile, i.e. the same handle may be used by different profiles without conflicting with one another.
       parameters:
         - name: handle
           in: path
@@ -343,13 +368,15 @@ paths:
           style: simple
           schema:
             type: string
+          example: mypresentation1
         - name: identity
           in: path
-          description: The identity that owns the VP to be retrieved.
+          description: The DID of the profile that owns the VP to be retrieved.
           required: true
           style: simple
           schema:
             type: string
+          example: did:example:abcd1234
       responses:
         '200':
           description: Success. The Verifiable Presentation could be retrieved.
@@ -360,16 +387,16 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: Forbidden. The user doesn't have the permission to access VPs for that identity.
+          description: Forbidden. The user doesn't have the permission to access VPs for that profile.
         '404':
-          description: Not Found. The user has permission to fetch VPs for that identity, but the requested VP handle doesn't exist.
+          description: Not Found. The user has permission to fetch VPs for that profile, but the requested VP handle doesn't exist.
         "500":
           description: Internal Server Error
     post:
       tags:
         - Presentation
       summary: Create or update a Verifiable Presentation
-      description: Store the provided Verifiable Presentation on behalf of the provided identity, under the provided handle. If a VP was already stored under that handle, it is overwritten.
+      description: Store the provided Verifiable Presentation on behalf of the provided profile, under the provided handle. If a VP was already stored under that handle, it is overwritten.
       parameters:
         - name: handle
           in: path
@@ -378,13 +405,15 @@ paths:
           style: simple
           schema:
             type: string
+          example: mypresentation1
         - name: identity
           in: path
-          description: DID of the identity that owns the provided VP.
+          description: DID of the profile that owns the provided VP.
           required: true
           style: simple
           schema:
             type: string
+          example: did:example:abcd1234
       requestBody:
         description: Content of the Verifiable Presentation to create or update. Currently only JSON content type is supported.
         content:
@@ -393,7 +422,7 @@ paths:
               $ref: '#/components/schemas/VerifiablePresentation'
       responses:
         '201':
-          description: Created. The provided presentation was stored on behalf of the given identity.
+          description: Created. The provided presentation was stored on behalf of the given profile.
           content:
             application/json:
               schema:
@@ -401,14 +430,14 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: Forbidden. The user doesn't have the permission to create or update VPs for that identity.
+          description: Forbidden. The user doesn't have the permission to create or update VPs for that profile.
         "500":
           description: Internal Server Error
     delete:
       tags:
         - Presentation
       summary: Delete a Verifiable Presentation
-      description: Delete the Verifiable Presentation with the provided handle from the provided identity's dedicated storage.
+      description: Delete the Verifiable Presentation with the provided handle from the provided profile's dedicated storage.
       parameters:
         - name: handle
           in: path
@@ -417,13 +446,15 @@ paths:
           style: simple
           schema:
             type: string
+          example: mypresentation1
         - name: identity
           in: path
-          description: DID of the identity that owns the VP to be deleted.
+          description: DID of the profile that owns the VP to be deleted.
           required: true
           style: simple
           schema:
             type: string
+          example: did:example:abcd1234
       responses:
         '200':
           description: Success. The Verifiable Presentation with the given handle was deleted.
@@ -434,9 +465,9 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: Forbidden. The user doesn't have the permission to delete VPs for that identity.
+          description: Forbidden. The user doesn't have the permission to delete VPs for that profile.
         '404':
-          description: Not Found. The user has permission to delete VPs for that identity, but the provided VP handle doesn't exist so it can't be deleted.
+          description: Not Found. The user has permission to delete VPs for that profile, but the provided VP handle doesn't exist so it can't be deleted.
 components:
   schemas:
     CapabilityRequest:
@@ -456,7 +487,7 @@ components:
         did:
           type: string
           description: The DID on which the capability must be granted.
-          example: did:ev:cwMLEDvx5whzCwNcN4YtqmydTphGcYY2KuzD3
+          example: did:example:abcd1234
     CapabilityResponse:
       title: Capability granting response
       required:
@@ -478,23 +509,23 @@ components:
         did:
           type: string
           description: The DID on which the capability was granted.
-          example: did:ev:cwMLEDvx5whzCwNcN4YtqmydTphGcYY2KuzD3
+          example: did:example:abcd1234
     DidCreateRequest:
-      title: Identity creation request body
+      title: Profile creation request body
       type: object
       properties:
         label:
           type: string
-          description: Optional label to put on the created identity, for further identification.
-          example: "My new identity"
+          description: Optional label to put on the created profile, for further identification.
+          example: "My new profile"
     DidResponse:
-      title: Identity creation response
+      title: Profile creation response
       type: object
       properties:
         did:
           type: string
-          description: The DID that was created.
-          example: did:ev:cwMLBgdhaQNB9eTkrYYSPXHaVHBupQUsTGqV9
+          description: The DID of the profile that was created.
+          example: did:example:abcd1234
     ForwardRequest:
       title: Transaction forward request body
       required:
@@ -514,7 +545,7 @@ components:
         did:
           type: string
           description: DID on behalf of which the transaction must be executed. Only makes sense for DID methods that are associated to Ethereum smart contracts and offer a transaction-forwarding feature. One such method is `did:ev`.
-          example: did:ev:cwMLEDvx5whzCwNcN4YtqmydTphGcYY2KuzD3
+          example: did:example:abcd1234
         factor:
           type: number
           description: Optional multiplying factor for the gas amount, to ensure proper execution of the transaction. Defaults to 1.
@@ -544,14 +575,14 @@ components:
         did:
           type: string
           description: The DID which the user's key has capabilities on.
-          example: did:ev:cwMLBgdhaQNB9eTkrYYSPXHaVHBupQUsTGqV9
+          example: did:example:abcd1234
     IdentityResponse:
-      title: Identity response
+      title: Profile response
       type: object
       properties:
         didJwk:
           type: array
-          description: A list of available identities for that user.
+          description: A list of available profiles for that user.
           items:
             type: object
             required:
@@ -559,12 +590,17 @@ components:
             properties:
               date:
                 type: string
-                description: The creation date of that identity, if available.
+                description: The creation date of that profile, if available.
                 format: date-time
+                example: '2021-05-19T09:24:16.000+00:00'
               did:
                 type: string
-                description: The DID corresponding to the identity.
-                example: did:ev:cwMLBgdhaQNB9eTkrYYSPXHaVHBupQUsTGqV9
+                description: The DID corresponding to the profile.
+                example: did:example:abcd1234
+              label:
+                type: string
+                description: The label of the profile, if any.
+                example: My profile
               jsonWebKey:
                 $ref: '#/components/schemas/JsonWebKey'
     JsonWebKey:
@@ -589,12 +625,12 @@ components:
       properties:
         did:
           type: string
-          description: The DID to label.
-          example: did:ev:cwMLEDvx5whzCwNcN4YtqmydTphGcYY2KuzD3
+          description: The DID of the profile to be labelled.
+          example: did:example:abcd1234
         label:
           type: string
-          description: The label to put on the DID. The label is personal to each user, so this value won't affect other users.
-          example: My professional identity
+          description: The label to put on the profile. The label is personal to each user, so this value won't affect other users.
+          example: My professional profile
     CredentialUpdateRequestObject:
       title: Credential update request object
       required:
@@ -631,32 +667,30 @@ components:
                 example:
                   '@id': did:ev:cwMLLiMQGm9EaTqzY2k58refSoXdTsYvJ9Znp
                   name: John Doe
-                  birthDate: 2018-01-01
+                  birthDate: '2018-01-01'
               expirationDate:
-                format: date
+                format: date-time
                 description: The time after which the credential won't be valid anymore. See [definition](https://www.w3.org/TR/vc-data-model/#expiration) in data model.
                 type: string
-                example: 2021-01-21T23:31:07+00:00
+                example: '2021-01-21T23:31:07+00:00'
               extra:
                 description: Additional claims to be included at the root level of the Verifiable Credential.
-                allOf:
-                - $ref: '#/components/schemas/MapStringObject'
-                  example:
-                    a: "1"
-                    b: 2
+                example:
+                  foo: bar
+                  response: 42
               id:
                 description: An optional [identifier](https://www.w3.org/TR/vc-data-model/#identifiers) for the credential.
                 type: string
-                example: "1200"
+                example: "uri:example:foo:bar"
               issuanceDate:
                 format: date
                 description: Represents the initial time from which the credential is valid. See [definition](https://www.w3.org/TR/vc-data-model/#issuance-date) in data model.
                 type: string
-                example: 2021-01-21T23:31:07+00:00
+                example: '2021-01-21T23:31:07+00:00'
               issuer:
-                description: The [issuer](https://www.w3.org/TR/vc-data-model/#issuer) of the Verifiable Credential. For the credential to be issued on behalf of that issuer, the user must have sufficient permission on the corresponding identity. Insufficient permission will result in an error.
+                description: The [issuer](https://www.w3.org/TR/vc-data-model/#issuer) of the Verifiable Credential. For the credential to be issued on behalf of that issuer, the user must have sufficient permission on the corresponding profile. Insufficient permission will result in an error.
                 type: string
-                example: did:ev:cwMLAhhAc7VMDRdZYxHJMJ1HYbbz2zoiJBD33
+                example: did:example:abcd1234
               proofType:
                 description: The [proof mechanism](https://www.w3.org/TR/vc-data-model/#proofs-signatures) to be used on that credential. Currently defaults to `EthereumAttestationRegistry2019`.
                 type: string
@@ -669,9 +703,6 @@ components:
                 - DisputeCredential
                 items:
                   type: string
-    MapStringObject:
-      type: object
-      additionalProperties: {}
     CredentialItemResponse:
       type: object
       properties:
@@ -749,9 +780,11 @@ components:
         handle:
           description: The unique handle of the VP.
           type: string
+          example: mypresentation1
         identity:
-          description: The DID of the identity that owns the VP.
+          description: The DID of the profile that owns the VP.
           type: string
+          example: did:example:abcd1234
         verifiablepresentation:
           $ref: '#/components/schemas/VerifiablePresentation'
     PresentationCreationResponse:
@@ -770,12 +803,16 @@ components:
       properties:
         '@context':
           type: string
+          example: https://www.w3.org/2018/credentials/v1
         '@type':
           type: string
+          example: VerifiablePresentation
         id:
           type: string
+          example: 4200
         '@id':
           type: string
+          example: 4200
         verifiableCredential:
           type: array
           items:
@@ -787,3 +824,12 @@ components:
         path:
           type: string
           description: The path where the VP is available.
+  securitySchemes:
+    OAuth2:
+       type: oauth2
+       flows:
+         authorizationCode:
+           authorizationUrl: https://auth.kaytrust.id/auth/realms/demo-innovation-labs/protocol/openid-connect/auth
+           tokenUrl: https://auth.kaytrust.id/auth/realms/demo-innovation-labs/protocol/openid-connect/token
+           scopes:
+             openid: Normal OpenID Connect

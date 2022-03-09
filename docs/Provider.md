@@ -1,5 +1,5 @@
 # Introduction
-KayTrust Provider is a web application and a set of APIs that let individuals and organizations manage identities and create, hold and exchange verifiable credentials.
+KayTrust Provider is a web application and a set of APIs that let individuals and organizations manage their digital identifiers (DIDs) and create, hold and exchange verifiable credentials (VCs).
 
 It is modular and can be extended with tailored identity-related features.
 

@@ -28,7 +28,5 @@ Identity refers to 2 things:
 
 It is important to understand the vision behind self-sovereign identity: **nobody (no company, not any government, etc.) may control, block, censure, delete or spoof users' identity, restrict what users may do with their identity, or access information that users didn't agree to share.**
 
-KayTrust achieves that by using a **decentralised trust repository** (typically a blockchain) for identifiers, for credential proofs, and for sharing consent. The repository itself only stores proofs of data integrity. No private information is stored on the shared repository, so KayTrust works on public repositories such as public blockchains.
-
 For more information, please visit [kaytrust.id](https://www.kaytrust.id/).
 
