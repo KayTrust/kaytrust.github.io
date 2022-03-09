@@ -12,15 +12,15 @@ In the current state contracts are available for ethereum networks.
 
 * Device: This document supposes a user/entity accessing the contract through any **device** like a computer, mobile phone, tablet, IoT device, remote server. Later in this document the term *device* refers to any of the mentioned here.
 
-* User: The end user who creates its identity either through the IndetityManager or direclty by deploying an instance of the proxy smart contract.
+* User: The end user who creates their digital profile identifier either through the IndetityManager or direclty by deploying an instance of the Proxy smart contract.
 
 ## Types of contracts
 
-Two contracts are used in order to create and manage identities.
+Two contracts are used in order to create and manage identifiers.
 
 ### Proxy contract
 
-The Proxy smart contract **represents the Identity for a specific person**. This contract Allows to:
+The Proxy smart contract **represents a DID. This contract Allows to:
 
 * Set one or more ethereum addresses as the owner/owners of a proxy instance.
 
@@ -36,7 +36,7 @@ Interested to see all the details about the Proxy contract?. Please refer to the
 
 ### Identity Manager contract
 
-This contract is aimed to be used as a layer of abstraction when making actions related to your identity. Later in this document called IM. **This contract is not owned or administered by anyone**.
+This contract is aimed to be used as a layer of abstraction when making actions related to your identifier. Later in this document called IM. **This contract is not owned or administered by anyone**.
 
 #### Authorization levels in the Identity Manager Contract
 
@@ -46,21 +46,21 @@ Those levels can be applied to any device with a configured private key.
 
 * fw: Allows the device to forward messages through the IdentityManager contract.
 * auth: If assigned to a certain device you can create an offline logic that includes querying to the IM contract if the device has authentication capabilities; it allows developers perform authentication processes.
-* devicemanager: Allows to add a new device from which the user can access to its identity.
-* admin: A user with this capability is able to transfer its proxy identity to a new IdentityManager.
+* devicemanager: Allows to add a new device from which the user can access their profile.
+* admin: A user with this capability is able to transfer its proxy instance to a new IdentityManager.
 
 #### Available actions in the Identity Manager
 
 Those actions can be categorized in three groups:</br></br>
-**Identity lifecycle thorugh the Identity manager**
+**Identity lifecycle through the Identity manager**
 
-- Identity creation
+- DID creation
     - [reference](/Manuals/diagrams/identity-lifecycle/IM_identity_creation)
-- Register/remove devices to interact with their identities which live on the blockchain
+- Register/remove devices to interact with their identity profiles which live on the blockchain
     - [reference](/Manuals/diagrams/identity-lifecycle/IM_add_remove_device)
 - Transfer identity management to a new IdentityManager
     - [reference](/Manuals/diagrams/identity-lifecycle/IM_migration_to_new_IM)
-- [Identity recovery](/Manuals/IM/IM_recover_identity)<br><br>
+- [Profile recovery](/Manuals/IM/IM_recover_identity)<br><br>
 
 **Administrative actions**
 
@@ -68,13 +68,13 @@ Those actions can be categorized in three groups:</br></br>
     - [reference](/Manuals/diagrams/identity-lifecycle/IM_add_remove_device)
 - Check capabilities a certain device is granted in the Identity Manager Contract.
     - [reference](/Manuals/diagrams/administration/IM_identity_administration)  
-- Forward messages through the IdentityManager: The identity Manager serves as a proxy to deliver messages to any existing contract in the netwwork when the Identity Manager contract lives.
+- Forward messages through the IdentityManager: The identity Manager serves as a proxy to deliver messages to any existing contract in the network when the Identity Manager contract lives.
     - [reference](/Manuals/diagrams/forward/forward)
 
 #### Identity Manager contract deployment
 
 - The IdentityManager contract can have many flavours. In this version we use solidity in order to make it deployable on ethereum networks.
 
-- **As a developer who want to use the [Kaytrust solution](http://developer.kaytrust.id/) you don not need to deploy the IdentityManager contract**, instead simply consume its methods though our available Kaytrust SDKs:
+- **As a developer who want to use the [Kaytrust solution](http://developer.kaytrust.id/) you do not need to deploy the IdentityManager contract**, instead simply consume its methods though our available Kaytrust SDKs:
     - [Kaytrust Java SDK](/Tutorials/java-sdk)
   
