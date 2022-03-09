@@ -337,16 +337,16 @@ created: 2019-06-04
 <h2 id="simple-summary">Simple Summary</h2>
 <p>Identity contract</p>
 <h2 id="abstract">Abstract</h2>
-<p>This ERC describes the interface used for identity management: creation of an identity, update of information related to an identity, and action on behalf of an identity.</p>
+<p>This ERC describes the interface used for identity management: creation of an identifier, update of information related to an identifier, and action on behalf of an identifier.</p>
 <h2 id="motivation">Motivation</h2>
-<p>There is a need to standardize the interface for contract-based digital identities to be used, so as to allow for interoperability between implementations.</p>
+<p>There is a need to standardize the interface for contract-based digital identifiers to be used, so as to allow for interoperability between implementations.</p>
 <h2 id="definitions">Definitions</h2>
 <p><strong>Owner</strong></p>
-<p>The owner of an identity (i.e. Proxy contract) is an Ethereum address recognized by the Proxy contract to originate transactions that the Proxy contract will forward. While the address of a Proxy contract is permanent, owners may be added and removed as needed.</p>
+<p>The owner of an identifier (i.e. Proxy contract) is an Ethereum address recognized by the Proxy contract to originate transactions that the Proxy contract will forward. While the address of a Proxy contract is permanent, owners may be added and removed as needed.</p>
 <h2 id="specification">Specification</h2>
 <p>This EIP defines an interface called <code>Proxy</code>, which provides the following functions:</p>
 <p><strong>constructor</strong></p>
-<p>The constructor is used to instantiate a new identity (i.e. Proxy contract). It takes a <code>firstOwner</code> address of that proxy.</p>
+<p>The constructor is used to instantiate a new identifier (i.e. Proxy contract). It takes a <code>firstOwner</code> address of that proxy.</p>
 <pre><code class="language-js">constructor(firstOwner) public
 </code></pre>
 <p><strong>forward</strong></p>
