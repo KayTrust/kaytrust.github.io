@@ -12,16 +12,16 @@ created: 2019-06-04
 Identity contract
 
 ## Abstract
-This ERC describes the interface used for identity management: creation of an identity, update of information related to an identity, and action on behalf of an identity.
+This ERC describes the interface used for identity management: creation of an identifier, update of information related to an identifier, and action on behalf of an identifier.
 
 ## Motivation
-There is a need to standardize the interface for contract-based digital identities to be used, so as to allow for interoperability between implementations.
+There is a need to standardize the interface for contract-based digital identifiers to be used, so as to allow for interoperability between implementations.
 
 ## Definitions
 
 **Owner**
 
-The owner of an identity (i.e. Proxy contract) is an Ethereum address recognized by the Proxy contract to originate transactions that the Proxy contract will forward. While the address of a Proxy contract is permanent, owners may be added and removed as needed.
+The owner of an identifier (i.e. Proxy contract) is an Ethereum address recognized by the Proxy contract to originate transactions that the Proxy contract will forward. While the address of a Proxy contract is permanent, owners may be added and removed as needed.
 
 ## Specification
 
@@ -29,7 +29,7 @@ This EIP defines an interface called `Proxy`, which provides the following funct
 
 **constructor**
 
-The constructor is used to instantiate a new identity (i.e. Proxy contract). It takes a `firstOwner` address of that proxy.
+The constructor is used to instantiate a new identifier (i.e. Proxy contract). It takes a `firstOwner` address of that proxy.
 
 ```js
 constructor(firstOwner) public
