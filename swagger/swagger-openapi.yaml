@@ -38,7 +38,13 @@ paths:
           description: Space-separated list of acceptable capabilities. The operation will only return profiles for which the user has any of the specified capabilities. Default is to return all profiles.
           schema:
             type: string
-          example: devicemanager fw
+          examples:
+            default:
+              summary: Return all profiles (default)
+              value: ''
+            devicemanager:
+              summary: Only capabilities that let you manage devices
+              value: devicemanager admin
       responses:
         '200':
           description: Success. An array of profiles is returned.
@@ -54,7 +60,7 @@ paths:
       tags:
         - Profile
       summary: Create profile.
-      description: Create a new profile, owned by the current user.
+      description: Create a new profile, owned by the current user. You can optionally provide a label for the new profile.
       requestBody:
         content:
           application/json:
@@ -85,6 +91,7 @@ paths:
           style: form
           schema:
             type: string
+          example: did:example:1234abcd
       responses:
         '200':
           description: Success
@@ -136,6 +143,7 @@ paths:
           style: form
           schema:
             type: string
+          example: fw
         - name: did
           in: query
           description: DID of the profile from which to remove the capability.
@@ -143,6 +151,7 @@ paths:
           style: form
           schema:
             type: string
+          example: did:example:abcd1234
         - name: device
           in: query
           description: Key that should be removed the capability from the given profile.
@@ -150,6 +159,7 @@ paths:
           style: form
           schema:
             type: string
+          example: '0x9f8c1e196F5696e014F4d1E4961B92db866BE271'
       responses:
         '200':
           description: Success. The capability was properly removed from the provided key on that DID.
@@ -292,6 +302,7 @@ paths:
         required: true
         schema:
           type: string
+        example: '{"@context":["https://www.w3.org/2018/credentials/v1","https://schema.org/"],"id":"1200","type":["VerifiableCredential","DisputeCredential"],"issuer":"did:ev:cwMLMzxkpo4D7uojHyaiJi1ipq4dAPs9XajA3","issuanceDate":"2021-01-21T18:31:07-05:00","expirationDate":"2021-01-21T18:31:07-05:00","credentialSubject":{"@id":"did:ev:cwMLLiMQGm9EaTqzY2k58refSoXdTsYvJ9Znp","name":"John Doe","birthDate":"2018-01-01"},"proof":{"type":"EthereumAttestationRegistry2019","networkId":"0x9e551","contractAddress":"0x9f8c1e196F5696e014F4d1E4961B92db866BE271"}}'
       responses:
         "200":
           description: Success. The credential was properly checked and you can see its validity in the response. Note that this response doesn't necessarily mean that the credential is valid.
@@ -328,6 +339,7 @@ paths:
           style: simple
           schema:
             type: string
+          example: did:example:abcd1234
       responses:
         "200":
           description: Success. The result is a list of Verifiable Presentations stored on behalf of the given profile.
@@ -356,6 +368,7 @@ paths:
           style: simple
           schema:
             type: string
+          example: mypresentation1
         - name: identity
           in: path
           description: The DID of the profile that owns the VP to be retrieved.
@@ -363,6 +376,7 @@ paths:
           style: simple
           schema:
             type: string
+          example: did:example:abcd1234
       responses:
         '200':
           description: Success. The Verifiable Presentation could be retrieved.
@@ -391,6 +405,7 @@ paths:
           style: simple
           schema:
             type: string
+          example: mypresentation1
         - name: identity
           in: path
           description: DID of the profile that owns the provided VP.
@@ -398,6 +413,7 @@ paths:
           style: simple
           schema:
             type: string
+          example: did:example:abcd1234
       requestBody:
         description: Content of the Verifiable Presentation to create or update. Currently only JSON content type is supported.
         content:
@@ -430,6 +446,7 @@ paths:
           style: simple
           schema:
             type: string
+          example: mypresentation1
         - name: identity
           in: path
           description: DID of the profile that owns the VP to be deleted.
@@ -437,6 +454,7 @@ paths:
           style: simple
           schema:
             type: string
+          example: did:example:abcd1234
       responses:
         '200':
           description: Success. The Verifiable Presentation with the given handle was deleted.
@@ -469,7 +487,7 @@ components:
         did:
           type: string
           description: The DID on which the capability must be granted.
-          example: did:ev:cwMLEDvx5whzCwNcN4YtqmydTphGcYY2KuzD3
+          example: did:example:abcd1234
     CapabilityResponse:
       title: Capability granting response
       required:
@@ -491,7 +509,7 @@ components:
         did:
           type: string
           description: The DID on which the capability was granted.
-          example: did:ev:cwMLEDvx5whzCwNcN4YtqmydTphGcYY2KuzD3
+          example: did:example:abcd1234
     DidCreateRequest:
       title: Profile creation request body
       type: object
@@ -507,7 +525,7 @@ components:
         did:
           type: string
           description: The DID of the profile that was created.
-          example: did:ev:cwMLBgdhaQNB9eTkrYYSPXHaVHBupQUsTGqV9
+          example: did:example:abcd1234
     ForwardRequest:
       title: Transaction forward request body
       required:
@@ -527,7 +545,7 @@ components:
         did:
           type: string
           description: DID on behalf of which the transaction must be executed. Only makes sense for DID methods that are associated to Ethereum smart contracts and offer a transaction-forwarding feature. One such method is `did:ev`.
-          example: did:ev:cwMLEDvx5whzCwNcN4YtqmydTphGcYY2KuzD3
+          example: did:example:abcd1234
         factor:
           type: number
           description: Optional multiplying factor for the gas amount, to ensure proper execution of the transaction. Defaults to 1.
@@ -557,7 +575,7 @@ components:
         did:
           type: string
           description: The DID which the user's key has capabilities on.
-          example: did:ev:cwMLBgdhaQNB9eTkrYYSPXHaVHBupQUsTGqV9
+          example: did:example:abcd1234
     IdentityResponse:
       title: Profile response
       type: object
@@ -574,13 +592,15 @@ components:
                 type: string
                 description: The creation date of that profile, if available.
                 format: date-time
+                example: '2021-05-19T09:24:16.000+00:00'
               did:
                 type: string
                 description: The DID corresponding to the profile.
-                example: did:ev:cwMLBgdhaQNB9eTkrYYSPXHaVHBupQUsTGqV9
+                example: did:example:abcd1234
               label:
                 type: string
                 description: The label of the profile, if any.
+                example: My profile
               jsonWebKey:
                 $ref: '#/components/schemas/JsonWebKey'
     JsonWebKey:
@@ -606,7 +626,7 @@ components:
         did:
           type: string
           description: The DID of the profile to be labelled.
-          example: did:ev:cwMLEDvx5whzCwNcN4YtqmydTphGcYY2KuzD3
+          example: did:example:abcd1234
         label:
           type: string
           description: The label to put on the profile. The label is personal to each user, so this value won't affect other users.
@@ -647,32 +667,30 @@ components:
                 example:
                   '@id': did:ev:cwMLLiMQGm9EaTqzY2k58refSoXdTsYvJ9Znp
                   name: John Doe
-                  birthDate: 2018-01-01
+                  birthDate: '2018-01-01'
               expirationDate:
-                format: date
+                format: date-time
                 description: The time after which the credential won't be valid anymore. See [definition](https://www.w3.org/TR/vc-data-model/#expiration) in data model.
                 type: string
-                example: 2021-01-21T23:31:07+00:00
+                example: '2021-01-21T23:31:07+00:00'
               extra:
                 description: Additional claims to be included at the root level of the Verifiable Credential.
-                allOf:
-                - $ref: '#/components/schemas/MapStringObject'
-                  example:
-                    a: "1"
-                    b: 2
+                example:
+                  foo: bar
+                  response: 42
               id:
                 description: An optional [identifier](https://www.w3.org/TR/vc-data-model/#identifiers) for the credential.
                 type: string
-                example: "1200"
+                example: "uri:example:foo:bar"
               issuanceDate:
                 format: date
                 description: Represents the initial time from which the credential is valid. See [definition](https://www.w3.org/TR/vc-data-model/#issuance-date) in data model.
                 type: string
-                example: 2021-01-21T23:31:07+00:00
+                example: '2021-01-21T23:31:07+00:00'
               issuer:
                 description: The [issuer](https://www.w3.org/TR/vc-data-model/#issuer) of the Verifiable Credential. For the credential to be issued on behalf of that issuer, the user must have sufficient permission on the corresponding profile. Insufficient permission will result in an error.
                 type: string
-                example: did:ev:cwMLAhhAc7VMDRdZYxHJMJ1HYbbz2zoiJBD33
+                example: did:example:abcd1234
               proofType:
                 description: The [proof mechanism](https://www.w3.org/TR/vc-data-model/#proofs-signatures) to be used on that credential. Currently defaults to `EthereumAttestationRegistry2019`.
                 type: string
@@ -685,9 +703,6 @@ components:
                 - DisputeCredential
                 items:
                   type: string
-    MapStringObject:
-      type: object
-      additionalProperties: {}
     CredentialItemResponse:
       type: object
       properties:
@@ -765,9 +780,11 @@ components:
         handle:
           description: The unique handle of the VP.
           type: string
+          example: mypresentation1
         identity:
           description: The DID of the profile that owns the VP.
           type: string
+          example: did:example:abcd1234
         verifiablepresentation:
           $ref: '#/components/schemas/VerifiablePresentation'
     PresentationCreationResponse:
@@ -786,12 +803,16 @@ components:
       properties:
         '@context':
           type: string
+          example: https://www.w3.org/2018/credentials/v1
         '@type':
           type: string
+          example: VerifiablePresentation
         id:
           type: string
+          example: 4200
         '@id':
           type: string
+          example: 4200
         verifiableCredential:
           type: array
           items:
